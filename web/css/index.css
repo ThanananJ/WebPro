@@ -1,0 +1,44 @@
+.bg{
+    text-align: center;
+    font-family: Advent Pro;
+}
+#a1{
+    color: white;
+    font-size: 40px;
+    text-align: left;
+    margin-left: 10px;
+}
+#a5{
+    text-align: right;
+    color: #805B25;
+}
+#search{
+    background-color:#DEC7A4;
+    height: 58px;
+    width: 500px;
+    border-radius: 7px;
+}
+#drop1{
+    background-color:#DEC7A4;
+    height: 58px;
+    width: 144px;
+    font-size: 20px;
+}
+#drop2{
+    background-color:#DEC7A4;
+    height: 58px;
+    width: 144px;
+    font-size: 20px;
+}
+#startbutton{
+    color: #A0896F;
+    background-color: #DEC7A4;
+    font-size: 25px;
+    padding: 3px;
+    margin: auto;
+    border-radius: 5px;
+    height:40px;
+    width: 150px;
+
+
+}
