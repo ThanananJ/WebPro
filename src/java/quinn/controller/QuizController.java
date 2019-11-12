@@ -98,7 +98,7 @@ public class QuizController {
         return list;
     }
     
-    public static List<Item> findQuizItem(String quiz_id){
+    public static List<Item> findItem(String quiz_id){
         List<Item> items = null;
         Item i = null;
         Connection conn = BuildConnection.getConnection();
@@ -121,7 +121,7 @@ public class QuizController {
         return items;
     }
     
-    public static List<Answer> findItemAnswer(String item_id){
+    public static List<Answer> findAnswer(String item_id){
         List<Answer> answers = null;
         Answer a = null;
         Connection conn = BuildConnection.getConnection();
@@ -150,9 +150,9 @@ public class QuizController {
         q = qc.findByGrade("5");
         q = qc.findBySubject("English");
         System.out.println(q.get(0).getDescription());
-        List<Item> i = qc.findQuizItem("00002");
+        List<Item> i = qc.findItem("00002");
         System.out.println(i);
-        List<Answer> a = qc.findItemAnswer("000002");
+        List<Answer> a = qc.findAnswer("000002");
         System.out.println(a);
     }
 }
