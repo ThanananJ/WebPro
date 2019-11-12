@@ -38,7 +38,7 @@
             <div class ="nav">
                 <ul>
                     <li><a href="/index.jsp">My Profile</a></li>
-                    <li ><a href="./login.jsp">Logout</a></li>
+                    <li ><a href="./Logout">Logout</a></li>
                 </ul>
             </div>
         </div>
