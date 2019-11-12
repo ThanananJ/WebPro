@@ -32,13 +32,9 @@ public class LogoutServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession(false);
-        System.out.println("987654321");
-        System.out.println(session);
         if(session==null||session.getAttribute("user")==null){
             session.invalidate();
         }
-        System.out.println(session);
-        System.out.println("123456789");
         getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
     }
 
