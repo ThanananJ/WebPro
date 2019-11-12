@@ -132,4 +132,16 @@ CREATE table score(\
     quiz_id VARCHAR(5) NOT NULL,\
     score int,\
     PRIMARY KEY (st_id)\
-);}
+);\
+\
+DROP table announcements;\
+\
+CREATE table Announcements  (\
+    announce_id VARCHAR(5) NOT NULL,\
+    content VARCHAR(200) NOT NULL,\
+    PRIMARY KEY (announce_id)\
+);\
+\
+INSERT INTO Announcements(announce_id, content) VALUES\
+('00001', 'Quiz English for Student Grade 10 class 1'),\
+('00002', 'Math Test for Student Grade 11 class 3');}
