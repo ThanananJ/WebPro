@@ -144,6 +144,25 @@ public class QuizController {
         return answers;
     }
     
+    public static boolean addQuiz(Quiz q){
+        Connection conn = BuildConnection.getConnection();
+        boolean fin = false;
+        try {
+            PreparedStatement pstm = conn.prepareStatement("INSERT INTO quizes VALUES (?, ?, ?, ?, ?, ?, ?)");
+            pstm.setString(1, q.getQuiz_id());
+            pstm.setString(2, q.getDescription());
+            pstm.setString(3, q.getSubject());
+            pstm.setString(4, q.getType());
+            pstm.setString(5, q.getQuizOwner());
+            pstm.setString(6, q.getClassAllowToDo());
+            pstm.setInt(7, q.getMaxScore());
+            fin = pstm.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(QuizController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return fin;
+    }
+    
     public static void main(String[] args) {
         QuizController qc = new QuizController();
         List<Quiz> q = qc.findByDesc("Eng");

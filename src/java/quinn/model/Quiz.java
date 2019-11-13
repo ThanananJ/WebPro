@@ -18,6 +18,7 @@ public class Quiz {
     private String type;
     private String quizOwner;
     private String classAllowToDo;
+    private int maxScore;
 
     public Quiz() {
     }
@@ -86,10 +87,20 @@ public class Quiz {
         this.classAllowToDo = classAllowToDo;
     }
 
+    public int getMaxScore() {
+        return maxScore;
+    }
+
+    public void setMaxScore(int maxScore) {
+        this.maxScore = maxScore;
+    }
+
     @Override
     public String toString() {
-        return "Quiz{" + "quiz_id=" + quiz_id + ", description=" + description + ", subject=" + subject + ", type=" + type + ", quizOwner=" + quizOwner + ", classAllowToDo=" + classAllowToDo + '}';
+        return "Quiz{" + "quiz_id=" + quiz_id + ", description=" + description + ", subject=" + subject + ", type=" + type + ", quizOwner=" + quizOwner + ", classAllowToDo=" + classAllowToDo + ", maxScore=" + maxScore + '}';
     }
+
+
     
     
 }
