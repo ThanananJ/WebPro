@@ -39,7 +39,7 @@ public class QuizController {
                 if(list == null){
                     list = new ArrayList(100);
                 }
-                q = new Quiz(rs.getString("quiz_id"), rs.getString("description"), rs.getString("subject"), rs.getString("q_type"), rs.getString("t_id"), rs.getString("class_id"));
+                q = new Quiz(rs.getInt(0), rs.getString(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5), 1);
                 list.add(q);
             }
             rs.close();
@@ -63,7 +63,7 @@ public class QuizController {
                 if(list == null){
                     list = new ArrayList(100);
                 }
-                q = new Quiz(rs.getString("quiz_id"), rs.getString("description"), rs.getString("subject"), rs.getString("q_type"), rs.getString("t_id"), rs.getString("class_id"));
+                q = new Quiz(rs.getInt("quiz_id"), rs.getString("description"), rs.getString("subject"), rs.getString("q_type"), rs.getInt("t_id"), rs.getString("class_id"), 1);
                 list.add(q);
             }
             rs.close();
@@ -87,7 +87,7 @@ public class QuizController {
                 if(list == null){
                     list = new ArrayList(100);
                 }
-                q = new Quiz(rs.getString("quiz_id"), rs.getString("description"), rs.getString("subject"), rs.getString("q_type"), rs.getString("t_id"), rs.getString("class_id"));
+                q = new Quiz(rs.getInt("quiz_id"), rs.getString("description"), rs.getString("subject"), rs.getString("q_type"), rs.getInt("t_id"), rs.getString("class_id"), 1);
                 list.add(q);
             }
             rs.close();
@@ -112,7 +112,7 @@ public class QuizController {
                 if(items ==null){
                     items = new ArrayList(100);
                 }
-                i = new Item(rs.getString("item_id"), rs.getString("description"), rs.getString("quiz_id"));
+                i = new Item(rs.getInt("item_id"), rs.getString("description"), rs.getString("quiz_id"));
                 items.add(i);
             }
         } catch (SQLException ex) {
@@ -135,7 +135,7 @@ public class QuizController {
                 if(answers ==null){
                     answers = new ArrayList(100);
                 }
-                a = new Answer(rs.getString("answer_id"), rs.getString("description"), rs.getBoolean("isCorrect"), rs.getString("item_id"));
+                a = new Answer(rs.getInt("answer_id"), rs.getString("description"), rs.getBoolean("isCorrect"), rs.getString("item_id"));
                 answers.add(a);
             }
         } catch (SQLException ex) {
@@ -149,11 +149,11 @@ public class QuizController {
         boolean fin = false;
         try {
             PreparedStatement pstm = conn.prepareStatement("INSERT INTO quizes VALUES (?, ?, ?, ?, ?, ?, ?)");
-            pstm.setString(1, q.getQuiz_id());
+            pstm.setInt(1, q.getQuiz_id());
             pstm.setString(2, q.getDescription());
             pstm.setString(3, q.getSubject());
             pstm.setString(4, q.getType());
-            pstm.setString(5, q.getQuizOwner());
+            pstm.setInt(5, q.getQuizOwner());
             pstm.setString(6, q.getClassAllowToDo());
             pstm.setInt(7, q.getMaxScore());
             fin = pstm.execute();
