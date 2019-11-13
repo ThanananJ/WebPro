@@ -11,17 +11,25 @@ package quinn.model;
  */
 public class Teacher {
     
-    private String userName;
+    private int userName;
     private String password;
     private String firstName;
     private String lastName;
     private String classId;
 
-    public String getUserName() {
+    public Teacher(int userName, String password, String firstName, String lastName, String classId) {
+        this.userName = userName;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.classId = classId;
+    }
+
+    public int getUserName() {
         return userName;
     }
 
-    public void setUserName(String userName) {
+    public void setUserName(int userName) {
         this.userName = userName;
     }
 
@@ -55,18 +63,6 @@ public class Teacher {
 
     public void setClassId(String classId) {
         this.classId = classId;
-    }
-
-    public Teacher(String userName, String firstName, String LastName, String password, String classId) {
-        this.userName = userName;
-        this.password = password;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.classId = classId;
-    }
-
-    public Teacher() {
-        
     }
     
     
