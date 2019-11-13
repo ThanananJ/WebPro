@@ -10,25 +10,29 @@ package quinn.model;
  * @author Mark
  */
 public class Answer {
-    private String answer_id;
+    private int answer_id;
     private String description;
     private boolean isCorrect;
     private String item_id;
 
-    public Answer(String answer_id, String description, boolean isCorrect, String item_id) {
+    public Answer(int answer_id, String description, boolean isCorrect, String item_id) {
         this.answer_id = answer_id;
         this.description = description;
         this.isCorrect = isCorrect;
         this.item_id = item_id;
     }
 
-    public String getAnswer_id() {
+    
+    
+    public int getAnswer_id() {
         return answer_id;
     }
 
-    public void setAnswer_id(String answer_id) {
+    public void setAnswer_id(int answer_id) {
         this.answer_id = answer_id;
     }
+
+    
 
     public String getDescription() {
         return description;
