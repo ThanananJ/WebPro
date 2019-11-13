@@ -20,8 +20,7 @@ public class Quiz {
     private String classAllowToDo;
     private int maxScore;
 
-    public Quiz(int quiz_id, String description, String subject, String type, int quizOwner, String classAllowToDo, int maxScore) {
-        this.quiz_id = quiz_id;
+    public Quiz(String description, String subject, String type, int quizOwner, String classAllowToDo, int maxScore) {
         this.description = description;
         this.subject = subject;
         this.type = type;
@@ -32,10 +31,6 @@ public class Quiz {
 
     public int getQuiz_id() {
         return quiz_id;
-    }
-
-    public void setQuiz_id(int quiz_id) {
-        this.quiz_id = quiz_id;
     }
 
     public String getDescription() {

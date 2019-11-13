@@ -39,7 +39,7 @@ public class QuizController {
                 if(list == null){
                     list = new ArrayList(100);
                 }
-                q = new Quiz(rs.getInt(0), rs.getString(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5), 1);
+                q = new Quiz(rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), 1);
                 list.add(q);
             }
             rs.close();
@@ -63,7 +63,7 @@ public class QuizController {
                 if(list == null){
                     list = new ArrayList(100);
                 }
-                q = new Quiz(rs.getInt("quiz_id"), rs.getString("description"), rs.getString("subject"), rs.getString("q_type"), rs.getInt("t_id"), rs.getString("class_id"), 1);
+                q = new Quiz(rs.getString("description"), rs.getString("subject"), rs.getString("q_type"), rs.getInt("t_id"), rs.getString("class_id"), 1);
                 list.add(q);
             }
             rs.close();
@@ -87,7 +87,7 @@ public class QuizController {
                 if(list == null){
                     list = new ArrayList(100);
                 }
-                q = new Quiz(rs.getInt("quiz_id"), rs.getString("description"), rs.getString("subject"), rs.getString("q_type"), rs.getInt("t_id"), rs.getString("class_id"), 1);
+                q = new Quiz(rs.getString("description"), rs.getString("subject"), rs.getString("q_type"), rs.getInt("t_id"), rs.getString("class_id"), 1);
                 list.add(q);
             }
             rs.close();
@@ -148,14 +148,13 @@ public class QuizController {
         Connection conn = BuildConnection.getConnection();
         boolean fin = false;
         try {
-            PreparedStatement pstm = conn.prepareStatement("INSERT INTO quizes VALUES (?, ?, ?, ?, ?, ?, ?)");
-            pstm.setInt(1, q.getQuiz_id());
-            pstm.setString(2, q.getDescription());
-            pstm.setString(3, q.getSubject());
-            pstm.setString(4, q.getType());
-            pstm.setInt(5, q.getQuizOwner());
-            pstm.setString(6, q.getClassAllowToDo());
-            pstm.setInt(7, q.getMaxScore());
+            PreparedStatement pstm = conn.prepareStatement("INSERT INTO quizes(description, subject, q_type, t_id, class_id, maxscore) VALUES (?, ?, ?, ?, ?, ?)");
+            pstm.setString(1, q.getDescription());
+            pstm.setString(2, q.getSubject());
+            pstm.setString(3, q.getType());
+            pstm.setInt(4, q.getQuizOwner());
+            pstm.setString(5, q.getClassAllowToDo());
+            pstm.setInt(6, q.getMaxScore());
             fin = pstm.execute();
         } catch (SQLException ex) {
             Logger.getLogger(QuizController.class.getName()).log(Level.SEVERE, null, ex);
@@ -163,15 +162,39 @@ public class QuizController {
         return fin;
     }
     
+    public static boolean deleteQuiz(Quiz q){
+        Connection conn = BuildConnection.getConnection();
+        boolean fin = false;
+        return fin;
+    }
+    
+//    public static boolean EditQuiz(Quiz q){
+//        Connection conn = BuildConnection.getConnection();
+//        boolean fin = false;
+//        try {
+//            PreparedStatement pstm = conn.prepareStatement("UPDATE");
+//            
+//        } catch (SQLException ex) {
+//            Logger.getLogger(QuizController.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        
+//        return fin;
+//    }
+    
     public static void main(String[] args) {
         QuizController qc = new QuizController();
-        List<Quiz> q = qc.findByDesc("Eng");
-        q = qc.findByGrade("5");
-        q = qc.findBySubject("English");
-        System.out.println(q.get(0).getDescription());
-        List<Item> i = qc.findItem("00002");
-        System.out.println(i);
-        List<Answer> a = qc.findAnswer("000002");
-        System.out.println(a);
+//        List<Quiz> q = qc.findByDesc("Eng");
+//        q = qc.findByGrade("5");
+//        q = qc.findBySubject("English");
+//        System.out.println(q.get(0).getDescription());
+//        List<Item> i = qc.findItem("00002");
+//        System.out.println(i);
+//        List<Answer> a = qc.findAnswer("000002");
+//        System.out.println(a);
+        Quiz q = new Quiz("Math quiz II", "Math", "2", 3, "601", 2);
+        qc.addQuiz(q);
+        
+        List<Quiz> ql = qc.findByDesc(" ");
+        System.out.println(ql);
     }
 }
