@@ -10,21 +10,21 @@ package quinn.model;
  * @author nattawanee.sks
  */
 public class Item {
-    private String item_id;
+    private int item_id;
     private String description;
     private String quiz_id;
 
-    public Item(String item_id, String description, String quiz_id) {
+    public Item(int item_id, String description, String quiz_id) {
         this.item_id = item_id;
         this.description = description;
         this.quiz_id = quiz_id;
     }
 
-    public String getItem_id() {
+    public int getItem_id() {
         return item_id;
     }
 
-    public void setItem_id(String item_id) {
+    public void setItem_id(int item_id) {
         this.item_id = item_id;
     }
 
