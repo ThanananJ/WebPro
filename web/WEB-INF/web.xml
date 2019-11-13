@@ -16,6 +16,18 @@
         <servlet-name>LogoutServlet</servlet-name>
         <servlet-class>quinn.servlet.LogoutServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddQuizServlet</servlet-name>
+        <servlet-class>quinn.servlet.AddQuizServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditQuizServet</servlet-name>
+        <servlet-class>quinn.servlet.EditQuizServet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DoQuizServlet</servlet-name>
+        <servlet-class>quinn.servlet.DoQuizServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -31,6 +43,18 @@
     <servlet-mapping>
         <servlet-name>LogoutServlet</servlet-name>
         <url-pattern>/Logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddQuizServlet</servlet-name>
+        <url-pattern>/AddQuiz</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditQuizServet</servlet-name>
+        <url-pattern>/EditQuiz</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DoQuizServlet</servlet-name>
+        <url-pattern>/DoQuiz</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
