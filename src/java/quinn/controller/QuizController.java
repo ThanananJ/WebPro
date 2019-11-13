@@ -168,18 +168,23 @@ public class QuizController {
         return fin;
     }
     
-//    public static boolean EditQuiz(Quiz q){
-//        Connection conn = BuildConnection.getConnection();
-//        boolean fin = false;
-//        try {
-//            PreparedStatement pstm = conn.prepareStatement("UPDATE");
-//            
-//        } catch (SQLException ex) {
-//            Logger.getLogger(QuizController.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        
-//        return fin;
-//    }
+    public static boolean EditQuiz(Quiz q){
+        Connection conn = BuildConnection.getConnection();
+        boolean fin = false;
+        try {
+            PreparedStatement pstm = conn.prepareStatement("UPDATE quizes SET Description = ?, Subject = ?, q_type = ?, t_id = ?, class_id = ?, maxscore = ? WHERE quiz_id = ?");
+            pstm.setString(1, q.getDescription());
+            pstm.setString(2, q.getSubject());
+            pstm.setString(3, q.getType());
+            pstm.setInt(4, q.getQuizOwner());
+            pstm.setString(5, q.getClassAllowToDo());
+            pstm.setInt(6, q.getMaxScore());
+        } catch (SQLException ex) {
+            Logger.getLogger(QuizController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return fin;
+    }
     
     public static void main(String[] args) {
         QuizController qc = new QuizController();
