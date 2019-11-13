@@ -5,11 +5,17 @@
 \paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
 
-\f0\fs24 \cf0 DROP table STUDENT;\
+\f0\fs24 \cf0 \
+DROP TABLE answers;\
+DROP table quizes;\
+DROP table STUDENT;\
 DROP table TEACHER;\
+DROP table announcements;\
+DROP TABLE score;\
+DROP table items;\
 \
 CREATE TABLE student (\
-    std_id VARCHAR(5) NOT NULL,\
+    std_id INT NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),\
     f_name VARCHAR(50) NOT NULL,\
     l_name VARCHAR(50) NOT NULL,\
     password VARCHAR(12) NOT NULL,\
@@ -17,39 +23,39 @@ CREATE TABLE student (\
     PRIMARY KEY (std_id)\
 );\
 \
-INSERT INTO student(std_id, f_name, l_name, password, class_id) values\
-('00001','Amy','Thomson','12345','401'),\
-('00002','David','Rampling','12345','401'),\
-('00003','Victor','Pullman','12345','402'),\
-('00004','Harry','Lyman','12345','402'),\
-('00005','Blake','Bell','12345','403'),\
-('00006','John','Oliver','12345','403'),\
-('00007','Paul','Wilkins','12345','404'),\
-('00008','Gabrielle','Edmunds','12345','404'),\
-('00009','James','Sutherland','12345','405'),\
-('00010','Evan','Smith','12345','405'),\
-('00011','Leonard','Skinner','12345','501'),\
-('00012','Sarah','Chapman','12345','501'),\
-('00013','Penelope','Abraham','12345','502'),\
-('00014','Alan','Peake','12345','502'),\
-('00015','Ryan','Watson','12345','503'),\
-('00016','William','Lawrence','12345','503'),\
-('00017','Rose','Ince','12345','504'),\
-('00018','Blake','Slater','12345','504'),\
-('00019','Victor','Manning','12345','505'),\
-('00020','Virginia','MacDonald','12345','601'),\
-('00021','Dorothy','Rampling','12345','601'),\
-('00022','Heather','Skinner','12345','602'),\
-('00023','Cameron','Turner','12345','602'),\
-('00024','Tim','Robertson','12345','603'),\
-('00025','Pippa','Black','12345','603'),\
-('00026','Joan','Walsh','12345','604'),\
-('00027','Owen','Hunter','12345','604'),\
-('00028','Tracey','Oliver','12345','605'),\
-('00029','Stephanie','Rampling','12345','605');\
+INSERT INTO student(f_name, l_name, password, class_id) values\
+('Amy','Thomson','12345','401'),\
+('David','Rampling','12345','401'),\
+('Victor','Pullman','12345','402'),\
+('Harry','Lyman','12345','402'),\
+('Blake','Bell','12345','403'),\
+('John','Oliver','12345','403'),\
+('Paul','Wilkins','12345','404'),\
+('Gabrielle','Edmunds','12345','404'),\
+('James','Sutherland','12345','405'),\
+('Evan','Smith','12345','405'),\
+('Leonard','Skinner','12345','501'),\
+('Sarah','Chapman','12345','501'),\
+('Penelope','Abraham','12345','502'),\
+('Alan','Peake','12345','502'),\
+('Ryan','Watson','12345','503'),\
+('William','Lawrence','12345','503'),\
+('Rose','Ince','12345','504'),\
+('Blake','Slater','12345','504'),\
+('Victor','Manning','12345','505'),\
+('Virginia','MacDonald','12345','601'),\
+('Dorothy','Rampling','12345','601'),\
+('Heather','Skinner','12345','602'),\
+('Cameron','Turner','12345','602'),\
+('Tim','Robertson','12345','603'),\
+('Pippa','Black','12345','603'),\
+('Joan','Walsh','12345','604'),\
+('Owen','Hunter','12345','604'),\
+('Tracey','Oliver','12345','605'),\
+('Stephanie','Rampling','12345','605');\
 \
 CREATE TABLE teacher (\
-    t_id VARCHAR(5) NOT NULL,\
+    t_id INT NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),\
     f_name VARCHAR(50) NOT NULL,\
     l_name VARCHAR(50) NOT NULL,\
     password VARCHAR(12) NOT NULL,\
@@ -57,75 +63,83 @@ CREATE TABLE teacher (\
     PRIMARY KEY (t_id)\
 );\
 \
-INSERT INTO teacher(t_id, f_name, l_name, password, class_id) values\
-('0001','Irene','Greene','12345','401'),\
-('0002','Austin','Ellison','12345','402'),\
-('0003','Dominic','White','12345','403'),\
-('0004','Samantha','Metcalfe','12345','404'),\
-('0005','Leonard','Gibson','12345','405'),\
-('0006','Owen','Abraham','12345','501'),\
-('0007','Amelia','Alsop','12345','502'),\
-('0008','Brian','Grant','12345','503'),\
-('0009','Wendy','Wilson','12345','504'),\
-('0010','Piers','Bailey','12345','505'),\
-('0011','Alan','Slater','12345','601'),\
-('0012','Michelle','Coleman','12345','602'),\
-('0013','Jake','Grant','12345','603'),\
-('0014','Jacob','Hodges','12345','604'),\
-('0015','James','Peake','12345','605'),\
-('0016','Piers','Young','12345',null),\
-('0017','Justin','Smith','12345',null),\
-('0018','Stephanie','Nash','12345',null),\
-('0019','Natalie','Rees','12345',null);\
-\
-DROP table quizes;\
+INSERT INTO teacher(f_name, l_name, password, class_id) values\
+('Irene','Greene','12345','401'),\
+('Austin','Ellison','12345','402'),\
+('Dominic','White','12345','403'),\
+('Samantha','Metcalfe','12345','404'),\
+('Leonard','Gibson','12345','405'),\
+('Owen','Abraham','12345','501'),\
+('Amelia','Alsop','12345','502'),\
+('Brian','Grant','12345','503'),\
+('Wendy','Wilson','12345','504'),\
+('Piers','Bailey','12345','505'),\
+('Alan','Slater','12345','601'),\
+('Michelle','Coleman','12345','602'),\
+('Jake','Grant','12345','603'),\
+('Jacob','Hodges','12345','604'),\
+('James','Peake','12345','605'),\
+('Piers','Young','12345',null),\
+('Justin','Smith','12345',null),\
+('Stephanie','Nash','12345',null),\
+('Natalie','Rees','12345',null);\
 \
 CREATE table quizes (\
-    quiz_id VARCHAR(5) NOT NULL,\
+    quiz_id INT NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),\
     description VARCHAR(250) NOT NULL,\
     subject VARCHAR(20) NOT NULL,\
     q_type VARCHAR (1) NOT NULL,\
-    t_id VARCHAR (5),\
+    t_id INT,\
     class_id VARCHAR(3),\
     maxscore int,\
     PRIMARY KEY (quiz_id)\
 );\
 \
-INSERT INTO quizes(quiz_id, description, subject, q_type, t_id, class_id, maxscore) VALUES\
-   ('00001', 'English quiz for Grade 10 class 1', 'English', '1', '0001', '401', 1),\
-   ('00002', 'Math test', 'Mathematic', '2', '0002', '503', 1);\
+ALTER TABLE quizes\
+    ADD CONSTRAINT quiz_teacher_fk FOREIGN KEY ( t_id )\
+        REFERENCES teacher ( t_id );\
 \
-DROP table items;\
+\
+INSERT INTO quizes(description, subject, q_type, t_id, class_id, maxscore) VALUES\
+   ('English quiz for Grade 10 class 1', 'English', '1', 1, '401', 1),\
+   ('Math test', 'Mathematic', '2' , 2, '503', 1);\
+\
 \
 CREATE table items (\
-    item_id VARCHAR(6) NOT NULL,\
+    item_id INT NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),\
     description VARCHAR(200) NOT NULL,\
-    quiz_id VARCHAR(5) NOT NULL,\
+    quiz_id INT NOT NULL,\
     PRIMARY KEY (item_id)\
 );\
 \
-INSERT INTO items(item_id, description, quiz_id) VALUES\
-    ('000001', 'Where is the sun?', '00001'),\
-    ('000002', '9+9+9+9 = ?', '00002');\
+ALTER TABLE items\
+    ADD CONSTRAINT item_quiz_fk FOREIGN KEY ( quiz_id )\
+        REFERENCES quizes ( quiz_id );\
 \
-DROP TABLE answers;\
+INSERT INTO items(description, quiz_id) VALUES\
+    ( 'Where is the sun?', 1),\
+    ( '9+9+9+9 = ?', 2);\
+\
 \
 CREATE table answers (\
-    answer_id VARCHAR(6) NOT NULL,\
+    answer_id INT NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),\
     description VARCHAR(100) NOT NULL,\
     isCorrect boolean NOT NULL,\
-    item_id VARCHAR(6) NOT NULL,\
+    item_id INT NOT NULL,\
     PRIMARY KEY (answer_id)\
 );\
 \
-INSERT INTO answers(answer_id, description, isCorrect, item_id) VALUES\
-    ('000001', 'sky', true, '000001'),\
-    ('000002', '12', false, '000002'),\
-    ('000003', '24', false, '000002'),\
-    ('000004', '36', true, '000002'),\
-    ('000005', '48', false, '000002');\
+ALTER TABLE answers\
+    ADD CONSTRAINT answer_item_fk FOREIGN KEY ( item_id )\
+        REFERENCES items ( item_id );\
 \
-DROP TABLE score;\
+INSERT INTO answers(description, isCorrect, item_id) VALUES\
+    ( 'sky', true, 1),\
+    ( '12', false, 2),\
+    ( '24', false, 2),\
+    ( '36', true, 2),\
+    ( '48', false, 2);\
+\
 \
 CREATE table score(\
     st_id VARCHAR(5) NOT NULL,\
@@ -134,14 +148,13 @@ CREATE table score(\
     PRIMARY KEY (st_id)\
 );\
 \
-DROP table announcements;\
 \
 CREATE table Announcements  (\
-    announce_id VARCHAR(5) NOT NULL,\
+    announce_id INT NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),\
     content VARCHAR(200) NOT NULL,\
     PRIMARY KEY (announce_id)\
 );\
 \
-INSERT INTO Announcements(announce_id, content) VALUES\
-('00001', 'Quiz English for Student Grade 10 class 1'),\
-('00002', 'Math Test for Student Grade 11 class 3');}
+INSERT INTO Announcements( content) VALUES\
+('Quiz English for Student Grade 10 class 1'),\
+('Math Test for Student Grade 11 class 3');}
