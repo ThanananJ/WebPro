@@ -165,6 +165,13 @@ public class QuizController {
     public static boolean deleteQuiz(Quiz q){
         Connection conn = BuildConnection.getConnection();
         boolean fin = false;
+        try {
+            PreparedStatement pstm = conn.prepareStatement("DELETE FROM quizes where description = ?");
+            pstm.setString(1, q.getDescription());
+            pstm.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(QuizController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return fin;
     }
     
@@ -179,6 +186,7 @@ public class QuizController {
             pstm.setInt(4, q.getQuizOwner());
             pstm.setString(5, q.getClassAllowToDo());
             pstm.setInt(6, q.getMaxScore());
+            pstm.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(QuizController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -197,8 +205,6 @@ public class QuizController {
 //        List<Answer> a = qc.findAnswer("000002");
 //        System.out.println(a);
         Quiz q = new Quiz("Math quiz II", "Math", "2", 3, "601", 2);
-        qc.addQuiz(q);
-        
         List<Quiz> ql = qc.findByDesc(" ");
         System.out.println(ql);
     }
