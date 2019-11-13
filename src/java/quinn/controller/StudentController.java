@@ -29,7 +29,7 @@ public class StudentController {
             ResultSet rs = null;
             rs = pstm.executeQuery();
             if(rs.next()){
-                s = new Student(rs.getString("std_id"),rs.getString("f_name"),rs.getString("l_name"),rs.getString("password"),rs.getString("class_id"));
+                s = new Student(rs.getInt("std_id"),rs.getString("f_name"),rs.getString("l_name"),rs.getString("password"),rs.getString("class_id"));
             }
             rs.close();
             conn.close();
