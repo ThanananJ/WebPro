@@ -10,29 +10,29 @@ package quinn.model;
  * @author nattawanee.sks
  */
 public class Score {
-    private String st_id;
-    private String quiz_id;
+    private int st_id;
+    private int quiz_id;
     private int score;
 
-    public Score(String st_id, String quiz_id, int score) {
+    public Score(int st_id, int quiz_id, int score) {
         this.st_id = st_id;
         this.quiz_id = quiz_id;
         this.score = score;
     }
 
-    public String getSt_id() {
+    public int getSt_id() {
         return st_id;
     }
 
-    public void setSt_id(String st_id) {
+    public void setSt_id(int st_id) {
         this.st_id = st_id;
     }
 
-    public String getQuiz_id() {
+    public int getQuiz_id() {
         return quiz_id;
     }
 
-    public void setQuiz_id(String quiz_id) {
+    public void setQuiz_id(int quiz_id) {
         this.quiz_id = quiz_id;
     }
 
