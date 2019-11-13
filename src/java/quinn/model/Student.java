@@ -13,13 +13,13 @@ import quinn.controller.StudentController;
  */
 public class Student {
     
-    private String userName;
+    private int userName;
     private String password;
     private String firstName;
     private String lastName;
     private String classId;
 
-    public Student(String userName, String firstName, String lastName, String password, String classId) {
+    public Student(int userName, String password, String firstName, String lastName, String classId) {
         this.userName = userName;
         this.password = password;
         this.firstName = firstName;
@@ -27,12 +27,11 @@ public class Student {
         this.classId = classId;
     }
 
-    
-    public String getUserName() {
+    public int getUserName() {
         return userName;
     }
 
-    public void setUserName(String userName) {
+    public void setUserName(int userName) {
         this.userName = userName;
     }
 
