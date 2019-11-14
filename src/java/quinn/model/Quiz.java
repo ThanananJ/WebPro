@@ -66,11 +66,7 @@ public class Quiz {
     }
 
     public void setType(String type) {
-        if(type.equals("1")){
-            this.type = "FillAnswer";
-        } else {
-            this.type = "MultipleChoice";
-        }
+        this.type = type;
     }
 
     public int getQuizOwner() {
@@ -104,4 +100,8 @@ public class Quiz {
         return "Quiz{" + "quiz_id=" + quiz_id + ", description=" + description + ", subject=" + subject + ", type=" + type + ", quizOwner=" + quizOwner + ", classAllowToDo=" + classAllowToDo + ", maxScore=" + maxScore + '}';
     }
     
+    public static void main(String[] args) {
+        Quiz q = new Quiz(1,"eng", "Thai", "1", 1, "401", 2);
+        System.out.println(q.type);
+    }
 }

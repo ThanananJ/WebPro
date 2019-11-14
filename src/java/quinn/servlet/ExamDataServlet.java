@@ -11,17 +11,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import quinn.model.Student;
-import quinn.controller.StudentController;
-import quinn.model.Teacher;
-import quinn.controller.TeacherController;
 
 /**
  *
  * @author nattawanee.sks
  */
-public class TeacherLoginServlet extends HttpServlet {
+public class ExamDataServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,32 +29,7 @@ public class TeacherLoginServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String t_id = request.getParameter("username");
-        String password = request.getParameter("password");
-        String message = "";
-        HttpSession session = request.getSession();
-        if (t_id.trim().length() > 0) {
-            TeacherController tc = new TeacherController();
-            Teacher user = (Teacher) tc.findByTeacherId(t_id);
-            if (user == null) {
-                message = "Invalid User";
-                request.setAttribute("message", message);
-                request.getRequestDispatcher("/teacherLogin.jsp").forward(request, response);
-            }
-            if (password.length() > 0) {
-                if (!user.getPassword().equals(password)) {
-                    message = "Invalid Username or Password";
-                    request.setAttribute("message", message);
-                    request.getRequestDispatcher("/teacherLogin.jsp").forward(request, response);
-                } else {
-                    session.setAttribute("teacher", user);
-                    request.getRequestDispatcher("/index.jsp").forward(request, response);
-                }
-            }
-        }
-        message = "Invalid Username or Password!!";
-        request.setAttribute("message", message);
-        request.getRequestDispatcher("/teacherLogin.jsp").forward(request, response);
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -74,7 +44,7 @@ public class TeacherLoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("/teacherLogin.jsp").forward(request, response);
+        processRequest(request, response);
     }
 
     /**

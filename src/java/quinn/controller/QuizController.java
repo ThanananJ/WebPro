@@ -76,6 +76,7 @@ public class QuizController {
         }
         return list;
     }
+    
     public static List<Quiz> findByDesc(String find){
         List<Quiz> list = null;
         Quiz q;
@@ -148,14 +149,14 @@ public class QuizController {
         return list;
     }
     
-    public static List<Item> findItem(String quiz_id){
+    public static List<Item> findItem(int quiz_id){
         List<Item> items = null;
         Item i = null;
         Connection conn = BuildConnection.getConnection();
         
         try {
             PreparedStatement pstm = conn.prepareStatement("select * from items where quiz_id = ?");
-            pstm.setString(1, quiz_id);
+            pstm.setInt(1, quiz_id);
             ResultSet rs = null;
             rs = pstm.executeQuery();
             while(rs.next()){
@@ -171,14 +172,14 @@ public class QuizController {
         return items;
     }
     
-    public static List<Answer> findAnswer(String item_id){
+    public static List<Answer> findAnswer(int item_id){
         List<Answer> answers = null;
         Answer a = null;
         Connection conn = BuildConnection.getConnection();
         
         try {
             PreparedStatement pstm = conn.prepareStatement("select * from answers where item_id = ?");
-            pstm.setString(1, item_id);
+            pstm.setInt(1, item_id);
             ResultSet rs = null;
             rs = pstm.executeQuery();
             while(rs.next()){
@@ -192,6 +193,26 @@ public class QuizController {
             Logger.getLogger(QuizController.class.getName()).log(Level.SEVERE, null, ex);
         }
         return answers;
+    }
+    
+    public static boolean findIsAnswer(String answer, int item_id){
+        Answer a = null;
+        boolean isAnswer = false;
+        Connection conn = BuildConnection.getConnection();
+        
+        try {
+            PreparedStatement pstm = conn.prepareStatement("select * from answers where item_id = ? and description LIKE ?");
+            pstm.setInt(1, item_id);
+            pstm.setString(2, "%" + answer + "%");
+            ResultSet rs = null;
+            rs = pstm.executeQuery();
+            if(rs.next()){
+                a = new Answer(rs.getInt("answer_id"), rs.getString("description"), rs.getBoolean("isCorrect"), rs.getString("item_id"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(QuizController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return a != null;
     }
     
     public static boolean addQuiz(Quiz q){
@@ -246,18 +267,23 @@ public class QuizController {
     
     public static void main(String[] args) {
         QuizController qc = new QuizController();
-        List<Quiz> q = qc.findByDescription("Eng","4","English");
-        q = qc.findByGradeSubject("5","Mathematic");
+//        List<Quiz> q = qc.findByDescription("Eng","4","English");
+//        q = qc.findByGradeSubject("5","Mathematic");
 //        q = qc.findBySubject("English");
-        System.out.println(q.get(0).getDescription());
-        List<Item> i = qc.findItem("00002");
-        System.out.println(i);
-        List<Answer> a = qc.findAnswer("000002");
-        System.out.println(a);
+//        System.out.println(q.get(0).getDescription());
+//        List<Item> i = qc.findItem("00002");
+//        System.out.println(i);
+//        List<Answer> a = qc.findAnswer("000002");
+//        System.out.println(a);
 //        Quiz q = new Quiz("Math quiz II", "Math", "2", 3, "601", 2);
 //        qc.addQuiz(q);
 //        
 //        List<Quiz> ql = qc.findByDesc(" ");
 //        System.out.println(ql);
+
+        Item i = qc.findItem(1).get(0);
+        System.out.println(i);
+        boolean a = qc.findIsAnswer("sky", i.getItem_id());
+        System.out.println(a);
     }
 }

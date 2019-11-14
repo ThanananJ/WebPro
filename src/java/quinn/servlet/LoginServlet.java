@@ -42,7 +42,7 @@ public class LoginServlet extends HttpServlet {
                 System.out.print(password);
                 if (user.getPassword().equals((String)password)) {
                     HttpSession session = request.getSession();
-                    session.setAttribute("user", user);
+                    session.setAttribute("student", user);
                     request.getRequestDispatcher("/index.jsp").forward(request, response);
                 } else {
                     request.setAttribute("message", "Invalid Password");

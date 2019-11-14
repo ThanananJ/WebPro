@@ -28,6 +28,10 @@
         <servlet-name>DoQuizServlet</servlet-name>
         <servlet-class>quinn.servlet.DoQuizServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ExamDataServlet</servlet-name>
+        <servlet-class>quinn.servlet.ExamDataServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -55,6 +59,10 @@
     <servlet-mapping>
         <servlet-name>DoQuizServlet</servlet-name>
         <url-pattern>/DoQuiz</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ExamDataServlet</servlet-name>
+        <url-pattern>/ExamData</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
