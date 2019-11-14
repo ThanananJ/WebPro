@@ -294,6 +294,35 @@ public class QuizController {
         return fin;
     }
     
+    public static boolean EditItem(Answer a){
+        Connection conn = BuildConnection.getConnection();
+        boolean fin = false;
+        try {
+            PreparedStatement pstm = conn.prepareStatement("UPDATE item SET Description = ? WHERE item_id = ?");
+            pstm.setString(1, a.getDescription());
+            pstm.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(QuizController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return fin;
+    }
+    
+    public static boolean EditAnswer(Answer a){
+        Connection conn = BuildConnection.getConnection();
+        boolean fin = false;
+        try {
+            PreparedStatement pstm = conn.prepareStatement("UPDATE answer SET Description = ?, isCorrect = ? WHERE quiz_id = ?");
+            pstm.setString(1, a.getDescription());
+            pstm.setBoolean(2, a.isIsCorrect());
+            pstm.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(QuizController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return fin;
+    }
+    
     public static void main(String[] args) {
         QuizController qc = new QuizController();
 //        List<Quiz> q = qc.findByDescription("Eng","4","English");
