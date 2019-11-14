@@ -29,6 +29,10 @@
         <servlet-class>quinn.servlet.DoQuizServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>SearchingServlet</servlet-name>
+        <servlet-class>quinn.servlet.SearchingServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>ExamDataServlet</servlet-name>
         <servlet-class>quinn.servlet.ExamDataServlet</servlet-class>
     </servlet>
@@ -59,6 +63,10 @@
     <servlet-mapping>
         <servlet-name>DoQuizServlet</servlet-name>
         <url-pattern>/DoQuiz</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchingServlet</servlet-name>
+        <url-pattern>/Searching</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ExamDataServlet</servlet-name>
