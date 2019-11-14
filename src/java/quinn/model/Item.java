@@ -36,7 +36,7 @@ public class Item {
         this.description = description;
     }
 
-    public String getQuiz_id() {
+    public int getQuiz_id() {
         return quiz_id;
     }
 

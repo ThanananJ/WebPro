@@ -233,6 +233,35 @@ public class QuizController {
         return fin;
     }
     
+    public static boolean addItem(Item i, Quiz q){
+        Connection conn = BuildConnection.getConnection();
+        boolean fin = false;
+        try {
+            PreparedStatement pstm = conn.prepareStatement("INSERT INTO item(description, quiz_id) VALUES (?, ?)");
+            pstm.setString(1, i.getDescription());
+            pstm.setInt(2, q.getQuiz_id());
+            fin = pstm.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(QuizController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return fin;
+    }
+    
+    public static boolean addAnswer(Item i, Answer a){
+        Connection conn = BuildConnection.getConnection();
+        boolean fin = false;
+        try {
+            PreparedStatement pstm = conn.prepareStatement("INSERT INTO answers(description, isCorrect, item_id) VALUES (?, ?, ?)");
+            pstm.setString(1, a.getDescription());
+            pstm.setBoolean(2, a.isIsCorrect());
+            pstm.setInt(3, i.getItem_id());
+            fin = pstm.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(QuizController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return fin;
+    }
+    
     public static boolean deleteQuiz(Quiz q){
         Connection conn = BuildConnection.getConnection();
         boolean fin = false;
