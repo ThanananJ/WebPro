@@ -63,9 +63,9 @@
         <div style="margin: 50px 0px 0px 0px"></div>
         <center><h1 class="text" style="font-size: 50px;color: #997B5E">You are ...?</h1></center>
         <center>
-            <button class="btn"><a href="/INT303/TeacherLogin" class="selectbtn">Teacher</a></button>
+            <button class="btn"><a href="./TeacherLogin" class="selectbtn">Teacher</a></button>
             <div style="margin: 50px 50px 50px 50px"></div>
-            <button class="btn"><a href="/INT303/Login" class="selectbtn">Student</a></button>
+            <button class="btn"><a href="./Login" class="selectbtn">Student</a></button>
         </center>
     </body>
 </html>
