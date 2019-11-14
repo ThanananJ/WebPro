@@ -20,6 +20,18 @@ public class Quiz {
     private String classAllowToDo;
     private int maxScore;
 
+    //ใช้เวลา SELECT
+    public Quiz(int quiz_id, String description, String subject, String type, int quizOwner, String classAllowToDo, int maxScore) {
+        this.quiz_id = quiz_id;
+        this.description = description;
+        this.subject = subject;
+        this.type = type;
+        this.quizOwner = quizOwner;
+        this.classAllowToDo = classAllowToDo;
+        this.maxScore = maxScore;
+    }
+
+    //ใช้เวลา add delete
     public Quiz(String description, String subject, String type, int quizOwner, String classAllowToDo, int maxScore) {
         this.description = description;
         this.subject = subject;

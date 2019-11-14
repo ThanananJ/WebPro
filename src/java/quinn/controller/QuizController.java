@@ -39,7 +39,7 @@ public class QuizController {
                 if(list == null){
                     list = new ArrayList(100);
                 }
-                q = new Quiz(rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), 1);
+                q = new Quiz(rs.getInt(1),rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), 1);
                 list.add(q);
             }
             rs.close();
@@ -63,7 +63,7 @@ public class QuizController {
                 if(list == null){
                     list = new ArrayList(100);
                 }
-                q = new Quiz(rs.getString("description"), rs.getString("subject"), rs.getString("q_type"), rs.getInt("t_id"), rs.getString("class_id"), 1);
+                q = new Quiz(rs.getInt("quiz_id"),rs.getString("description"), rs.getString("subject"), rs.getString("q_type"), rs.getInt("t_id"), rs.getString("class_id"), 1);
                 list.add(q);
             }
             rs.close();
@@ -87,7 +87,7 @@ public class QuizController {
                 if(list == null){
                     list = new ArrayList(100);
                 }
-                q = new Quiz(rs.getString("description"), rs.getString("subject"), rs.getString("q_type"), rs.getInt("t_id"), rs.getString("class_id"), 1);
+                q = new Quiz(rs.getInt("quiz_id"),rs.getString("description"), rs.getString("subject"), rs.getString("q_type"), rs.getInt("t_id"), rs.getString("class_id"), 1);
                 list.add(q);
             }
             rs.close();
@@ -166,7 +166,7 @@ public class QuizController {
         Connection conn = BuildConnection.getConnection();
         boolean fin = false;
         try {
-            PreparedStatement pstm = conn.prepareStatement("DELETE FROM quizes where description = ?");
+            PreparedStatement pstm = conn.prepareStatement("DELETE FROM quizes where quiz_id = ?");
             pstm.setString(1, q.getDescription());
             pstm.execute();
         } catch (SQLException ex) {
