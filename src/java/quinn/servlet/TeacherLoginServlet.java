@@ -52,7 +52,7 @@ public class TeacherLoginServlet extends HttpServlet {
                     request.setAttribute("message", message);
                     request.getRequestDispatcher("/teacherLogin.jsp").forward(request, response);
                 } else {
-                    session.setAttribute("user", user);
+                    session.setAttribute("teacher", user);
                     request.getRequestDispatcher("/index.jsp").forward(request, response);
                 }
             }
