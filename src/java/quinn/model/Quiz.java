@@ -73,7 +73,7 @@ public class Quiz {
         return quizOwner;
     }
 
-    public void setQuizOwner(String quizOwner) {
+    public void setQuizOwner(int quizOwner) {
         TeacherController tc = new TeacherController();
         Teacher owner = tc.findByTeacherId(quizOwner);
         this.quizOwner = owner.getUserName();

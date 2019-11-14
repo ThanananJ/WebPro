@@ -33,12 +33,8 @@ public class DoQuizServlet extends HttpServlet {
             throws ServletException, IOException {
         String typeQuiz = request.getParameter("typeQuiz");
         QuizController qc = new QuizController();
-        if (typeQuiz == "1") {
-             
-        } else {
-//            if () {
-//            }
-        }
+        
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

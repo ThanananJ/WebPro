@@ -11,7 +11,7 @@ import quinn.controller.StudentController;
  *
  * @author Mark
  */
-public class Student {
+public class Student{
     
     private int userName;
     private String password;
@@ -76,5 +76,7 @@ public class Student {
         String username = "00001";
         Student s = sc.findByStudentId(username);
         System.out.println(s.equalPassword("12345"));
+        System.out.println(s instanceof Student);
     }
+    
 }

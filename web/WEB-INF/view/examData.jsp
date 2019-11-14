@@ -17,23 +17,52 @@
             #box{
                 border-radius: 15px;
                 background-color: #DEC7A4;
-                width:1000px;
-                height:386px;
+                /*width:1000px;
+                height:386px;*/
                 margin-top: 40px;
+                margin-left: 200px;
+                margin-right: 200px;
             }
         </style>
     </head>
     <body background= "./images/bg.png" width="100%" height="100%">
         <div class="bg">
             <center><h1 style="font-size:96px; color: #997B5E;">Exam </h1>
-                <img src="./images/Line 2.png" width="auto" height="auto">
-                <table id="box">
+                <img src="./images/Line 2.png" width="1000px" height="8px">
+                <div id="box" style="padding: 50px 50px 50px 50px">
+                <table>
                     <tr>
-                        <th>
-
+                        <th style="font-size: 30px" colspan="2">
+                            <center>${q.getDescription()}</center>
                         </th>
                     </tr>
-                </table></center>
+                    <tr style="font-size: 24px">
+                        <td style="width:150px">
+                            Subject :
+                        </td>
+                        <td>
+                            ${q.getSubject()}
+                        </td>
+                    </tr>
+                    <tr style="font-size: 24px">
+                        <td>
+                            Quiz type :
+                        </td>
+                        <td>
+                            ${q.getType()==1?"Fill The Answer" : "Multiple Choice"}
+                        </td>
+                    </tr>
+                    <tr style="font-size: 24px">
+                        <td>
+                            Max Score :
+                        </td>
+                        <td>
+                            ${q.getMaxScore()}
+                        </td>
+                    </tr>
+                </table>
+                </div>
+            </center>
             <br>
             <center><img src="./images/Log in.png" width="200px" height="100px"></center>
         </div>

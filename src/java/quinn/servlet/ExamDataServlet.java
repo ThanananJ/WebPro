@@ -11,6 +11,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import quinn.controller.QuizController;
+import quinn.model.Quiz;
 
 /**
  *
@@ -29,7 +31,10 @@ public class ExamDataServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        QuizController qc = new QuizController();
+        Quiz q = qc.findByDesc("E").get(0);
+        request.setAttribute("q", q);
+        request.getRequestDispatcher("/WEB-INF/view/examData.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
