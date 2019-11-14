@@ -25,7 +25,57 @@ import quinn.model.Teacher;
  * @author nattawanee.sks
  */
 public class QuizController {
+    //New
+    public static List<Quiz> findByDescription(String findDesc,String findGrade,String findSubject){
+        List<Quiz> list = null;
+        Quiz q;
+        Connection conn = BuildConnection.getConnection();
+        try {
+            PreparedStatement pstm = conn.prepareStatement("select * from quizes where description LIKE ? and CLASS_ID LIKE ? AND SUBJECT LIKE ?");
+            pstm.setString(1, "%"+findDesc+"%");
+            pstm.setString(2, findGrade+"%");
+            pstm.setString(3, findSubject);
+            ResultSet rs = null;
+            rs = pstm.executeQuery();
+            while(rs.next()){
+                if(list == null){
+                    list = new ArrayList(100);
+                }
+                q = new Quiz(rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), 1);
+                list.add(q);
+            }
+            rs.close();
+            conn.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
     
+    public static List<Quiz> findByGradeSubject(String findGrade,String findSubject){
+        List<Quiz> list = null;
+        Quiz q;
+        Connection conn = BuildConnection.getConnection();
+        try {
+            PreparedStatement pstm = conn.prepareStatement("select * from quizes where class_id LIKE ? AND SUBJECT LIKE ?");
+            pstm.setString(1, findGrade+"%");
+            pstm.setString(2, "%"+findSubject+"%");
+            ResultSet rs = null;
+            rs = pstm.executeQuery();
+            while(rs.next()){
+                if(list == null){
+                    list = new ArrayList(100);
+                }
+                q = new Quiz(rs.getString("description"), rs.getString("subject"), rs.getString("q_type"), rs.getInt("t_id"), rs.getString("class_id"), 1);
+                list.add(q);
+            }
+            rs.close();
+            conn.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
     public static List<Quiz> findByDesc(String find){
         List<Quiz> list = null;
         Quiz q;
@@ -196,16 +246,18 @@ public class QuizController {
     
     public static void main(String[] args) {
         QuizController qc = new QuizController();
-//        List<Quiz> q = qc.findByDesc("Eng");
-//        q = qc.findByGrade("5");
+        List<Quiz> q = qc.findByDescription("Eng","4","English");
+        q = qc.findByGradeSubject("5","Mathematic");
 //        q = qc.findBySubject("English");
-//        System.out.println(q.get(0).getDescription());
-//        List<Item> i = qc.findItem("00002");
-//        System.out.println(i);
-//        List<Answer> a = qc.findAnswer("000002");
-//        System.out.println(a);
-        Quiz q = new Quiz("Math quiz II", "Math", "2", 3, "601", 2);
-        List<Quiz> ql = qc.findByDesc(" ");
-        System.out.println(ql);
+        System.out.println(q.get(0).getDescription());
+        List<Item> i = qc.findItem("00002");
+        System.out.println(i);
+        List<Answer> a = qc.findAnswer("000002");
+        System.out.println(a);
+//        Quiz q = new Quiz("Math quiz II", "Math", "2", 3, "601", 2);
+//        qc.addQuiz(q);
+//        
+//        List<Quiz> ql = qc.findByDesc(" ");
+//        System.out.println(ql);
     }
 }
