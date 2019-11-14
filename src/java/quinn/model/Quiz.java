@@ -70,7 +70,7 @@ public class Quiz {
     }
 
     public int getQuizOwner() {
-        return quizOwner;
+        return quizOwner;   
     }
 
     public void setQuizOwner(int quizOwner) {

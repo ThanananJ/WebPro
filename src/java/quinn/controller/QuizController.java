@@ -163,7 +163,7 @@ public class QuizController {
                 if(items ==null){
                     items = new ArrayList(100);
                 }
-                i = new Item(rs.getInt("item_id"), rs.getString("description"), rs.getString("quiz_id"));
+                i = new Item(rs.getInt("item_id"), rs.getString("description"), rs.getInt("quiz_id"));
                 items.add(i);
             }
         } catch (SQLException ex) {

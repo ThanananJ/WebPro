@@ -12,9 +12,9 @@ package quinn.model;
 public class Item {
     private int item_id;
     private String description;
-    private String quiz_id;
+    private int quiz_id;
 
-    public Item(int item_id, String description, String quiz_id) {
+    public Item(int item_id, String description, int quiz_id) {
         this.item_id = item_id;
         this.description = description;
         this.quiz_id = quiz_id;
@@ -40,7 +40,7 @@ public class Item {
         return quiz_id;
     }
 
-    public void setQuiz_id(String quiz_id) {
+    public void setQuiz_id(int quiz_id) {
         this.quiz_id = quiz_id;
     }
 
