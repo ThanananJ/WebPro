@@ -37,7 +37,7 @@
             <a href = "./index.jsp"> <img src="./images/logo.png" alt="logo" height="70px"></a>
             <div class ="nav">
                 <ul>
-                    <li><a href="/index.jsp">My Profile</a></li>
+                    <li><a href="./Profile">My Profile</a></li>
                     <li ><a href="./Logout">Logout</a></li>
                 </ul>
             </div>
