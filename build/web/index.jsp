@@ -17,7 +17,7 @@
         <div class ="bg">
             <h1 style = "color:#A0896F;font-size: 72px;"> Search your quiz </h1>
             <form>
-                <input type="text" name="searchquiz" id ="search">
+                <input type="text" name="quizName" id ="search">
                 <select name ="grade" id="drop1">
                     <option value ="Grade 10">Grade 10</option>
                     <option value ="Grade 11">Grade 11</option>
