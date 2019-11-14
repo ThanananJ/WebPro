@@ -39,8 +39,9 @@ public class TeacherLoginServlet extends HttpServlet {
         String message = "";
         HttpSession session = request.getSession();
         if (t_id.trim().length() > 0) {
+            int t_int = Integer.valueOf(t_id);
             TeacherController tc = new TeacherController();
-            Teacher user = (Teacher) tc.findByTeacherId(t_id);
+            Teacher user = (Teacher) tc.findByTeacherId(t_int);
             if (user == null) {
                 message = "Invalid User";
                 request.setAttribute("message", message);

@@ -17,7 +17,7 @@ public class Teacher {
     private String lastName;
     private String classId;
 
-    public Teacher(int userName, String password, String firstName, String lastName, String classId) {
+    public Teacher(int userName, String firstName, String lastName, String password, String classId) {
         this.userName = userName;
         this.password = password;
         this.firstName = firstName;

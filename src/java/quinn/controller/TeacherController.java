@@ -20,12 +20,12 @@ import quinn.model.Teacher;
  * @author nattawanee.sks
  */
 public class TeacherController {
-    public static Teacher findByTeacherId(String teacherId){
+    public static Teacher findByTeacherId(int teacherId){
         Teacher t = null;
         Connection conn = BuildConnection.getConnection();
         try {
             PreparedStatement pstm = conn.prepareStatement("select * from teacher where t_id = ?");
-            pstm.setString(1, teacherId);
+            pstm.setInt(1, teacherId);
             ResultSet rs = null;
             rs = pstm.executeQuery();
             if(rs.next()){
@@ -41,7 +41,7 @@ public class TeacherController {
     
     public static void main(String[] args) {
         TeacherController tc = new TeacherController();
-        Teacher t = tc.findByTeacherId("0001");
+        Teacher t = tc.findByTeacherId(1);
         System.out.println(t.getPassword()); 
     }
 }
