@@ -1,0 +1,16 @@
+.bg{
+    font-family: Advent Pro;
+}
+table,th{
+    margin-top: 40px;
+    margin-left: 50px;
+    padding: 5px;
+    text-align: center;
+    border-radius: 10px;
+    background-color:#BA9366;
+    color: white;
+    width: 80%;
+    font-size: 24px;
+
+}
+
