@@ -13,17 +13,21 @@ public class Answer {
     private int answer_id;
     private String description;
     private boolean isCorrect;
-    private String item_id;
+    private int item_id;
 
-    public Answer(int answer_id, String description, boolean isCorrect, String item_id) {
+    public Answer(int answer_id, String description, boolean isCorrect, int item_id) {
         this.answer_id = answer_id;
         this.description = description;
         this.isCorrect = isCorrect;
         this.item_id = item_id;
     }
 
-    
-    
+    public Answer(String description, boolean isCorrect, int item_id) {
+        this.description = description;
+        this.isCorrect = isCorrect;
+        this.item_id = item_id;
+    }
+
     public int getAnswer_id() {
         return answer_id;
     }
@@ -50,11 +54,11 @@ public class Answer {
         this.isCorrect = isCorrect;
     }
 
-    public String getItem_id() {
+    public int getItem_id() {
         return item_id;
     }
 
-    public void setItem_id(String item_id) {
+    public void setItem_id(int item_id) {
         this.item_id = item_id;
     }
 
@@ -62,6 +66,5 @@ public class Answer {
     public String toString() {
         return "Answer{" + "answer_id=" + answer_id + ", description=" + description + ", isCorrect=" + isCorrect + ", item_id=" + item_id + '}';
     }
-    
     
 }

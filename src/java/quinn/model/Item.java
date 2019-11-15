@@ -20,6 +20,13 @@ public class Item {
         this.quiz_id = quiz_id;
     }
 
+    public Item(String description, int quiz_id) {
+        this.description = description;
+        this.quiz_id = quiz_id;
+    }
+    
+    
+
     public int getItem_id() {
         return item_id;
     }

@@ -186,7 +186,7 @@ public class QuizController {
                 if(answers ==null){
                     answers = new ArrayList(100);
                 }
-                a = new Answer(rs.getInt("answer_id"), rs.getString("description"), rs.getBoolean("isCorrect"), rs.getString("item_id"));
+                a = new Answer(rs.getInt("answer_id"), rs.getString("description"), rs.getBoolean("isCorrect"), rs.getInt("item_id"));
                 answers.add(a);
             }
         } catch (SQLException ex) {
@@ -207,7 +207,7 @@ public class QuizController {
             ResultSet rs = null;
             rs = pstm.executeQuery();
             if(rs.next()){
-                a = new Answer(rs.getInt("answer_id"), rs.getString("description"), rs.getBoolean("isCorrect"), rs.getString("item_id"));
+                a = new Answer(rs.getInt("answer_id"), rs.getString("description"), rs.getBoolean("isCorrect"), rs.getInt("item_id"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(QuizController.class.getName()).log(Level.SEVERE, null, ex);
@@ -237,7 +237,7 @@ public class QuizController {
         Connection conn = BuildConnection.getConnection();
         boolean fin = false;
         try {
-            PreparedStatement pstm = conn.prepareStatement("INSERT INTO item(description, quiz_id) VALUES (?, ?)");
+            PreparedStatement pstm = conn.prepareStatement("INSERT INTO items(description, quiz_id) VALUES (?, ?)");
             pstm.setString(1, i.getDescription());
             pstm.setInt(2, q.getQuiz_id());
             fin = pstm.execute();
@@ -298,7 +298,7 @@ public class QuizController {
         Connection conn = BuildConnection.getConnection();
         boolean fin = false;
         try {
-            PreparedStatement pstm = conn.prepareStatement("UPDATE item SET Description = ? WHERE item_id = ?");
+            PreparedStatement pstm = conn.prepareStatement("UPDATE items SET Description = ? WHERE item_id = ?");
             pstm.setString(1, a.getDescription());
             pstm.executeUpdate();
         } catch (SQLException ex) {
@@ -339,9 +339,9 @@ public class QuizController {
 //        List<Quiz> ql = qc.findByDesc(" ");
 //        System.out.println(ql);
 
-        Item i = qc.findItem(1).get(0);
-        System.out.println(i);
-        boolean a = qc.findIsAnswer("sky", i.getItem_id());
-        System.out.println(a);
+//        Item i = qc.findItem(1).get(0);
+//        System.out.println(i);
+//        boolean a = qc.findIsAnswer("sky", i.getItem_id());
+//        System.out.println(a);
     }
 }
