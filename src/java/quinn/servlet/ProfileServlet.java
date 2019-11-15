@@ -7,11 +7,18 @@ package quinn.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import quinn.controller.QuizController;
+import quinn.controller.ScoreController;
+import quinn.controller.StudentController;
+import quinn.controller.TeacherController;
+import quinn.model.Quiz;
+import quinn.model.Student;
 import quinn.model.Teacher;
 
 /**
@@ -31,6 +38,22 @@ public class ProfileServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession(false);
+        Teacher teacher = (Teacher) session.getAttribute("teacher");
+        Student student = (Student) session.getAttribute("student");
+        ScoreController sc = new ScoreController();
+        QuizController qc = new QuizController();
+        if (teacher == null) {
+            request.setAttribute("StudentFristname", student.getFirstName());
+            request.setAttribute("StudentLastname", student.getLastName());
+        } else {
+            request.setAttribute("TeacherFristname", teacher.getFirstName());
+            request.setAttribute("TeacherLastname", teacher.getLastName());
+            List<Quiz> teacherList = qc.findByTeacherId(teacher.getUserName());
+            request.setAttribute("teacherList", teacherList);
+        }
+        
+
         request.getRequestDispatcher("/profile.jsp").forward(request, response);
     }
 

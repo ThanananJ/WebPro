@@ -17,46 +17,49 @@
         <div class="profile">
             <h1 style="font-size: 72px;">My Profile</h1>
             <img src="./images/UserProfile.png" alt="UserProfile" width="218px" height="218px">
-            <p style="font-size: 30px;"> Nattawanee</p>
+            <p style="font-size: 30px;">${StudentFristname} ${StudentLastname}</p>
+            <p style="font-size: 30px;">${TeacherFristname} ${TeacherLastname}</p>
         </div>
-    <c:choose>
-        <c:when test="${teacher==null}">
-        <div class="history">
-            <p style="font-size: 30px;">Test History</p>
-            <center><table class="tab">
-                <tr style="background-color: white">
-                    <th>Quiz No.</th>
-                    <th>Quiz Name</th>
-                    <th>Score</th>
-                    <th>Max Score</th>
-                </tr>
-                <tr>
-                    <td>0000001</td>
-                    <td>English Test for Grade 11</td>
-                    <td>1</td>
-                    <td>1</td>
-                </tr>
-                </table></center>
-        </div>
-        </c:when>
-        <c:otherwise>
-            <div class="history">
-            <p style="font-size: 30px;">My Quiz</p>
-            <center><table class="tab">
-                <tr style="background-color: white">
-                    <th>Quiz No.</th>
-                    <th>Quiz Name</th>
-                    <th>#</th>
-                </tr>
-                <tr>
-                    <td>0000001</td>
-                    <td>English Test for Grade 11</td>
-                <a href="editQuiz.jsp"><td>Edit</td></a>
-                </tr>
-                </table></center>
-        </div>
-        </c:otherwise>
-    </c:choose>
+        <c:choose>
+            <c:when test="${teacher==null}">
+                <div class="history">
+                    <p style="font-size: 30px;">Test History</p>
+                    <center><table class="tab">
+                            <tr style="background-color: white">
+                                <th>Quiz No.</th>
+                                <th>Quiz Name</th>
+                                <th>Score</th>
+                                <th>Max Score</th>
+                            </tr>
+                            <tr>
+                                <td>0000001</td>
+                                <td>English Test for Grade 11</td>
+                                <td>1</td>
+                                <td>1</td>
+                            </tr>
+                        </table></center>
+                </div>
+            </c:when>
+            <c:otherwise>
+                <div class="history">
+                    <p style="font-size: 30px;">My Quiz</p>
+                    <center><table class="tab">
+                            <tr style="background-color: white">
+                                <th>Quiz No.</th>
+                                <th>Quiz Name</th>
+                                <th>#</th>
+                            </tr>
+                            <c:forEach items="${teacherList}" var="tl">
+                            <tr>
+                                <td>${tl.quiz_id}</td>
+                                <td>${tl.description}</td>
+                            <a href="editQuiz.jsp"><td>Edit</td></a>
+                            </tr>
+                            </c:forEach>
+                        </table></center>
+                </div>
+            </c:otherwise>
+        </c:choose>
 
 
 
