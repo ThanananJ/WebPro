@@ -11,6 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Login Page</title>
         <style>
+            @import url('https://fonts.googleapis.com/css?family=Advent+Pro&display=swap');
             body, html {
                 height: 100%;
                 width: auto
