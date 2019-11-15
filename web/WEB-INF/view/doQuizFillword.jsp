@@ -56,8 +56,11 @@
                     </tr>
                 </table>
             </form>
+                        ${score}
+                        ${count}
+                        <br>
+                        ${answer}
         </div>
-                        ${il.size()}
     </center>
 </body>
 </html>

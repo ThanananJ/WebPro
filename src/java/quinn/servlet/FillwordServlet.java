@@ -14,7 +14,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import quinn.controller.QuizController;
+import quinn.model.Answer;
 import quinn.model.Item;
+import quinn.model.Quiz;
 
 /**
  *
@@ -39,13 +41,28 @@ public class FillwordServlet extends HttpServlet {
         request.setAttribute("count", countno);
         
         HttpSession session = request.getSession(false);
-        List<Item> li = (List<Item>) session.getAttribute("il");
-        if(li.size() == countno){
+        int score = (int) session.getAttribute("score");
+        
+        String userAnswer = request.getParameter("userAnswer");
+
+        List<Item> il = (List<Item>) session.getAttribute("il");
+        if (il.size() == countno) {
             request.getRequestDispatcher("/WEB-INF/view/ScoreSummary.jsp").forward(request, response);
         }
-        Item i = li.get(countno);
+        QuizController qc = new QuizController();
+        Quiz q = (Quiz) session.getAttribute("q");
+        List<Answer> al = qc.findAnswer(il.get(countno-1).getItem_id());
+
+        if (al.get(0).getDescription().equals(userAnswer)) {
+            score += 1;
+        }
+        
+        request.setAttribute("answer", al.get(0).getDescription());
+        Item i = il.get(countno);
+        session.setAttribute("score", score);
         request.setAttribute("i", i);
         request.getRequestDispatcher("/WEB-INF/view/doQuizFillword.jsp").forward(request, response);
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

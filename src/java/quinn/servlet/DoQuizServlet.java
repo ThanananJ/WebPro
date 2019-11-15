@@ -57,6 +57,7 @@ public class DoQuizServlet extends HttpServlet {
        
         List<Item> li = (List<Item>) session.getAttribute("il");
         Item i = li.get(0);
+        session.setAttribute("score", 0);
         request.setAttribute("i", i);
         if(q.getType().equals("1")){
             request.getRequestDispatcher("/WEB-INF/view/doQuizFillword.jsp").forward(request, response);
