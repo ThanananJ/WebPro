@@ -64,7 +64,9 @@
                 </div>
             </center>
             <br>
-            <center><img src="./images/Log in.png" width="200px" height="100px"></center>
+            <form action="DoQuiz" method="get">
+                <center><button type="submit" style="border: none;color: transparent"><img src="./images/StartQuiz.png" width="200px" height="100px"></button></center>
+            </form>
         </div>
     </body>
 </html>

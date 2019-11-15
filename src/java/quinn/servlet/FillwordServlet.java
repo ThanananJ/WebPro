@@ -14,15 +14,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import quinn.controller.QuizController;
-import quinn.model.Answer;
 import quinn.model.Item;
-import quinn.model.Quiz;
 
 /**
  *
  * @author nattawanee.sks
  */
-public class ExamDataServlet extends HttpServlet {
+public class FillwordServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,18 +33,19 @@ public class ExamDataServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        QuizController qc = new QuizController();
-
-        List<Item> i = qc.findItem(1);
-        List<Answer> a = qc.findAnswer(1);
-
-        Quiz q = qc.findByDesc("E").get(0);
-        session.setAttribute("al", a);
-        session.setAttribute("il", i);
-        session.setAttribute("q", q);
-        request.getRequestDispatcher("/WEB-INF/view/examData.jsp").forward(request, response);
-
+        //count item
+        String count = request.getParameter("count");
+        int countno = Integer.valueOf(count);
+        request.setAttribute("count", countno);
+        
+        HttpSession session = request.getSession(false);
+        List<Item> li = (List<Item>) session.getAttribute("il");
+        if(li.size() == countno){
+            request.getRequestDispatcher("/WEB-INF/view/ScoreSummary.jsp").forward(request, response);
+        }
+        Item i = li.get(countno);
+        request.setAttribute("i", i);
+        request.getRequestDispatcher("/WEB-INF/view/doQuizFillword.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -61,7 +60,8 @@ public class ExamDataServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        request.setAttribute("count", 1);
+        request.getRequestDispatcher("/WEB-INF/view/doQuizFillword.jsp").forward(request, response);
     }
 
     /**
