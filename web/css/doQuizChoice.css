@@ -1,0 +1,18 @@
+.bg{
+    font-family: Advent Pro;
+}
+.question{
+    color: #805B25;
+    font-size: 30px;
+    margin-top: 40px;
+}
+.choice{
+    margin-left: 20px;
+}
+table,th,td{
+    margin-left: 20px;
+    padding: 5px;
+    text-align: center;
+    background-color: #DEC7A4;
+    border-radius: 10px;
+}
