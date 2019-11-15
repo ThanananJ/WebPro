@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -29,30 +30,11 @@
         <div class="all">
             <h1 style="color:#997B5E; font-size: 96px; text-align: center;">Announcement</h1>
             <table id ="announcement"align="center" cellpadding ="9px">
-                <tr bgcolor="#EBE4D1">
-                    <th>1</th>
-                </tr>
-                <tr bgcolor="DEC7A4">
-                    <td>2</td>
-                </tr>
-                <tr bgcolor="#EBE4D1">
-                    <td>3</td>
-                </tr>
-                <tr bgcolor="#DEC7A4">
-                    <td>4</td>
-                </tr>
-                <tr bgcolor="#EBE4D1">
-                    <td>5</td>
-                </tr>
-                <tr bgcolor="DEC7A4">
-                    <td>6</td>
-                </tr>
-                <tr bgcolor="#EBE4D1">
-                    <td>7</td>
-                </tr>
-                <tr bgcolor="DEC7A4">
-                    <td>8</td>
-                </tr>
+                <c:forEach items="${announcementList}" var="al">
+                    <tr bgcolor="DEC7A4">
+                        <td>${al.content}</td>
+                    </tr>
+                </c:forEach>
             </table>
         </div>
     </body>

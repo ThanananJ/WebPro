@@ -7,15 +7,18 @@ package quinn.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import quinn.controller.AnnouncementConntroller;
 import quinn.model.Student;
 import quinn.controller.StudentController;
 import quinn.model.Teacher;
 import quinn.controller.TeacherController;
+import quinn.model.Announcement;
 
 /**
  *
@@ -54,6 +57,9 @@ public class TeacherLoginServlet extends HttpServlet {
                     request.getRequestDispatcher("/teacherLogin.jsp").forward(request, response);
                 } else {
                     session.setAttribute("teacher", user);
+                    AnnouncementConntroller ac = new AnnouncementConntroller();
+                    List<Announcement> announcementList = ac.findAll();
+                    session.setAttribute("announcementList", announcementList);
                     request.getRequestDispatcher("/index.jsp").forward(request, response);
                 }
             }

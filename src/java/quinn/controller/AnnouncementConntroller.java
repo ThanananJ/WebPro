@@ -29,14 +29,14 @@ public class AnnouncementConntroller {
         Announcement a = null;
         Connection conn = BuildConnection.getConnection();
         try {
-            PreparedStatement pstm = conn.prepareStatement("select * from announcements");
+            PreparedStatement pstm = conn.prepareStatement("select * from announcements ORDER BY announce_id DESC");
             ResultSet rs = null;
             rs = pstm.executeQuery();
             while(rs.next()){
-                if(al == null){
+                if(al == null){ 
                     al = new ArrayList(100);
                 }
-                a = new Announcement(rs.getInt("announce_id"), rs.getString("content"));
+                a = new Announcement(rs.getInt(1), rs.getString(2));
                 al.add(a);
             }
             rs.close();
@@ -45,6 +45,25 @@ public class AnnouncementConntroller {
             Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, ex);
         }
         return al;
+    }
+    
+    public static int findID(int an_id){
+        
+        int result = 0;
+        Announcement a = null;
+        Connection conn = BuildConnection.getConnection();
+        try {
+            PreparedStatement pstm = conn.prepareStatement("select announce_id from announcements Where announce_id = ? ORDER BY announce_id DESC");
+            pstm.setInt(1, an_id);
+            ResultSet rs = pstm.executeQuery();
+            if(rs.next()){
+                result = rs.getInt(1);
+            }
+            conn.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return result;
     }
     
     public static boolean addAnnounce(Announcement a){
@@ -66,6 +85,7 @@ public class AnnouncementConntroller {
 //        Announcement a1 = new Announcement("Final Exam 13 Dec 2019 !!!!");
 //        ac.addAnnounce(a1);
         List<Announcement> al = ac.findAll();
+        System.out.println(ac.findID(2));
         System.out.println(al);
     }
 }

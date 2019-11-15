@@ -7,13 +7,16 @@ package quinn.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import quinn.controller.AnnouncementConntroller;
 import quinn.model.Student;
 import quinn.controller.StudentController;
+import quinn.model.Announcement;
 
 /**
  *
@@ -40,9 +43,12 @@ public class LoginServlet extends HttpServlet {
             Student user = sc.findByStudentId(username);
             if (user != null) {
                 System.out.print(password);
-                if (user.getPassword().equals((String)password)) {
+                if (user.getPassword().equals((String) password)) {
                     HttpSession session = request.getSession();
                     session.setAttribute("student", user);
+                    AnnouncementConntroller ac = new AnnouncementConntroller();
+                    List<Announcement> announcementList = ac.findAll();
+                    session.setAttribute("announcementList", announcementList);
                     request.getRequestDispatcher("/index.jsp").forward(request, response);
                 } else {
                     request.setAttribute("message", "Invalid Password");

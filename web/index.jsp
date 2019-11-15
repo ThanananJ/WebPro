@@ -41,20 +41,13 @@
                     <tr bgcolor="#BA9366" id="a1">
                         <th>Announcement</th>
                     </tr>
-                    <tr bgcolor="#EBE4D1">
-                        <td>1</td>
-                    </tr>
-                    <tr bgcolor="DEC7A4">
-                        <td>2</td>
-                    </tr>
-                    <tr bgcolor="#EBE4D1">
-                        <td>3</td>
-                    </tr>
-                    <tr bgcolor="DEC7A4">
-                        <td>4</td>
-                    </tr>
+                    <c:forEach items="${announcementList}" var="al">
+                        <tr bgcolor="#EBE4D1">
+                            <th>${al.content}</th>
+                        </tr>
+                    </c:forEach>
                     <tr id="a5">
-                        <td><a href="index.jsp"> See more</a> </td>
+                        <td><a href="./Announcement.jsp"> See more</a> </td>
                     </tr>
                 </table>
             </div>

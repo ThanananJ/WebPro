@@ -29,12 +29,20 @@
         <servlet-class>quinn.servlet.DoQuizServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>SearchingServlet</servlet-name>
+        <servlet-class>quinn.servlet.SearchingServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>ExamDataServlet</servlet-name>
         <servlet-class>quinn.servlet.ExamDataServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>SearchingServlet</servlet-name>
-        <servlet-class>quinn.servlet.SearchingServlet</servlet-class>
+        <servlet-name>ProfileServlet</servlet-name>
+        <servlet-class>quinn.servlet.ProfileServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>FillwordServlet</servlet-name>
+        <servlet-class>quinn.servlet.FillwordServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -65,12 +73,20 @@
         <url-pattern>/DoQuiz</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>SearchingServlet</servlet-name>
+        <url-pattern>/Searching</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>ExamDataServlet</servlet-name>
         <url-pattern>/ExamData</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>SearchingServlet</servlet-name>
-        <url-pattern>/Searching</url-pattern>
+        <servlet-name>ProfileServlet</servlet-name>
+        <url-pattern>/Profile</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FillwordServlet</servlet-name>
+        <url-pattern>/Fillword</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
@@ -78,6 +94,6 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>login.jsp</welcome-file>
+        <welcome-file>selectRole.jsp</welcome-file>
     </welcome-file-list>
 </web-app>
