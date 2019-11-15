@@ -41,7 +41,7 @@
         <div class="bg">
             <h1>${q.getDescription()}</h1>
             <p>${score}</p>
-            <form action="/index.jsp">
+            <form action="./index.jsp">
                 <button style="background-color: transparent; border: none"><img src="./images/back.png"></button>
             </form>
         </div>
