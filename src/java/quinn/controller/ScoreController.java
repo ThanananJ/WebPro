@@ -34,7 +34,7 @@ public class ScoreController {
                 if(sl == null){
                     sl = new ArrayList(100);
                 }
-                Score s = new Score(rs.getInt(1),rs.getInt(2),rs.getInt(3));
+                Score s = new Score(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getInt(4),rs.getInt(5));
                 sl.add(s);
             }
         } catch (SQLException ex) {
@@ -47,10 +47,12 @@ public class ScoreController {
         boolean fin = false;
         Connection conn = BuildConnection.getConnection();
         try {
-            PreparedStatement pstm = conn.prepareStatement("INSERT INTO Score(st_id, quiz_id, score) VALUES (?, ?, ?)");
+            PreparedStatement pstm = conn.prepareStatement("INSERT INTO Score(st_id, quiz_id, description, score, maxscore) VALUES (?, ?, ? ,? ,?)");
             pstm.setInt(1, s.getSt_id());
             pstm.setInt(2, s.getQuiz_id());
-            pstm.setInt(3, s.getScore());
+            pstm.setString(3, s.getQuiz_name());
+            pstm.setInt(4, s.getScore());
+            pstm.setInt(5, s.getMaxscore());
             fin = pstm.execute();
         } catch (SQLException ex) {
             Logger.getLogger(QuizController.class.getName()).log(Level.SEVERE, null, ex);
@@ -75,7 +77,7 @@ public class ScoreController {
     public static void main(String[] args) {
         ScoreController sc = new ScoreController();
         List<Score> sl = sc.findScoreByStudent(1);
-        Score s = new Score(1,1,2);
+        Score s = new Score(2,2,"English",2,10);
         sc.AddScore(s);
         sl = sc.findScoreByStudent(1);
         System.out.println(sl);
