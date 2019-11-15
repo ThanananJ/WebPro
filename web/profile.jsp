@@ -31,12 +31,14 @@
                                 <th>Score</th>
                                 <th>Max Score</th>
                             </tr>
+                            <c:forEach items="${studentList}" var="sl">
                             <tr>
-                                <td>0000001</td>
-                                <td>English Test for Grade 11</td>
-                                <td>1</td>
-                                <td>1</td>
+                                <td>${sl.quiz_id}</td>
+                                <td>${sl.quiz_name}</td>
+                                <td>${sl.score}</td>
+                                <td>${sl.maxscore}</td>
                             </tr>
+                            </c:forEach>
                         </table></center>
                 </div>
             </c:when>

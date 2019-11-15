@@ -18,6 +18,7 @@ import quinn.controller.ScoreController;
 import quinn.controller.StudentController;
 import quinn.controller.TeacherController;
 import quinn.model.Quiz;
+import quinn.model.Score;
 import quinn.model.Student;
 import quinn.model.Teacher;
 
@@ -46,6 +47,8 @@ public class ProfileServlet extends HttpServlet {
         if (teacher == null) {
             request.setAttribute("StudentFristname", student.getFirstName());
             request.setAttribute("StudentLastname", student.getLastName());
+            List<Score> studentList = sc.findScoreByStudent(student.getUserName());
+            request.setAttribute("studentList", studentList);
         } else {
             request.setAttribute("TeacherFristname", teacher.getFirstName());
             request.setAttribute("TeacherLastname", teacher.getLastName());
