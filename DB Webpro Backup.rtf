@@ -142,8 +142,8 @@ INSERT INTO answers(description, isCorrect, item_id) VALUES\
 \
 \
 CREATE table score(\
-    st_id VARCHAR(5) NOT NULL,\
-    quiz_id VARCHAR(5) NOT NULL,\
+    st_id int NOT NULL,\
+    quiz_id int NOT NULL,\
     description VARCHAR(250) NOT NULL,\
     score int,\
     maxscore int,\
