@@ -77,6 +77,30 @@ public class QuizController {
         return list;
     }
     
+    public static List<Quiz> findByTeacherId(int findTeacherId){
+        List<Quiz> list = null;
+        Quiz q;
+        Connection conn = BuildConnection.getConnection();
+        try {
+            PreparedStatement pstm = conn.prepareStatement("select * from quizes where T_ID = ?");
+            pstm.setInt(1, findTeacherId);
+            ResultSet rs = null;
+            rs = pstm.executeQuery();
+            while(rs.next()){
+                if(list == null){
+                    list = new ArrayList(100);
+                }
+                q = new Quiz(rs.getInt(1),rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), 1);
+                list.add(q);
+            }
+            rs.close();
+            conn.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+    
     public static List<Quiz> findByDesc(String find){
         List<Quiz> list = null;
         Quiz q;
@@ -325,12 +349,12 @@ public class QuizController {
     
     public static void main(String[] args) {
         QuizController qc = new QuizController();
-//        List<Quiz> q = qc.findByDescription("Eng","4","English");
+        List<Quiz> q = qc.findByTeacherId(1);
 //        q = qc.findByGradeSubject("5","Mathematic");
 //        q = qc.findBySubject("English");
 //        System.out.println(q.get(0).getDescription());
 //        List<Item> i = qc.findItem("00002");
-//        System.out.println(i);
+        System.out.println(q);
 //        List<Answer> a = qc.findAnswer("000002");
 //        System.out.println(a);
 //        Quiz q = new Quiz("Math quiz II", "Math", "2", 3, "601", 2);
