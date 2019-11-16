@@ -15,27 +15,15 @@
     <body background="./images/bg.png" width="100%" height="100%">
         <jsp:include page="/WEB-INF/view/PageHeader.jsp?title=Home Page"/>
         <div class="bg">
-            <h1 style="text-align: center; color: #997B5E; font-size: 72px;">Result of English Quiz</h1>
+            <h1 style="text-align: center; color: #997B5E; font-size: 72px;">Result of ${quizName}</h1>
             <div class ="table">
                 <table>
-                    <tr>
-                        <th>1</th>
-                   
-                        <th> <a href="ExamData"><img src="./images/EnterQ.png" width="80px;"></a></th>
-
-                    </tr>
-                    <tr>
-                        <th>2</th>
-                        <td><a href="ExamData"><img src="./images/EnterQ.png" width="80px;"></a></td>
-                    </tr>
-                    <tr>
-                        <th>3</th>
-                        <td><a href="ExamData"><img src="./images/EnterQ.png" width="80px;"></a></td>
-                    </tr>
-                    <tr>
-                        <th>4</th>
-                        <td><a href="ExamData"><img src="./images/EnterQ.png" width="80px;"></a></td>
-                    </tr>
+                    <c:forEach items="${quiz}" var="q">
+                        <tr>
+                            <th>${q.getDescription()}</th>
+                            <th> <a href="ExamData"><img src="./images/EnterQ.png" width="80px;"></a></th>
+                        </tr>
+                    </c:forEach>
                 </table>
             </div>
         </div>
