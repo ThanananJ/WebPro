@@ -65,7 +65,6 @@ public class DoQuizServlet extends HttpServlet {
             request.getRequestDispatcher("/WEB-INF/view/doQuizFillword.jsp").forward(request, response);
         }
         else {
-            Answer a = al.get(0);
             request.setAttribute("answers", al);
             request.getRequestDispatcher("/WEB-INF/view/doQuizChoice.jsp").forward(request, response);
         }

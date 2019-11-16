@@ -38,15 +38,14 @@ public class ExamDataServlet extends HttpServlet {
         HttpSession session = request.getSession();
         QuizController qc = new QuizController();
         
-        List<Item> i = qc.findItem(1);
+        List<Item> i = qc.findItem(2);
         List<Answer> a = qc.findAnswer(i.get(0).getItem_id());
 
-        Quiz q = qc.findByDesc("E").get(0);
+        Quiz q = qc.findByDesc("M").get(0);
         session.setAttribute("al", a);
         session.setAttribute("li", i);
         session.setAttribute("q", q);
         request.getRequestDispatcher("/WEB-INF/view/examData.jsp").forward(request, response);
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
