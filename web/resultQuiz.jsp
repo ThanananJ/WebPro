@@ -21,7 +21,7 @@
                     <c:forEach items="${quiz}" var="q">
                         <tr>
                             <th>${q.getDescription()}</th>
-                            <th> <a href="ExamData"><img src="./images/EnterQ.png" width="80px;"></a></th>
+                            <th> <a href="EnterQuiz?id=${q.getQuiz_id()}"><img src="./images/EnterQ.png" width="80px;"></a></th>
                         </tr>
                     </c:forEach>
                 </table>
