@@ -55,14 +55,17 @@ public class DoQuizServlet extends HttpServlet {
         
         Quiz q = (Quiz) session.getAttribute("q");
        
-        List<Item> li = (List<Item>) session.getAttribute("il");
+        List<Item> li = (List<Item>) session.getAttribute("li");
+        List<Answer> al = (List<Answer>) session.getAttribute("al");
         Item i = li.get(0);
-        session.setAttribute("score", 0);
         request.setAttribute("i", i);
+        session.setAttribute("score", 0);
+        
         if(q.getType().equals("1")){
             request.getRequestDispatcher("/WEB-INF/view/doQuizFillword.jsp").forward(request, response);
         }
         else {
+            request.setAttribute("answers", al);
             request.getRequestDispatcher("/WEB-INF/view/doQuizChoice.jsp").forward(request, response);
         }
     }

@@ -22,7 +22,7 @@ import quinn.model.Quiz;
  *
  * @author nattawanee.sks
  */
-public class ExamDataServlet extends HttpServlet {
+public class ChoiceServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,17 +35,36 @@ public class ExamDataServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        QuizController qc = new QuizController();
-        
-        List<Item> i = qc.findItem(2);
-        List<Answer> a = qc.findAnswer(i.get(0).getItem_id());
+        //count item
+        String count = request.getParameter("count");
+        int countno = Integer.valueOf(count);
+        request.setAttribute("count", countno);
 
-        Quiz q = qc.findByDesc("M").get(0);
-        session.setAttribute("al", a);
-        session.setAttribute("li", i);
-        session.setAttribute("q", q);
-        request.getRequestDispatcher("/WEB-INF/view/examData.jsp").forward(request, response);
+        HttpSession session = request.getSession(false);
+        int score = (int) session.getAttribute("score");
+
+        String userAnswer = request.getParameter("userAnswer");
+
+        List<Item> il = (List<Item>) session.getAttribute("li");
+        
+        if (il.size() == countno) {
+            session.setAttribute("lastAnswer", userAnswer);
+            request.getRequestDispatcher("/WEB-INF/view/endQuiz.jsp").forward(request, response);
+        }
+        QuizController qc = new QuizController();
+        Quiz q = (Quiz) session.getAttribute("q");
+        
+        List<Answer> al = qc.findAnswer(il.get(countno).getItem_id());
+        
+        if (al.get(countno-1).getDescription().equals(userAnswer)) {
+            score += 1;
+        }
+        
+        session.setAttribute("score", score);
+        Item i = il.get(countno);
+        request.setAttribute("i", i);
+        request.setAttribute("answers", al);
+        request.getRequestDispatcher("/WEB-INF/view/doQuizChoice.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
