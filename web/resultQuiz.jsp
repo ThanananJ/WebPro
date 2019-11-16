@@ -15,7 +15,7 @@
     <body background="./images/bg.png" width="100%" height="100%">
         <jsp:include page="/WEB-INF/view/PageHeader.jsp?title=Home Page"/>
         <div class="bg">
-            <h1 style="text-align: center; color: #997B5E; font-size: 72px;">Result of ${quizName}</h1>
+            <h1 style="text-align: center; color: #997B5E; font-size: 72px;">Result of ${search}</h1>
             <div class ="table">
                 <table>
                     <c:forEach items="${quiz}" var="q">
