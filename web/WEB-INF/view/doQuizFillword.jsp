@@ -56,10 +56,6 @@
                     </tr>
                 </table>
             </form>
-                        ${score}
-                        ${count}
-                        <br>
-                        ${answer}
         </div>
     </center>
 </body>

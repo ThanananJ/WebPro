@@ -37,13 +37,13 @@ public class ExamDataServlet extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         QuizController qc = new QuizController();
-
+        
         List<Item> i = qc.findItem(1);
-        List<Answer> a = qc.findAnswer(1);
+        List<Answer> a = qc.findAnswer(i.get(0).getItem_id());
 
         Quiz q = qc.findByDesc("E").get(0);
         session.setAttribute("al", a);
-        session.setAttribute("il", i);
+        session.setAttribute("li", i);
         session.setAttribute("q", q);
         request.getRequestDispatcher("/WEB-INF/view/examData.jsp").forward(request, response);
 
