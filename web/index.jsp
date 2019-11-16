@@ -16,12 +16,12 @@
     <body background="./images/bg.png" width="100%" height="100%">
         <div class ="bg">
             <h1 style = "color:#A0896F;font-size: 72px;"> Search your quiz </h1>
-            <form>
+            <form method="post" action="Searching">
                 <input type="text" name="quizName" id ="search">
                 <select name ="grade" id="drop1">
-                    <option value ="Grade 10">Grade 10</option>
-                    <option value ="Grade 11">Grade 11</option>
-                    <option value ="Grade 12">Grade 12</option>
+                    <option value ="4">Grade 10</option>
+                    <option value ="5">Grade 11</option>
+                    <option value ="6">Grade 12</option>
                 </select>
                 <select name ="subjects" id="drop2">
                     <option value ="Thai">Thai</option>
