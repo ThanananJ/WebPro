@@ -4,6 +4,7 @@
     Author     : nattawanee.sks
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -16,25 +17,43 @@
         <link href="https://fonts.googleapis.com/css?family=Advent+Pro&display=swap" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="./css/doQuizChoice.css">
         <jsp:include page="/WEB-INF/view/PageHeader.jsp?title=Home Page"/>
-        <title>Exam MultipleChoice</title>
+        <title>Quiz time!</title>
+        <style>
+            .bg{
+                font-family: Advent Pro;
+                text-align: center;
+            }
+            h1{
+                font-size: 72px;
+                font-family: Advent Pro;
+                font-weight: 300;
+                color: #997B5E
+            }
+
+        </style>
     </head>
     <body background= "./images/bg.png" width="100%" height="100%">
-    <center> 
-        <div class ="bg">
-            <h1 style="font-size:72px; color: #997B5E;"> M.4 Final English Exam</h1>
+        <div class="bg">
+            <h1>${q.getDescription()}</h1>
             <img src="./images/Line 2.png" width="1000px" height="8px">
-            <div class="question">
-                <p> Question</p>
-            </div></center>
-    <div class ="choice">
-        <table style width ="50%">
-            <form method="post" action="Choice">
-            <tr>
-                 <th colspan="2"><input type ="submit" name="answerId"></th>
-            </tr>
+            <div style="margin: 50px 100px 50px 100px; font-size: 30px; color: #805B25">${i.getDescription()}</div>
+
+            <form action="Choice">
+                <center>
+                    <table style="font-size: 30px; color: #805B25">
+                        <c:forEach items="${answers}" var="a">
+                            <tr>
+                                <td style="width: 100px"><div style="margin-bottom: 12px"><input type="radio" name="userAnswer" value="${a.getDescription()}"></div></td>
+                                <td style="width: 750px; text-align: left"><div style="background-color: #BA9366; padding-left: 10px">${a.getDescription()}</div></td>
+                            </tr>
+                        </c:forEach>
+                        <tr>
+                            <td><input type="hidden" name="count" value="${count+1}"></td>
+                            <td align="right"><button type="submit" style="background-color: transparent; border: none"><div style="margin-top: 50px"><img src="./images/Next.png" width="150px" height="auto"></div></button></td>
+                        </tr>
+                    </table>
+                </center>
             </form>
-        </table>
-        <br>
-    </div>
-</body>
+        </div>
+    </body>
 </html>
