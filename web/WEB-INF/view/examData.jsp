@@ -27,7 +27,7 @@
     </head>
     <body background= "./images/bg.png" width="100%" height="100%">
         <div class="bg">
-            <center><h1 style="font-size:96px; color: #997B5E;">Exam </h1>
+            <center><h1 style="font-size:72px; color: #997B5E;">Exam </h1>
                 <img src="./images/Line 2.png" width="1000px" height="8px">
                 <div id="box" style="padding: 50px 50px 50px 50px">
                 <table>
