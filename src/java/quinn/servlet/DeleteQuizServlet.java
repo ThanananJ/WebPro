@@ -13,13 +13,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import quinn.model.Answer;
+import quinn.controller.QuizController;
+import quinn.controller.ScoreController;
+import quinn.model.Quiz;
+import quinn.model.Score;
+import quinn.model.Student;
+import quinn.model.Teacher;
 
 /**
  *
  * @author donnaya
  */
-public class MultipleChoiceServlet extends HttpServlet {
+public class DeleteQuizServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,8 +38,41 @@ public class MultipleChoiceServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+
+        HttpSession session = request.getSession(false);
+
+        //send table
+        Teacher teacher = (Teacher) session.getAttribute("teacher");
+        Student student = (Student) session.getAttribute("student");
+        ScoreController sc = new ScoreController();
+        QuizController qc = new QuizController();
+        if (teacher == null) {
+            request.setAttribute("StudentFristname", student.getFirstName());
+            request.setAttribute("StudentLastname", student.getLastName());
+            List<Score> studentList = sc.findScoreByStudent(student.getUserName());
+            request.setAttribute("studentList", studentList);
+        } else {
+            request.setAttribute("TeacherFristname", teacher.getFirstName());
+            request.setAttribute("TeacherLastname", teacher.getLastName());
+            List<Quiz> teacherList = qc.findByTeacherId(teacher.getUserName());
+            request.setAttribute("teacherList", teacherList);
+        }
+
+        request.setAttribute("message", "Delete Fail");
+        String quiz = request.getParameter("id");
+        if (quiz != null) {
+            int qid = Integer.valueOf(quiz);
+//            System.out.println(qid);
+            Quiz q = qc.findByQuizID(qid);
+//            System.out.println(q);
+            qc.deleteQuiz(q);
+            request.setAttribute("Delete", q);
+            request.setAttribute("message", "Delete Complete");
+        }
         
-        request.getServletContext().getRequestDispatcher("/WEB-INF/view/doQuizChoice.jsp").forward(request, response);
+        request.setAttribute("quizinput", quiz);
+        response.sendRedirect("./Profile");
+        //request.getServletContext().getRequestDispatcher("/profile.jsp").forward(request, response);
 
     }
 
@@ -50,8 +88,7 @@ public class MultipleChoiceServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        request.getServletContext().getRequestDispatcher("/WEB-INF/view/doQuizChoice.jsp").forward(request, response);
+        processRequest(request, response);
     }
 
     /**
