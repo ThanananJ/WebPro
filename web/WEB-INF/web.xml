@@ -1,5 +1,135 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+    <filter>
+        <filter-name>Authentication</filter-name>
+        <filter-class>quinn.filter.Authentication</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>Authentication</filter-name>
+        <url-pattern>/examData.jsp</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>Authentication</filter-name>
+        <url-pattern>/endQuiz.jsp</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>Authentication</filter-name>
+        <url-pattern>/doQuizFillword.jsp</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>Authentication</filter-name>
+        <url-pattern>/doQuizChoice.jsp</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>Authentication</filter-name>
+        <url-pattern>/ScoreSummary.jsp</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>Authentication</filter-name>
+        <url-pattern>/index.jsp</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>Authentication</filter-name>
+        <url-pattern>/profile.jsp</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>Authentication</filter-name>
+        <url-pattern>/resultQuiz.jsp</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>Authentication</filter-name>
+        <url-pattern>/Announcement.jsp</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>Authentication</filter-name>
+        <servlet-name>ChoiceServlet</servlet-name>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>Authentication</filter-name>
+        <servlet-name>DeleteQuizServlet</servlet-name>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>Authentication</filter-name>
+        <servlet-name>EnterQuizServlet</servlet-name>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>Authentication</filter-name>
+        <servlet-name>FillwordServlet</servlet-name>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>Authentication</filter-name>
+        <servlet-name>ProfileServlet</servlet-name>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>Authentication</filter-name>
+        <servlet-name>ExamDataServlet</servlet-name>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>Authentication</filter-name>
+        <servlet-name>SearchingServlet</servlet-name>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>Authentication</filter-name>
+        <servlet-name>DoQuizServlet</servlet-name>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>Authentication</filter-name>
+        <servlet-name>EditQuizServet</servlet-name>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>Authentication</filter-name>
+        <servlet-name>LogoutServlet</servlet-name>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>Authentication</filter-name>
+        <servlet-name>AddQuizServlet</servlet-name>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>Authentication</filter-name>
+        <servlet-name>AnnouncementServlet</servlet-name>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>quinn.servlet.LoginServlet</servlet-class>
@@ -45,12 +175,16 @@
         <servlet-class>quinn.servlet.FillwordServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ChoiceServlet</servlet-name>
-        <servlet-class>quinn.servlet.ChoiceServlet</servlet-class>
+        <servlet-name>EnterQuizServlet</servlet-name>
+        <servlet-class>quinn.servlet.EnterQuizServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>SummaryServlet</servlet-name>
-        <servlet-class>quinn.servlet.SummaryServlet</servlet-class>
+        <servlet-name>DeleteQuizServlet</servlet-name>
+        <servlet-class>quinn.servlet.DeleteQuizServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ChoiceServlet</servlet-name>
+        <servlet-class>quinn.servlet.ChoiceServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -97,12 +231,16 @@
         <url-pattern>/Fillword</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ChoiceServlet</servlet-name>
-        <url-pattern>/Choice</url-pattern>
+        <servlet-name>EnterQuizServlet</servlet-name>
+        <url-pattern>/EnterQuiz</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>SummaryServlet</servlet-name>
-        <url-pattern>/Summary</url-pattern>
+        <servlet-name>DeleteQuizServlet</servlet-name>
+        <url-pattern>/DeleteQuiz</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChoiceServlet</servlet-name>
+        <url-pattern>/Choice</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
