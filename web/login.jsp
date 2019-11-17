@@ -51,7 +51,7 @@
             }
 
             .text{
-                font-family: Advent Pro;
+                font-family: 'Advent Pro';
                 font-weight: lighter;
             }
         </style>
