@@ -118,7 +118,8 @@ ALTER TABLE items\
 \
 INSERT INTO items(description, quiz_id) VALUES\
     ( 'Where is the sun?', 1),\
-    ( '9+9+9+9 = ?', 2);\
+    ( '9+9+9+9 = ?', 2),\
+    ( \'91Which one is correct\'92, 2);\
 \
 \
 CREATE table answers (\
@@ -138,7 +139,11 @@ INSERT INTO answers(description, isCorrect, item_id) VALUES\
     ( '12', false, 2),\
     ( '24', false, 2),\
     ( '36', true, 2),\
-    ( '48', false, 2);\
+    ( '48', false, 2),\
+    ( \'911+1 = 3\'92, false, 2),\
+    ( \'912+2 = 4\'92, true, 2),\
+    ( \'912+3 = 7\'92, false, 2),\
+    ( \'914+4 = 7\'92, false, 2);\
 \
 \
 CREATE table score(\
