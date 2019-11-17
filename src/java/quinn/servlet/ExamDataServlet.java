@@ -38,10 +38,11 @@ public class ExamDataServlet extends HttpServlet {
         HttpSession session = request.getSession();
         QuizController qc = new QuizController();
         
-        List<Item> i = qc.findItem(2);
+        Quiz q = qc.findByDesc("M").get(0);
+        List<Item> i = qc.findItem(q.getQuiz_id());
         List<Answer> a = qc.findAnswer(i.get(0).getItem_id());
 
-        Quiz q = qc.findByDesc("M").get(0);
+        
         session.setAttribute("al", a);
         session.setAttribute("li", i);
         session.setAttribute("q", q);

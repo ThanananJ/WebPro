@@ -22,7 +22,7 @@ import quinn.model.Quiz;
  *
  * @author nattawanee.sks
  */
-public class ChoiceServlet extends HttpServlet {
+public class SummaryServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,45 +35,45 @@ public class ChoiceServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //count item
-        String count = request.getParameter("count");
-        int countno = Integer.valueOf(count);
-        request.setAttribute("count", countno);
 
         HttpSession session = request.getSession(false);
+
+        QuizController qc = new QuizController();
+
+//        String scoreA = (String) session.getAttribute("score");
+//        int score = Integer.valueOf(scoreA);
         int score = (int) session.getAttribute("score");
 
-        String userAnswer = request.getParameter("userAnswer");
-
-        List<Item> il = (List<Item>) session.getAttribute("li");
-        
-        if (il.size() == countno) {
-            session.setAttribute("lastAnswer", userAnswer);
-            request.getRequestDispatcher("/WEB-INF/view/endQuiz.jsp").forward(request, response);
-        }
-        QuizController qc = new QuizController();
         Quiz q = (Quiz) session.getAttribute("q");
-        
-        List<Answer> al = qc.findAnswer(il.get(countno).getItem_id());
-        List<Answer> alcheck = qc.findAnswer(il.get(countno-1).getItem_id());
+        List<Item> il = (List<Item>) session.getAttribute("li");
+        List<Answer> al = qc.findAnswer(il.get(il.size() - 1).getItem_id());
+        //List<Answer> al = qc.findAnswer(il.get(0).getItem_id());
+        String userAnswer = (String) session.getAttribute("lastAnswer");
         Answer correct = null;
         
-        //find correct answer
+        if (q.getType().equals("1")) {
+            if (al.get(0).getDescription().equals(userAnswer)) {
+                score += 1;
+            }
+        }
+
+        if (q.getType().equals("2")) {
+            //find correct answer
         for(int i = 0; i < al.size(); i++){
-            if(alcheck.get(i).isIsCorrect() == true){
-                correct = alcheck.get(i);
+            if(al.get(i).isIsCorrect() == true){
+                correct = al.get(i);
             }
         }
         
-        if(userAnswer.equals(correct.getDescription())){
-            score +=1;
+            if(userAnswer.equals(correct.getDescription())){
+                score += 1;
+            }
         }
-        
+
+        request.setAttribute("lastAnswer", userAnswer);
+        request.setAttribute("lastCorrect", correct);
         session.setAttribute("score", score);
-        Item i = il.get(countno);
-        request.setAttribute("i", i);
-        request.setAttribute("answers", al);
-        request.getRequestDispatcher("/WEB-INF/view/doQuizChoice.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/view/ScoreSummary.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

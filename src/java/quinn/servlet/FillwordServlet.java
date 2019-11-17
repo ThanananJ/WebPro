@@ -56,7 +56,7 @@ public class FillwordServlet extends HttpServlet {
         session.setAttribute("score", score);
 
         if (il.size() == countno) {
-            request.getRequestDispatcher("/WEB-INF/view/ScoreSummary.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/view/endQuiz.jsp").forward(request, response);
         }
         Item i = il.get(countno);
         request.setAttribute("i", i);
