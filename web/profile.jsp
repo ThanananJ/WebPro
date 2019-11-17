@@ -56,7 +56,7 @@
                                 <td>${tl.quiz_id}</td>
                                 <td>${tl.description}</td>
                                 <td><a href="EditQuiz">Edit</a></td>
-                                <td><a href="DeleteQuiz">Delete</a></td>
+                                <td><a href="DeleteQuiz?id=${tl.quiz_id}">Delete</a></td>
                             </tr>
                             </c:forEach>
                         </table></center>
@@ -64,8 +64,7 @@
             </c:otherwise>
         </c:choose>
 
-
-
+        ${message}
 
     </body>
 </html>
