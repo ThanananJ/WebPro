@@ -49,13 +49,14 @@
                             <tr style="background-color: white">
                                 <th>Quiz No.</th>
                                 <th>Quiz Name</th>
-                                <th>#</th>
+                                <th colspan="2">#</th>
                             </tr>
                             <c:forEach items="${teacherList}" var="tl">
                             <tr>
                                 <td>${tl.quiz_id}</td>
                                 <td>${tl.description}</td>
-                            <a href="editQuiz.jsp"><td>Edit</td></a>
+                                <td><a href="EditQuiz">Edit</a></td>
+                                <td><a href="DeleteQuiz">Delete</a></td>
                             </tr>
                             </c:forEach>
                         </table></center>
