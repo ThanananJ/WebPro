@@ -41,7 +41,7 @@ public class QuizController {
                 if(list == null){
                     list = new ArrayList(100);
                 }
-                q = new Quiz(rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), 1);
+                q = new Quiz(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), 1);
                 list.add(q);
             }
             rs.close();
@@ -66,7 +66,7 @@ public class QuizController {
                 if(list == null){
                     list = new ArrayList(100);
                 }
-                q = new Quiz(rs.getString("description"), rs.getString("subject"), rs.getString("q_type"), rs.getInt("t_id"), rs.getString("class_id"), 1);
+                q = new Quiz(rs.getInt("quiz_id"),rs.getString("description"), rs.getString("subject"), rs.getString("q_type"), rs.getInt("t_id"), rs.getString("class_id"), 1);
                 list.add(q);
             }
             rs.close();
@@ -349,11 +349,12 @@ public class QuizController {
     
     public static void main(String[] args) {
         QuizController qc = new QuizController();
-        List<Quiz> q = qc.findByTeacherId(1);
+//        List<Quiz> q = qc.findByTeacherId(1);
 //        q = qc.findByGradeSubject("5","Mathematic");
 //        q = qc.findBySubject("English");
 //        System.out.println(q.get(0).getDescription());
 //        List<Item> i = qc.findItem("00002");
+        List<Quiz> q = qc.findByGradeSubject("5", "Math");
         System.out.println(q);
 //        List<Answer> a = qc.findAnswer("000002");
 //        System.out.println(a);
@@ -363,8 +364,8 @@ public class QuizController {
 //        List<Quiz> ql = qc.findByDesc(" ");
 //        System.out.println(ql);
 
-//        Item i = qc.findItem(1).get(0);
-//        System.out.println(i);
+        Item i = qc.findItem(1).get(0);
+        System.out.println(i);
 //        boolean a = qc.findIsAnswer("sky", i.getItem_id());
 //        System.out.println(a);
     }
