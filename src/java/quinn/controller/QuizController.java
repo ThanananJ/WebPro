@@ -173,6 +173,22 @@ public class QuizController {
         return list;
     }
     
+    public static Quiz findByQuizID(int quiz_id){
+        Quiz q = null;
+        Connection conn = BuildConnection.getConnection();
+        try {
+            PreparedStatement pstm = conn.prepareStatement("SELECT * FROM quizes where quiz_id = ?");
+            pstm.setInt(1, quiz_id);
+            ResultSet rs = pstm.executeQuery();
+            if(rs.next()){
+                q = new Quiz(rs.getInt(1),rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getInt(7));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(QuizController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return q;
+    }
+    
     public static List<Item> findItem(int quiz_id){
         List<Item> items = null;
         Item i = null;
@@ -351,10 +367,11 @@ public class QuizController {
         QuizController qc = new QuizController();
 //        List<Quiz> q = qc.findByTeacherId(1);
 //        q = qc.findByGradeSubject("5","Mathematic");
-//        q = qc.findBySubject("English");
+        
+        Quiz q = qc.findByQuizID(1);
 //        System.out.println(q.get(0).getDescription());
 //        List<Item> i = qc.findItem("00002");
-        List<Quiz> q = qc.findByGradeSubject("5", "Math");
+//        List<Quiz> q = qc.findByGradeSubject("5", "Math");
         System.out.println(q);
 //        List<Answer> a = qc.findAnswer("000002");
 //        System.out.println(a);
@@ -364,8 +381,8 @@ public class QuizController {
 //        List<Quiz> ql = qc.findByDesc(" ");
 //        System.out.println(ql);
 
-        Item i = qc.findItem(1).get(0);
-        System.out.println(i);
+//        Item i = qc.findItem(1).get(0);
+//        System.out.println(i);
 //        boolean a = qc.findIsAnswer("sky", i.getItem_id());
 //        System.out.println(a);
     }
