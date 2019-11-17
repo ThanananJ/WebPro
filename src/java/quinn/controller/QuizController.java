@@ -41,7 +41,7 @@ public class QuizController {
                 if(list == null){
                     list = new ArrayList(100);
                 }
-                q = new Quiz(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), 1);
+                q = new Quiz(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getInt(7));
                 list.add(q);
             }
             rs.close();
@@ -66,7 +66,7 @@ public class QuizController {
                 if(list == null){
                     list = new ArrayList(100);
                 }
-                q = new Quiz(rs.getInt("quiz_id"),rs.getString("description"), rs.getString("subject"), rs.getString("q_type"), rs.getInt("t_id"), rs.getString("class_id"), 1);
+                q = new Quiz(rs.getInt("quiz_id"),rs.getString("description"), rs.getString("subject"), rs.getString("q_type"), rs.getInt("t_id"), rs.getString("class_id"), rs.getInt("maxscore"));
                 list.add(q);
             }
             rs.close();
@@ -90,7 +90,7 @@ public class QuizController {
                 if(list == null){
                     list = new ArrayList(100);
                 }
-                q = new Quiz(rs.getInt(1),rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), 1);
+                q = new Quiz(rs.getInt(1),rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getInt(7));
                 list.add(q);
             }
             rs.close();
@@ -114,7 +114,7 @@ public class QuizController {
                 if(list == null){
                     list = new ArrayList(100);
                 }
-                q = new Quiz(rs.getInt(1),rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), 1);
+                q = new Quiz(rs.getInt(1),rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getInt(7));
                 list.add(q);
             }
             rs.close();
@@ -138,7 +138,7 @@ public class QuizController {
                 if(list == null){
                     list = new ArrayList(100);
                 }
-                q = new Quiz(rs.getInt("quiz_id"),rs.getString("description"), rs.getString("subject"), rs.getString("q_type"), rs.getInt("t_id"), rs.getString("class_id"), 1);
+                q = new Quiz(rs.getInt("quiz_id"),rs.getString("description"), rs.getString("subject"), rs.getString("q_type"), rs.getInt("t_id"), rs.getString("class_id"), rs.getInt(7));
                 list.add(q);
             }
             rs.close();
@@ -162,7 +162,7 @@ public class QuizController {
                 if(list == null){
                     list = new ArrayList(100);
                 }
-                q = new Quiz(rs.getInt("quiz_id"),rs.getString("description"), rs.getString("subject"), rs.getString("q_type"), rs.getInt("t_id"), rs.getString("class_id"), 1);
+                q = new Quiz(rs.getInt("quiz_id"),rs.getString("description"), rs.getString("subject"), rs.getString("q_type"), rs.getInt("t_id"), rs.getString("class_id"), rs.getInt(7));
                 list.add(q);
             }
             rs.close();
