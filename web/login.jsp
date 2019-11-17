@@ -90,7 +90,7 @@
                     <td></td>
                     <td><p class="text" style="text-align: right; color: red;font-size: 30px">${message}</p></td>
                 </tr>
-            </table><br>
+            </table>
         </form>
     </body>
 </html>
