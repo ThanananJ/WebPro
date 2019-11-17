@@ -307,7 +307,7 @@ public class QuizController {
         boolean fin = false;
         try {
             PreparedStatement pstm = conn.prepareStatement("DELETE FROM quizes where quiz_id = ?");
-            pstm.setString(1, q.getDescription());
+            pstm.setInt(1, q.getQuiz_id());
             pstm.execute();
         } catch (SQLException ex) {
             Logger.getLogger(QuizController.class.getName()).log(Level.SEVERE, null, ex);
@@ -385,5 +385,7 @@ public class QuizController {
 //        System.out.println(i);
 //        boolean a = qc.findIsAnswer("sky", i.getItem_id());
 //        System.out.println(a);
+          Quiz qp = new Quiz("Math quiz 3", "Mathematics","3",1,"602",10);
+          qc.addQuiz(qp);
     }
 }
