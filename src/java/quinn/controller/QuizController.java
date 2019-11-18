@@ -107,7 +107,7 @@ public class QuizController {
         Connection conn = BuildConnection.getConnection();
         try {
             PreparedStatement pstm = conn.prepareStatement("select * from quizes where description LIKE ?");
-            pstm.setString(1, "%"+find+"%");
+            pstm.setString(1, find);
             ResultSet rs = null;
             rs = pstm.executeQuery();
             while(rs.next()){
@@ -205,6 +205,23 @@ public class QuizController {
                 }
                 i = new Item(rs.getInt("item_id"), rs.getString("description"), rs.getInt("quiz_id"));
                 items.add(i);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(QuizController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return items;
+    }
+     public static Item findItemById(String des,int quiz_id){
+        Item items = null;
+        Connection conn = BuildConnection.getConnection();
+        try {
+            PreparedStatement pstm = conn.prepareStatement("select * from items where description like ? and quiz_id = ?");
+            pstm.setString(1, des);
+            pstm.setInt(2, quiz_id);
+            ResultSet rs = null;
+            rs = pstm.executeQuery();
+            if(rs.next()){
+                items = new Item(rs.getInt("item_id"), rs.getString("description"), rs.getInt("quiz_id"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(QuizController.class.getName()).log(Level.SEVERE, null, ex);
@@ -364,28 +381,32 @@ public class QuizController {
     }
     
     public static void main(String[] args) {
-        QuizController qc = new QuizController();
-//        List<Quiz> q = qc.findByTeacherId(1);
+//        QuizController qc = new QuizController();
+//        List<Quiz> q = qc.findByTeacherId(61);
 //        q = qc.findByGradeSubject("5","Mathematic");
         
-        Quiz q = qc.findByQuizID(1);
+        
 //        System.out.println(q.get(0).getDescription());
-//        List<Item> i = qc.findItem("00002");
-//        List<Quiz> q = qc.findByGradeSubject("5", "Math");
-        System.out.println(q);
+//        List<Item> i = qc.findItem(2);
+//        System.out.println();
 //        List<Answer> a = qc.findAnswer("000002");
 //        System.out.println(a);
 //        Quiz q = new Quiz("Math quiz II", "Math", "2", 3, "601", 2);
+//        Quiz q1 = qc.findByDesc(q.getDescription()).get(0);
 //        qc.addQuiz(q);
-//        
+////        
 //        List<Quiz> ql = qc.findByDesc(" ");
-//        System.out.println(ql);
+//        System.out.println(q1.getQuiz_id());
 
-//        Item i = qc.findItem(1).get(0);
+//        Item i = new Item("c", q1.getQuiz_id());
+//        qc.addItem(i,q1);
+//        System.out.println(i.getItem_id());
+//        Item it = qc.findItemById(i.getDescription(),i.getQuiz_id());
+//        System.out.println(it.getItem_id());
 //        System.out.println(i);
 //        boolean a = qc.findIsAnswer("sky", i.getItem_id());
 //        System.out.println(a);
-          Quiz qp = new Quiz("Math quiz 3", "Mathematics","3",1,"602",10);
-          qc.addQuiz(qp);
+//          Quiz qp = new Quiz("Math quiz 3", "Mathematics","3",1,"602",10);
+//          qc.addQuiz(qp);
     }
 }
