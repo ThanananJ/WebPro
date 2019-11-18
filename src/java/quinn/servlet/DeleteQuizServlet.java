@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import quinn.controller.QuizController;
 import quinn.controller.ScoreController;
+import quinn.model.Answer;
+import quinn.model.Item;
 import quinn.model.Quiz;
 import quinn.model.Score;
 import quinn.model.Student;
@@ -66,6 +68,15 @@ public class DeleteQuizServlet extends HttpServlet {
             Quiz q = qc.findByQuizID(qid);
 //            System.out.println(q);
             qc.deleteQuiz(q);
+            List<Item> itemL = qc.findItem(qid);
+            for(int i = 0; i < itemL.size();i++){
+                qc.deleteItem(itemL.get(i));
+                List<Answer> answerL = qc.findAnswer(itemL.get(i).getItem_id());
+                for(int k=0;k<answerL.size();k++){
+                    qc.deleteAnswer(answerL.get(i));
+                }
+            }
+            
             request.setAttribute("Delete", q);
             request.setAttribute("message", "Delete Complete");
         }
