@@ -39,9 +39,29 @@ public class TeacherController {
         return t;
     }
     
+     public static Teacher findByTeacherFullName(String teacherFristName,String teacherLastName){
+        Teacher t = null;
+        Connection conn = BuildConnection.getConnection();
+        try {
+            PreparedStatement pstm = conn.prepareStatement("select * from teacher where f_name like ? and l_name like ?");
+            pstm.setString(1, teacherFristName);
+            pstm.setString(2, teacherLastName);
+            ResultSet rs = null;
+            rs = pstm.executeQuery();
+            if(rs.next()){
+                t = new Teacher(rs.getInt("t_id"),rs.getString("f_name"),rs.getString("l_name"),rs.getString("password"),rs.getString("class_id"));
+            }
+            rs.close();
+            conn.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return t;
+    }
+    
     public static void main(String[] args) {
         TeacherController tc = new TeacherController();
-        Teacher t = tc.findByTeacherId(1);
-        System.out.println(t.getPassword()); 
+        Teacher t = tc.findByTeacherId(2);
+        System.out.println(t.getUserName()); 
     }
 }

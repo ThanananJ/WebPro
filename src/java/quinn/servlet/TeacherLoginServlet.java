@@ -41,17 +41,18 @@ public class TeacherLoginServlet extends HttpServlet {
         String password = request.getParameter("password");
         String message = "";
         HttpSession session = request.getSession();
-        if (t_id.trim().length() > 0) {
+        if (t_id!=null||!t_id.isEmpty()) {
             int t_int = Integer.valueOf(t_id);
             TeacherController tc = new TeacherController();
             Teacher user = (Teacher) tc.findByTeacherId(t_int);
+            
             if (user == null) {
                 message = "Invalid User";
                 request.setAttribute("message", message);
                 request.getRequestDispatcher("/teacherLogin.jsp").forward(request, response);
             }
             if (password.length() > 0) {
-                if (!user.getPassword().equals(password)) {
+                if (!user.getPassword().equals((String)password)) {
                     message = "Invalid Username or Password";
                     request.setAttribute("message", message);
                     request.getRequestDispatcher("/teacherLogin.jsp").forward(request, response);
@@ -66,7 +67,7 @@ public class TeacherLoginServlet extends HttpServlet {
         }
         message = "Invalid Username or Password!!";
         request.setAttribute("message", message);
-        request.getRequestDispatcher("/teacherLogin.jsp").forward(request, response);
+//        request.getRequestDispatcher("/teacherLogin.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
