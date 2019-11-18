@@ -25,7 +25,7 @@
                 </select>
                 <select name ="subjects" id="drop2">
                     <option value ="Thai">Thai</option>
-                    <option value ="Mathematics">Mathematics</option>
+                    <option value ="Mathematic">Mathematic</option>
                     <option value ="Science">Science</option>
                     <option value="English">English</option>
                     <option value="Social">Social</option>
