@@ -7,10 +7,16 @@ package quinn.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import quinn.controller.QuizController;
+import quinn.model.Answer;
+import quinn.model.Item;
+import quinn.model.Quiz;
 
 /**
  *
@@ -29,7 +35,18 @@ public class EnterQuizServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
+        HttpSession session = request.getSession();
+        QuizController qc = new QuizController();
+        String quiz_id = request.getParameter("id");
+        int id = Integer.valueOf(quiz_id);
+        
+        Quiz q = qc.findByQuizID(id);
+        List<Item> i = qc.findItem(q.getQuiz_id());
+        List<Answer> a = qc.findAnswer(i.get(0).getItem_id());
+
+        session.setAttribute("al", a);
+        session.setAttribute("li", i);
+        session.setAttribute("q", q);
         request.getServletContext().getRequestDispatcher("/WEB-INF/view/examData.jsp").forward(request, response);
         
     }
