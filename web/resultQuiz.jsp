@@ -13,7 +13,7 @@
         <title>Searching</title>
     </head>
     <body background="./images/bg.png" width="100%" height="100%">
-        <jsp:include page="/WEB-INF/view/PageHeader.jsp?title=Home Page"/>
+        <jsp:include page="/WEB-INF/view/PageHeader.jsp?title=Result of ${search}"/>
         <div class="bg">
             <h1 style="text-align: center; color: #997B5E; font-size: 72px;">Result of ${search}</h1>
             <div class ="table">

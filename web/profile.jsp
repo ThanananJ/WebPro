@@ -10,7 +10,7 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <link rel="stylesheet" type="text/css" href="./css/studentProfile.css">
         <link href="https://fonts.googleapis.com/css?family=Advent+Pro&display=swap" rel="stylesheet">
-        <jsp:include page="/WEB-INF/view/PageHeader.jsp?title=Home Page"/>
+        <jsp:include page="/WEB-INF/view/PageHeader.jsp?title=${StudentFristname} Profile"/>
         <title>Student Profile</title>
     </head>
     <body background="./images/bg.png" width="100%" height="100%">
