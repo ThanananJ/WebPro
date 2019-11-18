@@ -14,16 +14,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import quinn.controller.QuizController;
-import quinn.controller.TeacherController;
+import quinn.model.Answer;
 import quinn.model.Item;
 import quinn.model.Quiz;
-import quinn.model.Teacher;
 
 /**
  *
  * @author Mark
  */
-public class AddQuizServlet extends HttpServlet {
+public class AddItemsFillServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,31 +36,33 @@ public class AddQuizServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String quizName = request.getParameter("quizname");
-        String quizSubject = request.getParameter("quizsubject");
-        String quizType = request.getParameter("quiztype");
-        String numberItems = request.getParameter("numberitems");
-        String quizForClass = request.getParameter("quizfoeclasss");
-
         QuizController qc = new QuizController();
-        TeacherController tc = new TeacherController();
         HttpSession session = request.getSession(false);
-        Teacher teachers = (Teacher) session.getAttribute("teacher");
-        Teacher teacher = tc.findByTeacherFullName(teachers.getFirstName(), teachers.getLastName());
-
-        Quiz quiz = new Quiz(quizName, quizSubject, quizType, teacher.getUserName(), quizForClass, Integer.valueOf(numberItems));
-        qc.addQuiz(quiz);
-
-        session.setAttribute("runLoop", numberItems);
-        session.setAttribute("quizes", quiz);
-
-        if (quizType.equals("1")) {
-            request.getRequestDispatcher("/testFillQuiz.jsp").forward(request, response);
-        } else if (quizType.equals("2")) {
-            int choiceLoop = Integer.valueOf(numberItems) * 4;
-            session.setAttribute("runLoopChoice", choiceLoop);
-            request.getRequestDispatcher("/testChQuiz.jsp").forward(request, response);
+        Quiz quizes = (Quiz) session.getAttribute("quizes");
+//        System.out.println(quizes.getQuiz_id());
+        Quiz quiz = qc.findByDesc(quizes.getDescription()).get(0);
+        System.out.println(quiz);
+        String number = (String)session.getAttribute("runLoop");
+        int numberItems = Integer.valueOf(number);
+//        Enumeration<String> names = request.getParameterNames();
+//            while (names.hasMoreElements()) {
+//                System.out.println(names.nextElement());
+//            }
+        for (int i = 1; i < numberItems + 1; i++) {
+            String itemDescription = request.getParameter("itemdescription" + i);
+            System.out.println(itemDescription);
+            Item items = new Item( itemDescription, quiz.getQuiz_id());
+            qc.addItem(items, quiz);
+//            System.out.println(items.getItem_id());
+            Item item = qc.findItemById(items.getDescription(), items.getQuiz_id());
+            System.out.println(item.getItem_id());
+            String answerss = request.getParameter("answersdescription"+i);
+            System.out.println(answerss);
+            Answer answers = new Answer(answerss, true, item.getItem_id());
+            qc.addAnswer(item, answers);
         }
+        request.getRequestDispatcher("/testFinish.jsp").forward(request, response);
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -76,7 +77,7 @@ public class AddQuizServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("/testQuiz.jsp").forward(request, response);
+        processRequest(request, response);
     }
 
     /**
