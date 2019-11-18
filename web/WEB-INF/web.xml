@@ -187,16 +187,16 @@
         <servlet-class>quinn.servlet.ChoiceServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>SummaryServlet</servlet-name>
-        <servlet-class>quinn.servlet.SummaryServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>AddItemsFillServlet</servlet-name>
         <servlet-class>quinn.servlet.AddItemsFillServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>AddItemsChServlet</servlet-name>
         <servlet-class>quinn.servlet.AddItemsChServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SummaryServlet</servlet-name>
+        <servlet-class>quinn.servlet.SummaryServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -257,6 +257,10 @@
     <servlet-mapping>
         <servlet-name>ChoiceServlet</servlet-name>
         <url-pattern>/Choice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SummaryServlet</servlet-name>
+        <url-pattern>/Summary</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AddItemsChServlet</servlet-name>
