@@ -44,7 +44,7 @@
             </c:when>
             <c:otherwise>
                 <div class="history">
-                    <p style="font-size: 30px;">My Quiz</p>
+                    <p style="font-size: 30px;">My Quiz</p>  <a href="AddQuiz" ><input type="button"></a>
                     <center><table class="tab">
                             <tr style="background-color: white">
                                 <th>Quiz No.</th>
