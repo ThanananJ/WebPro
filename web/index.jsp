@@ -11,7 +11,7 @@
         <link rel="stylesheet" type="text/css" href="./css/index.css">
         <link href="https://fonts.googleapis.com/css?family=Advent+Pro&display=swap" rel="stylesheet">
         <jsp:include page="/WEB-INF/view/PageHeader.jsp?title=Home Page"/>
-        <title>Web Pro</title>
+        <title>index page</title>
     </head>
     <body background="./images/bg.png" width="100%" height="100%">
         <div class ="bg">

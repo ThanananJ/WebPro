@@ -3,7 +3,7 @@
 
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Page Header</title>
+        <title>${param.title}</title>
         <link href="https://fonts.googleapis.com/css?family=Advent+Pro&display=swap" rel="stylesheet">
         <style>
             .navbar {
