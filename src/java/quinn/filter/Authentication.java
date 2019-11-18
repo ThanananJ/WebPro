@@ -17,6 +17,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import quinn.model.Teacher;
 
 /**
  *
@@ -34,15 +35,21 @@ public class Authentication implements Filter {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-       HttpSession session = ((HttpServletRequest)request).getSession();
-       if(session==null){
-           config.getServletContext().getRequestDispatcher("/selectRole.jsp").forward(request, response);
-       }else if(session.getAttribute("teacher")==null){
-           config.getServletContext().getRequestDispatcher("/selectRole.jsp").forward(request, response);  
-       }else if(session.getAttribute("student")==null){
-           config.getServletContext().getRequestDispatcher("/selectRole.jsp").forward(request, response);
-       }
-       chain.doFilter(request, response);  
+        HttpSession session = ((HttpServletRequest) request).getSession();
+        Teacher teacher = (Teacher) session.getAttribute("teacher");
+        if (session == null) {
+            config.getServletContext().getRequestDispatcher("/selectRole.jsp").forward(request, response);
+        }
+        if (session.getAttribute("student") == null) {
+            if (teacher == null) {
+                config.getServletContext().getRequestDispatcher("/selectRole.jsp").forward(request, response);
+            } else {
+                chain.doFilter(request, response);
+                return;
+            }
+            config.getServletContext().getRequestDispatcher("/selectRole.jsp").forward(request, response);
+        }
+        chain.doFilter(request, response);
     }
 
     @Override
