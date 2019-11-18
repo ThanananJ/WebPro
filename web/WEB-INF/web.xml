@@ -186,6 +186,18 @@
         <servlet-name>ChoiceServlet</servlet-name>
         <servlet-class>quinn.servlet.ChoiceServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SummaryServlet</servlet-name>
+        <servlet-class>quinn.servlet.SummaryServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddItemsFillServlet</servlet-name>
+        <servlet-class>quinn.servlet.AddItemsFillServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddItemsChServlet</servlet-name>
+        <servlet-class>quinn.servlet.AddItemsChServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -239,8 +251,16 @@
         <url-pattern>/DeleteQuiz</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>AddItemsFillServlet</servlet-name>
+        <url-pattern>/AddItemsFill</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>ChoiceServlet</servlet-name>
         <url-pattern>/Choice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddItemsChServlet</servlet-name>
+        <url-pattern>/AddItemsCh</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
