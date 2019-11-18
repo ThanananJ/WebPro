@@ -342,7 +342,7 @@ public class QuizController {
         } catch (SQLException ex) {
             Logger.getLogger(QuizController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return fin;
+        return fin; 
     }
     
     public static boolean deleteAnswer(Answer a){

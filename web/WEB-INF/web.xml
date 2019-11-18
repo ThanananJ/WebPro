@@ -159,10 +159,6 @@
         <servlet-class>quinn.servlet.DoQuizServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>SearchingServlet</servlet-name>
-        <servlet-class>quinn.servlet.SearchingServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>ExamDataServlet</servlet-name>
         <servlet-class>quinn.servlet.ExamDataServlet</servlet-class>
     </servlet>
@@ -198,6 +194,10 @@
         <servlet-name>SummaryServlet</servlet-name>
         <servlet-class>quinn.servlet.SummaryServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SearchingServlet</servlet-name>
+        <servlet-class>quinn.servlet.SearchingServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -225,10 +225,6 @@
     <servlet-mapping>
         <servlet-name>DoQuizServlet</servlet-name>
         <url-pattern>/DoQuiz</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>SearchingServlet</servlet-name>
-        <url-pattern>/Searching</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ExamDataServlet</servlet-name>
@@ -265,6 +261,10 @@
     <servlet-mapping>
         <servlet-name>AddItemsChServlet</servlet-name>
         <url-pattern>/AddItemsCh</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchingServlet</servlet-name>
+        <url-pattern>/Searching</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
