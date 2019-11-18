@@ -39,28 +39,22 @@ public class AddItemsFillServlet extends HttpServlet {
         QuizController qc = new QuizController();
         HttpSession session = request.getSession(false);
         Quiz quizes = (Quiz) session.getAttribute("quizes");
-//        System.out.println(quizes.getQuiz_id());
         Quiz quiz = qc.findByDesc(quizes.getDescription()).get(0);
-        System.out.println(quiz);
         String number = (String)session.getAttribute("runLoop");
         int numberItems = Integer.valueOf(number);
-//        Enumeration<String> names = request.getParameterNames();
-//            while (names.hasMoreElements()) {
-//                System.out.println(names.nextElement());
-//            }
+
         for (int i = 1; i < numberItems + 1; i++) {
             String itemDescription = request.getParameter("itemdescription" + i);
-            System.out.println(itemDescription);
             Item items = new Item( itemDescription, quiz.getQuiz_id());
             qc.addItem(items, quiz);
-//            System.out.println(items.getItem_id());
+            
             Item item = qc.findItemById(items.getDescription(), items.getQuiz_id());
-            System.out.println(item.getItem_id());
             String answerss = request.getParameter("answersdescription"+i);
-            System.out.println(answerss);
             Answer answers = new Answer(answerss, true, item.getItem_id());
             qc.addAnswer(item, answers);
+            
         }
+        
         request.getRequestDispatcher("/testFinish.jsp").forward(request, response);
 
     }
