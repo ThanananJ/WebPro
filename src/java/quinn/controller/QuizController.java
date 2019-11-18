@@ -332,6 +332,32 @@ public class QuizController {
         return fin;
     }
     
+    public static boolean deleteItem(Item i){
+        Connection conn = BuildConnection.getConnection();
+        boolean fin = false;
+        try {
+            PreparedStatement pstm = conn.prepareStatement("DELETE FROM items where item_id = ?");
+            pstm.setInt(1, i.getItem_id());
+            pstm.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(QuizController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return fin;
+    }
+    
+    public static boolean deleteAnswer(Answer a){
+        Connection conn = BuildConnection.getConnection();
+        boolean fin = false;
+        try {
+            PreparedStatement pstm = conn.prepareStatement("DELETE FROM answers where answer_id = ?");
+            pstm.setInt(1, a.getAnswer_id());
+            pstm.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(QuizController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return fin;
+    }
+    
     public static boolean EditQuiz(Quiz q){
         Connection conn = BuildConnection.getConnection();
         boolean fin = false;
@@ -351,12 +377,12 @@ public class QuizController {
         return fin;
     }
     
-    public static boolean EditItem(Answer a){
+    public static boolean EditItem(Item i){
         Connection conn = BuildConnection.getConnection();
         boolean fin = false;
         try {
             PreparedStatement pstm = conn.prepareStatement("UPDATE items SET Description = ? WHERE item_id = ?");
-            pstm.setString(1, a.getDescription());
+            pstm.setString(1, i.getDescription());
             pstm.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(QuizController.class.getName()).log(Level.SEVERE, null, ex);
