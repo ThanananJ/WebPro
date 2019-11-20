@@ -41,7 +41,7 @@ public class AddQuizServlet extends HttpServlet {
         String quizSubject = request.getParameter("quizsubject");
         String quizType = request.getParameter("quiztype");
         String numberItems = request.getParameter("numberitems");
-        String quizForClass = request.getParameter("quizfoeclasss");
+        String quizForClass = request.getParameter("quizforclasss");
 
         QuizController qc = new QuizController();
         TeacherController tc = new TeacherController();

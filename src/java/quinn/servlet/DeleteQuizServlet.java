@@ -67,17 +67,16 @@ public class DeleteQuizServlet extends HttpServlet {
 //            System.out.println(qid);
             Quiz q = qc.findByQuizID(qid);
 //            System.out.println(q);
-            qc.deleteQuiz(q);
             List<Item> itemL = qc.findItem(qid);
-            for(int i = 0; i < itemL.size();i++){
-                qc.deleteItem(itemL.get(i));
+            for(int i = 0 ; i < itemL.size(); i++){
                 List<Answer> answerL = qc.findAnswer(itemL.get(i).getItem_id());
-                for(int k=0;k<answerL.size();k++){
-                    qc.deleteAnswer(answerL.get(i));
+                for(int j = 0 ; j < answerL.size(); j++){
+                    qc.deleteAnswer(answerL.get(j));
                 }
+                qc.deleteItem(itemL.get(i));
             }
+            qc.deleteQuiz(q);
             
-            request.setAttribute("Delete", q);
             request.setAttribute("message", "Delete Complete");
         }
         
