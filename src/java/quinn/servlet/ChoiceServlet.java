@@ -50,6 +50,7 @@ public class ChoiceServlet extends HttpServlet {
         if (il.size() == countno) {
             session.setAttribute("lastAnswer", userAnswer);
             request.getRequestDispatcher("/WEB-INF/view/endQuiz.jsp").forward(request, response);
+            return;
         }
         QuizController qc = new QuizController();
         Quiz q = (Quiz) session.getAttribute("q");
