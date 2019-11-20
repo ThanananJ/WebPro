@@ -27,33 +27,124 @@
                 font-weight: 300;
                 color: #997B5E
             }
-
+            td{
+                text-align: left;
+            }
+            table {
+                font-size: 36px;
+                color:#805B25;
+            }
+            .input-field {
+                width: 500px;
+                padding: 10px;
+                outline: none;
+                border: transparent;
+                background-image: url(./images/inputbox.png);
+                font-family: Advent Pro;
+                font-size: 20px;
+                color: white;
+                border-radius: 10px
+            }
+            .inputSelect{
+                outline: none;
+                border: transparent;
+                background-color: #DEC7A4;
+            }
+            input{
+                font-size: 30px
+            }
         </style>
     </head>
     <body background= "./images/bg.png" width="100%" height="100%">
         <div class="bg">
-        <form action="AddQuiz" method="post">
-            <h2>Quiz name</h2><input type="text" name="quizname"> <br>
-            <h2>Subject</h2>
-            <select name ="quizsubject" >
-                <option value ="Thai">Thai</option>
-                <option value ="Mathematics">Mathematics</option>
-                <option value ="Science">Science</option>
-                <option value="English">English</option>
-                <option value="Social">Social</option>
-                <option value="Other">Others</option>
-            </select><br>
-            <h2>Quiz type</h2><select name ="quiztype" >
-                <option value ="1">Fill</option>
-                <option value ="2">Ch</option>
-            </select><br>
-            <h2>Items</h2><input type="number" name="numberitems"min="1" > <br>
-            <h2>For Class</h2><select name ="quizfoeclasss" >
-                <option value ="401">4/1</option>
-                <option value ="503">5/3</option>
-            </select><br>  <br>
-            <input name="create" hidden="true" ><input type="submit" value="Next">
-        </form>
+            <h1 style="font-size: 72px; color: #805B25">Create your new Quiz</h1>
+            <center><img src="./images/Line 2.png" width="1000px" height="8px"></center>
+            <form action="AddQuiz" method="post">
+                <table style="margin: 25px 50px 25px 300px">
+                    <tr>
+                        <td>Quiz name</td>
+                        <td> : </td>
+                        <td><input type="text" name="quizname" class="input-field"></td>
+                    </tr>
+                    <tr>
+                        <td style="height: 10px"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Subject
+                        </td>
+                        <td> : </td>
+                        <td>
+                            <select name ="quizsubject" class="inputSelect">
+                                <option value ="Thai">Thai</option>
+                                <option value ="Mathematic">Mathematic</option>
+                                <option value ="Science">Science</option>
+                                <option value="English">English</option>
+                                <option value="Social">Social</option>
+                                <option value="Other">Others</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="height: 10px"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Quiz type
+                        </td>
+                        <td> : </td>
+                        <td>
+                            <select name ="quiztype" class="inputSelect">
+                                <option value ="1">Fill short answer</option>
+                                <option value ="2">Multiple Choice</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="height: 10px"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Items
+                        </td>
+                        <td> : </td>
+                        <td>
+                            <input type="number" name="numberitems"min="1" class="input-field">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="height: 10px"></td>
+                    </tr>
+                    <tr>
+                    <td>
+                        For Class
+                    </td>
+                    <td> : </td>
+                    <td>
+                        <select name ="quizforclasss" class="inputSelect">
+                            <option value ="401">Grade 10 class 1</option>
+                            <option value ="402">Grade 10 class 2</option>
+                            <option value ="403">Grade 10 class 3</option>
+                            <option value ="501">Grade 11 class 1</option>
+                            <option value ="502">Grade 11 class 2</option>
+                            <option value ="503">Grade 11 class 3</option>
+                            <option value ="601">Grade 12 class 1</option>
+                            <option value ="602">Grade 12 class 2</option>
+                            <option value ="603">Grade 12 class 3</option>
+                        </select>
+                    </td>
+                    </tr>
+                    <tr>
+                        <td style="height: 10px"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input name="create" hidden="true" >
+                        </td>
+                    </tr>
+                </table>
+                <button type="submit" style="background-color: transparent; border: none"><img src="./images/Next.png" width="200px" height="auto"></button>
+            </form>
         </div>
     </body>
 </html>
