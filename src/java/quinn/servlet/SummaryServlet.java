@@ -50,6 +50,41 @@ public class SummaryServlet extends HttpServlet {
         String userAnswer = (String) session.getAttribute("lastAnswer");
         Answer correct = null;
         
+        request.setAttribute("lastAnswer", userAnswer);
+        request.setAttribute("lastCorrect", correct);
+        session.setAttribute("score", score);
+        
+        request.getRequestDispatcher("/WEB-INF/view/ScoreSummary.jsp").forward(request, response);
+        
+    }
+
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        HttpSession session = request.getSession(false);
+
+        QuizController qc = new QuizController();
+
+//        String scoreA = (String) session.getAttribute("score");
+//        int score = Integer.valueOf(scoreA);
+        int score = (int) session.getAttribute("score");
+
+        Quiz q = (Quiz) session.getAttribute("q");
+        List<Item> il = (List<Item>) session.getAttribute("li");
+        List<Answer> al = qc.findAnswer(il.get(il.size() - 1).getItem_id());
+        //List<Answer> al = qc.findAnswer(il.get(0).getItem_id());
+        String userAnswer = (String) session.getAttribute("lastAnswer");
+        Answer correct = null;
+        
         if (q.getType().equals("1")) {
             if (al.get(0).getDescription().equals(userAnswer)) {
                 score += 1;
@@ -73,21 +108,6 @@ public class SummaryServlet extends HttpServlet {
         request.setAttribute("lastCorrect", correct);
         session.setAttribute("score", score);
         request.getRequestDispatcher("/WEB-INF/view/ScoreSummary.jsp").forward(request, response);
-    }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
     }
 
     /**
