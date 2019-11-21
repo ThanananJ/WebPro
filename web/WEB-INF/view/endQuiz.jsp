@@ -42,7 +42,6 @@
     <center>
         <h1>Quiz is End!!</h1>
         <img src="./images/Line 2.png" width="1000px" height="8px"><br>
-        <a href="./index.jsp" style="font-size: 30px">back</a><br>
         <a href="./Summary" style="font-size: 30px">see score</a>
     </center>
         </div>
