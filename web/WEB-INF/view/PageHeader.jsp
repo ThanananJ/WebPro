@@ -34,7 +34,7 @@
     </head>
     <body>
         <div class ="navbar">
-            <a href = "./index.jsp"> <img src="./images/logo.png" alt="logo" height="70px"></a>
+            <a href = "index"> <img src="./images/logo.png" alt="logo" height="70px"></a>
             <div class ="nav">
                 <ul>
                     <li><a href="./Profile">My Profile</a></li>

@@ -43,7 +43,7 @@
             <h1 style="text-align: center; font-size: 72px;">${q.getDescription()}</h1>
             <img src="./images/Line 2.png" width="1000px" height="8px"><br>
                 <p id="score">${score} / ${q.getMaxScore()}</p>
-            <form action="./index.jsp">
+            <form action="index">
                 <button style="background-color: transparent; border: none; margin: 400px 0px 0px 0px"><img src="./images/back.png"></button>
             </form>
             </center>

@@ -33,7 +33,7 @@
         <div class="bg">
         <h1>Finish!</h1>
         <img src="./images/Line 2.png" width="500px" height="8px"><br>
-        <a href="./index.jsp" style="font-size: 30px"><img src="./images/back.png" style=" margin-top: 400px"></a><br>
+        <a href="index" style="font-size: 30px"><img src="./images/back.png" style=" margin-top: 400px"></a><br>
         </div>
     </body>
 </html>

@@ -36,21 +36,23 @@
                 <a href="./index.jsp"><input type ="submit" value="Get Started" id ="startbutton"></a>
             </form>
             <br>
-            <div class ="announce">
-                <table border="1" width="70%" height="90%" align="center" bordercolor="white" cellpadding ="9px">
-                    <tr bgcolor="#BA9366" id="a1">
-                        <th>Announcement</th>
-                    </tr>
-                    <c:forEach items="${announcementList}" var="al">
-                        <tr bgcolor="#EBE4D1">
-                            <th>${al.content}</th>
+            <form action="index" method="post">
+                <div class ="announce">
+                    <table border="1" width="70%" height="90%" align="center" bordercolor="white" cellpadding ="9px">
+                        <tr bgcolor="#BA9366" id="a1">
+                            <th>Announcement</th>
                         </tr>
-                    </c:forEach>
-                    <tr id="a5">
-                        <td><a href="./Announcement.jsp"> See more</a> </td>
-                    </tr>
-                </table>
-            </div>
+                        <c:forEach items="${announcementList}" var="al">
+                            <tr bgcolor="#EBE4D1">
+                                <th>${al.content}</th>
+                            </tr>
+                        </c:forEach>
+                        <tr id="a5">
+                            <td><a href="./Announcement.jsp"> See more</a> </td>
+                        </tr>
+                    </table>
+                </div>
+            </form>
         </div>
 
     </body>
