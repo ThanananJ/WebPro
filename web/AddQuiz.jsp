@@ -57,7 +57,7 @@
     </head>
     <body background= "./images/bg.png" width="100%" height="100%">
         <div class="bg">
-            <h1 style="font-size: 72px; color: #805B25">Create your new Quiz</h1>
+            <h1>Create your new Quiz</h1>
             <center><img src="./images/Line 2.png" width="1000px" height="8px"></center>
             <form action="AddQuiz" method="post">
                 <table style="margin: 25px 50px 25px 300px">
