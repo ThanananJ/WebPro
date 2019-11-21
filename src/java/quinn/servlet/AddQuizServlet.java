@@ -56,11 +56,11 @@ public class AddQuizServlet extends HttpServlet {
         session.setAttribute("quizes", quiz);
 
         if (quizType.equals("1")) {
-            request.getRequestDispatcher("/testFillQuiz.jsp").forward(request, response);
+            getServletContext().getRequestDispatcher("/testFillQuiz.jsp").forward(request, response);
         } else if (quizType.equals("2")) {
             int choiceLoop = Integer.valueOf(numberItems) * 4;
             session.setAttribute("runLoopChoice", choiceLoop);
-            request.getRequestDispatcher("/testChQuiz.jsp").forward(request, response);
+            getServletContext().getRequestDispatcher("/testChQuiz.jsp").forward(request, response);
         }
     }
 

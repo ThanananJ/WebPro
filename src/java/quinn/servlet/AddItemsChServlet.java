@@ -63,6 +63,8 @@ public class AddItemsChServlet extends HttpServlet {
             }
 
         }
+        
+        request.getRequestDispatcher("/testFinish.jsp").forward(request, response);
 
     }
 
