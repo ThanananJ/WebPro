@@ -23,7 +23,7 @@
         <c:choose>
             <c:when test="${teacher==null}">
                 <div class="history">
-                    <p style="font-size: 30px;">Test History</p>
+                    <p style="font-size: 30px; margin-left: 75px">Test History</p>
                     <center><table class="tab">
                             <tr style="background-color: white">
                                 <th>Quiz No.</th>
@@ -44,7 +44,7 @@
             </c:when>
             <c:otherwise>
                 <div class="history">
-                    <p style="font-size: 30px;">My Quiz</p>  <a href="AddQuiz" ><input type="button"></a>
+                    <p style="font-size: 30px; margin-left: 75px">My Quiz  <a href="AddQuiz" ><img src="./images/plus 1.png" style="margin-left: 10px"></a></p>
                     <center><table class="tab">
                             <tr style="background-color: white">
                                 <th>Quiz No.</th>
