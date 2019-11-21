@@ -45,6 +45,12 @@ public class AddItemsFillServlet extends HttpServlet {
 
         for (int i = 1; i < numberItems + 1; i++) {
             String itemDescription = request.getParameter("itemdescription" + i);
+            Item ite = qc.findItemById(itemDescription, quiz.getQuiz_id()); 
+            if(ite!=null){ 
+                request.setAttribute("errorAddItem", "Can not create duplicate question"); 
+                response.sendRedirect("./AddItemsFill"); 
+                return; 
+            }
             Item items = new Item( itemDescription, quiz.getQuiz_id());
             qc.addItem(items, quiz);
             
