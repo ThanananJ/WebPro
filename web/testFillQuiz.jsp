@@ -53,11 +53,11 @@
                 <c:forEach begin="1" end="${Integer.valueOf(runLoop)}" varStatus="vs" >
                     <tr>
                         <td style="text-align: right;">${vs.count}.</td>
-                        <td><input type="text" name="itemdescription${vs.count}" class="input-field"></td>
+                        <td><input type="text" name="itemdescription${vs.count}" class="input-field" required="true"></td>
                     </tr>
                     <tr>
                         <td>Answers : </td>
-                        <td><input type="text" name="answersdescription${vs.count}" class="input-field"></td>
+                        <td><input type="text" name="answersdescription${vs.count}" class="input-field" required="true"></td>
                     </tr>
                 </c:forEach>
             </table> 

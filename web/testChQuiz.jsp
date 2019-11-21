@@ -53,17 +53,17 @@
                 <c:forEach begin="1" end="${Integer.valueOf(runLoop)}" varStatus="vs" >
                     <tr>
                         <td style="text-align: right">${vs.count}.</td>
-                        <td><input type="text" name="itemdescription${vs.count}" class="input-field"></td>
+                        <td><input type="text" name="itemdescription${vs.count}" class="input-field" required="true"></td>
                     </tr>
                     <c:forEach begin="1" end="4" varStatus="vsch">
                     <tr>
                         <td style="text-align: right">Choice${vsch.count} : </td>
-                        <td><input type="text" name="choicedescription${vs.count}/${vsch.count}" class="input-field"></td>
+                        <td><input type="text" name="choicedescription${vs.count}/${vsch.count}" class="input-field" required="true"></td>
                     </tr>
                     </c:forEach>
                     <tr>
                         <td style="text-align: right">Answers Correct : </td>
-                        <td><input type="text" name="choicesboolean${vs.count}" class="input-field"></td>
+                        <td><input type="text" name="choicesboolean${vs.count}" class="input-field" required="true"></td>
                     </tr>
                 </c:forEach>
             </table> 

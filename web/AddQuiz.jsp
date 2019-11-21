@@ -64,7 +64,7 @@
                     <tr>
                         <td>Quiz name</td>
                         <td> : </td>
-                        <td><input type="text" name="quizname" class="input-field"></td>
+                        <td><input type="text" name="quizname" class="input-field" required="true"></td>
                     </tr>
                     <tr>
                         <td style="height: 10px"></td>
@@ -109,7 +109,7 @@
                         </td>
                         <td> : </td>
                         <td>
-                            <input type="number" name="numberitems"min="1" class="input-field">
+                            <input type="number" name="numberitems"min="1" class="input-field" required="true">
                         </td>
                     </tr>
                     <tr>
