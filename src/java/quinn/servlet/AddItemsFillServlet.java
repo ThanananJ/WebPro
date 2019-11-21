@@ -61,7 +61,7 @@ public class AddItemsFillServlet extends HttpServlet {
             
         }
         
-        request.getRequestDispatcher("/testFinish.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/view/AddQuiz/FinishAddQuiz.jsp").forward(request, response);
 
     }
 

@@ -56,11 +56,11 @@ public class AddQuizServlet extends HttpServlet {
         session.setAttribute("quizes", quiz);
 
         if (quizType.equals("1")) {
-            getServletContext().getRequestDispatcher("/testFillQuiz.jsp").forward(request, response);
+            getServletContext().getRequestDispatcher("/WEB-INF/view/AddQuiz/AddFillQuiz.jsp").forward(request, response);
         } else if (quizType.equals("2")) {
             int choiceLoop = Integer.valueOf(numberItems) * 4;
             session.setAttribute("runLoopChoice", choiceLoop);
-            getServletContext().getRequestDispatcher("/testChQuiz.jsp").forward(request, response);
+            getServletContext().getRequestDispatcher("/WEB-INF/view/AddQuiz/AddChoiceQuiz.jsp").forward(request, response);
         }
     }
 
@@ -76,7 +76,7 @@ public class AddQuizServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("/AddQuiz.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/view/AddQuiz/AddQuiz.jsp").forward(request, response);
     }
 
     /**

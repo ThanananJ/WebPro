@@ -68,7 +68,7 @@ public class AddItemsChServlet extends HttpServlet {
             }
         }
 
-        request.getRequestDispatcher("/testFinish.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/view/AddQuiz/FinishAddQuiz.jsp").forward(request, response);
 
     }
 
@@ -84,7 +84,7 @@ public class AddItemsChServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("/testChQuiz.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/view/AddQuiz/AddChoiceQuiz.jsp").forward(request, response);
     }
 
     /**
