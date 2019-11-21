@@ -68,18 +68,22 @@ public class DeleteQuizServlet extends HttpServlet {
             Quiz q = qc.findByQuizID(qid);
 //            System.out.println(q);
             List<Item> itemL = qc.findItem(qid);
-            for(int i = 0 ; i < itemL.size(); i++){
-                List<Answer> answerL = qc.findAnswer(itemL.get(i).getItem_id());
-                for(int j = 0 ; j < answerL.size(); j++){
-                    qc.deleteAnswer(answerL.get(j));
+            if (itemL != null) {
+                for (int i = 0; i < itemL.size(); i++) {
+                    List<Answer> answerL = qc.findAnswer(itemL.get(i).getItem_id());
+                    if (answerL != null) {
+                        for (int j = 0; j < answerL.size(); j++) {
+                            qc.deleteAnswer(answerL.get(j));
+                        }
+                    }
+                    qc.deleteItem(itemL.get(i));
                 }
-                qc.deleteItem(itemL.get(i));
             }
             qc.deleteQuiz(q);
-            
+
             request.setAttribute("message", "Delete Complete");
         }
-        
+
         request.setAttribute("quizinput", quiz);
         response.sendRedirect("./Profile");
         //request.getServletContext().getRequestDispatcher("/profile.jsp").forward(request, response);
