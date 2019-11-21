@@ -47,9 +47,9 @@ public class AddItemsChServlet extends HttpServlet {
             Item items = new Item(itemDescription, quiz.getQuiz_id());
             qc.addItem(items, quiz);
             Item item = qc.findItemById(items.getDescription(), items.getQuiz_id());
-            
-            for (int x = 1; x <=4; x++) {
-                String answerss = request.getParameter("choicedescription" + i +"/"+x);
+
+            for (int x = 1; x <= 4; x++) {
+                String answerss = request.getParameter("choicedescription" + i + "/" + x);
                 String choiceCorrect = request.getParameter("choicesboolean" + i);
 
                 if (choiceCorrect.equals(answerss)) {
@@ -59,11 +59,9 @@ public class AddItemsChServlet extends HttpServlet {
                     Answer answers = new Answer(answerss, false, item.getItem_id());
                     qc.addAnswer(item, answers);
                 }
-
             }
-
         }
-        
+
         request.getRequestDispatcher("/testFinish.jsp").forward(request, response);
 
     }
