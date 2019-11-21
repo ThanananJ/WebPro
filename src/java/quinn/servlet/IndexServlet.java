@@ -58,23 +58,23 @@ public class IndexServlet extends HttpServlet {
         AnnouncementConntroller ac = new AnnouncementConntroller();
         List<Announcement> announcementList = ac.findAll();
         session.setAttribute("announcementList", announcementList);
-        int scores = (int) session.getAttribute("score");
-        Student student = (Student) session.getAttribute("student");
-        Teacher teacher = (Teacher) session.getAttribute("teacher");
-        QuizController qc = new QuizController();
-        Quiz quizes = (Quiz) session.getAttribute("q");
-        Quiz quiz = qc.findByDesc(quizes.getDescription()).get(0);
-        if (teacher == null) {
-            if (session.getAttribute("score") == null) {
-                request.getRequestDispatcher("/index.jsp").forward(request, response);
-            } else {
+        if (session.getAttribute("score") == null) {
+            request.getRequestDispatcher("/index.jsp").forward(request, response);
+        } else {
+            int scores = (int) session.getAttribute("score");
+            Student student = (Student) session.getAttribute("student");
+            Teacher teacher = (Teacher) session.getAttribute("teacher");
+            QuizController qc = new QuizController();
+            Quiz quizes = (Quiz) session.getAttribute("q");
+            Quiz quiz = qc.findByDesc(quizes.getDescription()).get(0);
+            if (teacher == null) {
                 ScoreController sc = new ScoreController();
                 Score score = new Score(student.getUserName(), quiz.getQuiz_id(), quiz.getDescription(), scores, quiz.getMaxScore());
                 sc.AddScore(score);
                 request.getRequestDispatcher("/index.jsp").forward(request, response);
+            } else {
+                request.getRequestDispatcher("/index.jsp").forward(request, response);
             }
-        } else {
-            request.getRequestDispatcher("/index.jsp").forward(request, response);
         }
     }
 
