@@ -98,9 +98,10 @@ public class SummaryServlet extends HttpServlet {
                 correct = al.get(i);
             }
         }
-        
-            if(userAnswer.equals(correct.getDescription())){
+            if(correct != null){
+                if(userAnswer.equals(correct.getDescription())){
                 score += 1;
+            }
             }
         }
 
