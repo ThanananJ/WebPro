@@ -12,8 +12,28 @@
         <link href="https://fonts.googleapis.com/css?family=Advent+Pro&display=swap" rel="stylesheet">
         <jsp:include page="/WEB-INF/view/PageHeader.jsp?title=Home Page"/>
         <title>index page</title>
+        <style>
+            body {
+                height: 100%;
+                width: auto
+            }
+            
+            .bgimg {
+                /* The image used */
+                background-image: url(./images/bg.png);
+
+                /* Full height */
+                height: 100%;
+                width: 100%;
+
+                /* Center and scale the image nicely */
+                /*background-position: center;*/
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+        </style>
     </head>
-    <body background="./images/bg.png" width="100%" height="100%">
+    <body class="bgimg">
         <div class ="bg">
             <h1 style = "color:#A0896F;font-size: 72px;"> Search your quiz </h1>
             <form method="post" action="Searching">

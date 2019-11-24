@@ -21,6 +21,24 @@
             .bg{
                 font-family: Advent Pro;
             }
+            body {
+                height: 100%;
+                width: auto
+            }
+            
+            .bgimg {
+                /* The image used */
+                background-image: url(./images/bg.png);
+
+                /* Full height */
+                height: 100%;
+                width: 100%;
+
+                /* Center and scale the image nicely */
+                /*background-position: center;*/
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
             h1{
                 font-size: 72px;
                 font-family: Advent Pro;
@@ -45,7 +63,7 @@
             }
         </style>
     </head>
-    <body background= "./images/bg.png" width="100%" height="100%">
+    <body class="bgimg">
         <div class="bg">
             <center><h1>Create</h1></center>
         <form action="AddItemsFill" method="post">

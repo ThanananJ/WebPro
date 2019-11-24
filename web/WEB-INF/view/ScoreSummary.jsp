@@ -34,10 +34,28 @@
                 position: absolute;
                 padding-top:90px;
             }
+            body {
+                height: 100%;
+                width: auto
+            }
+            
+            .bgimg {
+                /* The image used */
+                background-image: url(./images/bg.png);
+
+                /* Full height */
+                height: 100%;
+                width: 100%;
+
+                /* Center and scale the image nicely */
+                /*background-position: center;*/
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
         </style>
         <title>Summary Score</title>
     </head>
-    <body background= "./images/bg.png" width="100%" height="100%">
+    <body class="bgimg">
         <div class="bg">
             <center>
             <h1 style="text-align: center; font-size: 72px;">${q.getDescription()}</h1>

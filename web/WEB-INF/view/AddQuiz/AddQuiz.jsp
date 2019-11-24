@@ -17,6 +17,24 @@
         <link rel="stylesheet" type="text/css" href="./css/doQuizChoice.css">
         <jsp:include page="/WEB-INF/view/PageHeader.jsp?title=Add Quiz"/>
         <style>
+            body {
+                height: 100%;
+                width: auto
+            }
+            
+            .bgimg {
+                /* The image used */
+                background-image: url(./images/bg.png);
+
+                /* Full height */
+                height: 100%;
+                width: 100%;
+
+                /* Center and scale the image nicely */
+                /*background-position: center;*/
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
             .bg{
                 font-family: Advent Pro;
                 text-align: center;
@@ -55,7 +73,7 @@
             }
         </style>
     </head>
-    <body background= "./images/bg.png" width="100%" height="100%">
+    <body class="bgimg">
         <div class="bg">
             <h1>Create your new Quiz</h1>
             <center><img src="./images/Line 2.png" width="1000px" height="8px"></center>
