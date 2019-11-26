@@ -69,7 +69,7 @@ public class IndexServlet extends HttpServlet {
             Quiz quiz = qc.findByDesc(quizes.getDescription()).get(0);
             if (teacher == null) {
                 ScoreController sc = new ScoreController();
-                Score score = new Score(student.getUserName(), quiz.getQuiz_id(), quiz.getDescription(), scores, quiz.getMaxScore());
+                Score score = new Score(student.getUserName(),student.getFirstName(),student.getLastName(), quiz.getQuiz_id(), quiz.getDescription(), scores, quiz.getMaxScore());
                 sc.AddScore(score);
                 request.getRequestDispatcher("/index.jsp").forward(request, response);
             } else {
