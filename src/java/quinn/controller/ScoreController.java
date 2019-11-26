@@ -34,7 +34,28 @@ public class ScoreController {
                 if(sl == null){
                     sl = new ArrayList(100);
                 }
-                Score s = new Score(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getInt(4),rs.getInt(5));
+                Score s = new Score(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getInt(4),rs.getString(5),rs.getInt(6),rs.getInt(7));
+                sl.add(s);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ScoreController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return sl;
+    }
+    
+    public static List<Score> findScoreByQuiz(int quiz_id){
+        List<Score> sl= null;
+        Connection conn = BuildConnection.getConnection();
+        
+        try {
+            PreparedStatement pstm = conn.prepareStatement("SELECT * FROM score where quiz_id = ?");
+            pstm.setInt(1, quiz_id);
+            ResultSet rs = pstm.executeQuery();
+            while(rs.next()){
+                if(sl == null){
+                    sl = new ArrayList(100);
+                }
+                Score s = new Score(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getInt(4),rs.getString(5),rs.getInt(6),rs.getInt(7));
                 sl.add(s);
             }
         } catch (SQLException ex) {
@@ -47,12 +68,14 @@ public class ScoreController {
         boolean fin = false;
         Connection conn = BuildConnection.getConnection();
         try {
-            PreparedStatement pstm = conn.prepareStatement("INSERT INTO Score(st_id, quiz_id, description, score, maxscore) VALUES (?, ?, ? ,? ,?)");
+            PreparedStatement pstm = conn.prepareStatement("INSERT INTO Score(st_id, stFName, stLName, quiz_id, description, score, maxscore) VALUES (?, ?, ?, ?, ? ,? ,?)");
             pstm.setInt(1, s.getSt_id());
-            pstm.setInt(2, s.getQuiz_id());
-            pstm.setString(3, s.getQuiz_name());
-            pstm.setInt(4, s.getScore());
-            pstm.setInt(5, s.getMaxscore());
+            pstm.setString(2, s.getSt_fname());
+            pstm.setString(3, s.getSt_lname());
+            pstm.setInt(4, s.getQuiz_id());
+            pstm.setString(5, s.getQuiz_name());
+            pstm.setInt(6, s.getScore());
+            pstm.setInt(7, s.getMaxscore());
             fin = pstm.execute();
         } catch (SQLException ex) {
             Logger.getLogger(QuizController.class.getName()).log(Level.SEVERE, null, ex);
@@ -76,10 +99,7 @@ public class ScoreController {
     
     public static void main(String[] args) {
         ScoreController sc = new ScoreController();
-        List<Score> sl = sc.findScoreByStudent(1);
-        Score s = new Score(2,2,"English",2,10);
-        sc.AddScore(s);
-        sl = sc.findScoreByStudent(1);
+        List<Score> sl = sc.findScoreByQuiz(1);
         System.out.println(sl);
     }
 }
