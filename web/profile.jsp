@@ -69,7 +69,7 @@
                             <tr style="background-color: white">
                                 <th>Quiz No.</th>
                                 <th>Quiz Name</th>
-                                <th colspan="2">#</th>
+                                <th colspan="3">#</th>
                             </tr>
                             <c:forEach items="${teacherList}" var="tl">
                             <tr>
@@ -77,6 +77,7 @@
                                 <td>${tl.description}</td>
                                 <td><a href="EditQuiz">Edit</a></td>
                                 <td><a href="DeleteQuiz?id=${tl.quiz_id}">Delete</a></td>
+                                <td><a href="SeeTotalScore?id=${tl.quiz_id}">See score</a></td>
                             </tr>
                             </c:forEach>
                         </table></center>
