@@ -1,0 +1,161 @@
+DROP table answers;
+DROP table STUDENT;
+DROP table items;
+DROP TABLE answers;
+DROP TABLE score;
+DROP table announcements;
+DROP table quizes;
+DROP table TEACHER;
+
+CREATE TABLE student (
+    std_id INT NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+    f_name VARCHAR(50) NOT NULL,
+    l_name VARCHAR(50) NOT NULL,
+    password VARCHAR(12) NOT NULL,
+    class_id VARCHAR(3) NOT NULL,
+    PRIMARY KEY (std_id)
+);
+
+INSERT INTO student(f_name, l_name, password, class_id) values
+('Amy','Thomson','12345','401'),
+('David','Rampling','12345','401'),
+('Victor','Pullman','12345','402'),
+('Harry','Lyman','12345','402'),
+('Blake','Bell','12345','403'),
+('John','Oliver','12345','403'),
+('Paul','Wilkins','12345','404'),
+('Gabrielle','Edmunds','12345','404'),
+('James','Sutherland','12345','405'),
+('Evan','Smith','12345','405'),
+('Leonard','Skinner','12345','501'),
+('Sarah','Chapman','12345','501'),
+('Penelope','Abraham','12345','502'),
+('Alan','Peake','12345','502'),
+('Ryan','Watson','12345','503'),
+('William','Lawrence','12345','503'),
+('Rose','Ince','12345','504'),
+('Blake','Slater','12345','504'),
+('Victor','Manning','12345','505'),
+('Virginia','MacDonald','12345','601'),
+('Dorothy','Rampling','12345','601'),
+('Heather','Skinner','12345','602'),
+('Cameron','Turner','12345','602'),
+('Tim','Robertson','12345','603'),
+('Pippa','Black','12345','603'),
+('Joan','Walsh','12345','604'),
+('Owen','Hunter','12345','604'),
+('Tracey','Oliver','12345','605'),
+('Stephanie','Rampling','12345','605');
+
+CREATE TABLE teacher (
+    t_id INT NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+    f_name VARCHAR(50) NOT NULL,
+    l_name VARCHAR(50) NOT NULL,
+    password VARCHAR(12) NOT NULL,
+    class_id VARCHAR(3),
+    PRIMARY KEY (t_id)
+);
+
+INSERT INTO teacher(f_name, l_name, password, class_id) values
+('Irene','Greene','12345','401'),
+('Austin','Ellison','12345','402'),
+('Dominic','White','12345','403'),
+('Samantha','Metcalfe','12345','404'),
+('Leonard','Gibson','12345','405'),
+('Owen','Abraham','12345','501'),
+('Amelia','Alsop','12345','502'),
+('Brian','Grant','12345','503'),
+('Wendy','Wilson','12345','504'),
+('Piers','Bailey','12345','505'),
+('Alan','Slater','12345','601'),
+('Michelle','Coleman','12345','602'),
+('Jake','Grant','12345','603'),
+('Jacob','Hodges','12345','604'),
+('James','Peake','12345','605'),
+('Piers','Young','12345',null),
+('Justin','Smith','12345',null),
+('Stephanie','Nash','12345',null),
+('Natalie','Rees','12345',null);
+
+CREATE table quizes (
+    quiz_id INT NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+    description VARCHAR(250) NOT NULL,
+    subject VARCHAR(20) NOT NULL,
+    q_type VARCHAR (1) NOT NULL,
+    t_id INT,
+    class_id VARCHAR(3),
+    maxscore int,
+    PRIMARY KEY (quiz_id)
+);
+
+ALTER TABLE quizes
+    ADD CONSTRAINT quiz_teacher_fk FOREIGN KEY ( t_id )
+        REFERENCES teacher ( t_id );
+
+
+INSERT INTO quizes(description, subject, q_type, t_id, class_id, maxscore) VALUES
+   ('English quiz for Grade 10 class 1', 'English', '1', 1, '401', 3),
+   ('Math test', 'Mathematic', '2' , 2, '503', 2);
+
+
+CREATE table items (
+    item_id INT NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+    description VARCHAR(200) NOT NULL,
+    quiz_id INT NOT NULL,
+    PRIMARY KEY (item_id)
+);
+
+ALTER TABLE items
+    ADD CONSTRAINT item_quiz_fk FOREIGN KEY ( quiz_id )
+        REFERENCES quizes ( quiz_id );
+
+INSERT INTO items(description, quiz_id) VALUES
+    ( 'Where is the sun?', 1),
+    ( '9+9+9+9 = ?', 2),
+    ( 'Which one is correct', 2),
+    ( 'We ____ student', 1),
+    ( 'I ____ student', 1);
+
+
+CREATE table answers (
+    answer_id INT NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+    description VARCHAR(100) NOT NULL,
+    isCorrect boolean NOT NULL,
+    item_id INT NOT NULL,
+    PRIMARY KEY (answer_id)
+);
+
+INSERT INTO answers(description, isCorrect, item_id) VALUES
+    ( 'sky', true, 1),
+    ( '12', false, 2),
+    ( '24', false, 2),
+    ( '36', true, 2),
+    ( '48', false, 2),
+    ( '1+1 = 3', false, 3),
+    ( '2+2 = 4', true, 3),
+    ( '2+3 = 7', false, 3),
+    ( '4+4 = 7', false, 3),
+    ( 'are' , true, 4),
+    ( 'am' , true, 5);
+
+
+CREATE table score(
+    st_id int NOT NULL,
+    stFName VARCHAR(50),
+    stLName VARCHAR(50),
+    quiz_id int NOT NULL,
+    description VARCHAR(250) NOT NULL,
+    score int,
+    maxscore int
+);
+
+
+CREATE table Announcements  (
+    announce_id INT NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+    content VARCHAR(200) NOT NULL,
+    PRIMARY KEY (announce_id)
+);
+
+INSERT INTO Announcements( content) VALUES
+('Quiz English for Student Grade 10 class 1'),
+('Math Test for Student Grade 11 class 3');
