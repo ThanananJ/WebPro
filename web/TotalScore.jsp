@@ -39,8 +39,9 @@
             }
             .scoretb{
                 margin-left: 50px;
-                padding: 10px;
+                padding: 20px;
                 margin-right: 50px;
+                font-size: 24px;
             }
         </style>
     </head>
@@ -49,8 +50,8 @@
         <h1>${q.getDescription()}</h1>
         <h3> Student Score</h3>
         <div class="scoretb">
-        <table style="width: 80%; height: 100%">
-            <tr style="background-color: white">
+        <table style="width: 100%; height: 100%">
+            <tr style="background-color: white; font-style: inherit;">
                 <th>Student id</th>
                 <th>Student name</th>
                 <th>Score</th>
