@@ -10,6 +10,7 @@ package quinn.model;
  * @author nattawanee.sks
  */
 public class Item {
+
     private int item_id;
     private String description;
     private int quiz_id;
@@ -24,8 +25,6 @@ public class Item {
         this.description = description;
         this.quiz_id = quiz_id;
     }
-    
-    
 
     public int getItem_id() {
         return item_id;
@@ -55,6 +54,5 @@ public class Item {
     public String toString() {
         return "Item{" + "item_id=" + item_id + ", description=" + description + ", quiz_id=" + quiz_id + '}';
     }
-    
-    
+
 }

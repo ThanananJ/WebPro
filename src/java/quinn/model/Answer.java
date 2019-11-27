@@ -10,6 +10,7 @@ package quinn.model;
  * @author Mark
  */
 public class Answer {
+
     private int answer_id;
     private String description;
     private boolean isCorrect;
@@ -35,8 +36,6 @@ public class Answer {
     public void setAnswer_id(int answer_id) {
         this.answer_id = answer_id;
     }
-
-    
 
     public String getDescription() {
         return description;
@@ -66,5 +65,5 @@ public class Answer {
     public String toString() {
         return "Answer{" + "answer_id=" + answer_id + ", description=" + description + ", isCorrect=" + isCorrect + ", item_id=" + item_id + '}';
     }
-    
+
 }

@@ -6,7 +6,6 @@
 package quinn.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -32,27 +31,25 @@ public class SearchingServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-                response.setContentType("text/html;charset=UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
         String quizName = request.getParameter("quizName");
         String grade = request.getParameter("grade");
         String subjects = request.getParameter("subjects");
-        
+
         QuizController qc = new QuizController();
         List<Quiz> q = null;
-        
-        if(!quizName.isEmpty()){
+
+        if (!quizName.isEmpty()) {
             q = qc.findByDescription(quizName, grade, subjects);
-//            q = qc.findByDesc(quizName);
             request.setAttribute("search", quizName);
             request.setAttribute("quiz", q);
             request.getServletContext().getRequestDispatcher("/resultQuiz.jsp").forward(request, response);
-        }else{
+        } else {
             q = qc.findByGradeSubject(grade, subjects);
             request.setAttribute("search", grade);
             request.setAttribute("quiz", q);
             request.getServletContext().getRequestDispatcher("/resultQuiz.jsp").forward(request, response);
         }
-        
 
     }
 

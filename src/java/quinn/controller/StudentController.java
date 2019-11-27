@@ -19,8 +19,8 @@ import quinn.model.Student;
  * @author nattawanee.sks
  */
 public class StudentController {
-    
-    public static Student findByStudentId(String studentId){
+
+    public static Student findByStudentId(String studentId) {
         Student s = null;
         Connection conn = BuildConnection.getConnection();
         try {
@@ -28,8 +28,8 @@ public class StudentController {
             pstm.setString(1, studentId);
             ResultSet rs = null;
             rs = pstm.executeQuery();
-            if(rs.next()){
-                s = new Student(rs.getInt("std_id"),rs.getString("f_name"),rs.getString("l_name"),rs.getString("password"),rs.getString("class_id"));
+            if (rs.next()) {
+                s = new Student(rs.getInt("std_id"), rs.getString("f_name"), rs.getString("l_name"), rs.getString("password"), rs.getString("class_id"));
             }
             rs.close();
             conn.close();
@@ -38,9 +38,5 @@ public class StudentController {
         }
         return s;
     }
-    
-    public static void main(String[] args) {
-        Student s = findByStudentId("00001");
-        System.out.println(s.getPassword());
-    }
+
 }

@@ -6,8 +6,6 @@
 package quinn.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Enumeration;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -40,27 +38,27 @@ public class AddItemsFillServlet extends HttpServlet {
         HttpSession session = request.getSession(false);
         Quiz quizes = (Quiz) session.getAttribute("quizes");
         Quiz quiz = qc.findByDesc(quizes.getDescription()).get(0);
-        String number = (String)session.getAttribute("runLoop");
+        String number = (String) session.getAttribute("runLoop");
         int numberItems = Integer.valueOf(number);
 
         for (int i = 1; i < numberItems + 1; i++) {
             String itemDescription = request.getParameter("itemdescription" + i);
-            Item ite = qc.findItemById(itemDescription, quiz.getQuiz_id()); 
-            if(ite!=null){ 
-                request.setAttribute("errorAddItem", "Can not create duplicate question"); 
-                response.sendRedirect("./AddItemsFill"); 
-                return; 
+            Item ite = qc.findItemById(itemDescription, quiz.getQuiz_id());
+            if (ite != null) {
+                request.setAttribute("errorAddItem", "Can not create duplicate question");
+                response.sendRedirect("./AddItemsFill");
+                return;
             }
-            Item items = new Item( itemDescription, quiz.getQuiz_id());
+            Item items = new Item(itemDescription, quiz.getQuiz_id());
             qc.addItem(items, quiz);
-            
+
             Item item = qc.findItemById(items.getDescription(), items.getQuiz_id());
-            String answerss = request.getParameter("answersdescription"+i);
+            String answerss = request.getParameter("answersdescription" + i);
             Answer answers = new Answer(answerss, true, item.getItem_id());
             qc.addAnswer(item, answers);
-            
+
         }
-        
+
         request.getRequestDispatcher("/WEB-INF/view/AddQuiz/FinishAddQuiz.jsp").forward(request, response);
 
     }

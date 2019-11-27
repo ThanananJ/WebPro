@@ -6,7 +6,6 @@
 package quinn.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -37,7 +36,7 @@ public class ExamDataServlet extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         QuizController qc = new QuizController();
-        
+
         Quiz q = qc.findByDesc("E").get(0);
         List<Item> i = qc.findItem(q.getQuiz_id());
         List<Answer> a = qc.findAnswer(i.get(0).getItem_id());

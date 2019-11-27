@@ -34,13 +34,13 @@
                 font-family: Advent Pro;
                 font-weight: lighter;
             }
-            
+
             .btn{
                 background-image: url(./images/inputbox.png);
                 height: 100px;
                 width: 250px;
             }
-            
+
             .selectbtn{
                 font-family: Advent Pro;
                 font-weight: lighter;
@@ -48,7 +48,7 @@
                 color: brown;
                 text-decoration: none;
             }
-            
+
             selectbtn:visited{
                 color: #997B5E;
                 text-decoration: none;
@@ -60,13 +60,13 @@
         </style>
     </head>
     <body class="bg">
-        <center><div><img src="./images/logo.png" width="400px" height="auto"></div></center>
-        <div style="margin: 50px 0px 0px 0px"></div>
-        <center><h1 class="text" style="font-size: 50px;color: #997B5E">You are ...?</h1></center>
-        <center>
-            <button class="btn"><a href="./TeacherLogin" class="selectbtn">Teacher</a></button>
-            <div style="margin: 50px 50px 50px 50px"></div>
-            <button class="btn"><a href="./Login" class="selectbtn">Student</a></button>
-        </center>
-    </body>
+    <center><div><img src="./images/logo.png" width="400px" height="auto"></div></center>
+    <div style="margin: 50px 0px 0px 0px"></div>
+    <center><h1 class="text" style="font-size: 50px;color: #997B5E">You are ...?</h1></center>
+    <center>
+        <button class="btn"><a href="./TeacherLogin" class="selectbtn">Teacher</a></button>
+        <div style="margin: 50px 50px 50px 50px"></div>
+        <button class="btn"><a href="./Login" class="selectbtn">Student</a></button>
+    </center>
+</body>
 </html>

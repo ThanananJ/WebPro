@@ -6,7 +6,6 @@
 package quinn.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -14,8 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import quinn.controller.AnnouncementConntroller;
-import quinn.model.Student;
-import quinn.controller.StudentController;
 import quinn.model.Teacher;
 import quinn.controller.TeacherController;
 import quinn.model.Announcement;
@@ -41,18 +38,18 @@ public class TeacherLoginServlet extends HttpServlet {
         String password = request.getParameter("password");
         String message = "";
         HttpSession session = request.getSession();
-        if (t_id!=null||!t_id.isEmpty()) {
+        if (t_id != null || !t_id.isEmpty()) {
             int t_int = Integer.valueOf(t_id);
             TeacherController tc = new TeacherController();
             Teacher user = (Teacher) tc.findByTeacherId(t_int);
-            
+
             if (user == null) {
                 message = "Invalid User";
                 request.setAttribute("message", message);
                 request.getRequestDispatcher("/teacherLogin.jsp").forward(request, response);
             }
             if (password.length() > 0) {
-                if (!user.getPassword().equals((String)password)) {
+                if (!user.getPassword().equals((String) password)) {
                     message = "Invalid Username or Password";
                     request.setAttribute("message", message);
                     request.getRequestDispatcher("/teacherLogin.jsp").forward(request, response);
@@ -67,7 +64,6 @@ public class TeacherLoginServlet extends HttpServlet {
         }
         message = "Invalid Username or Password!!";
         request.setAttribute("message", message);
-//        request.getRequestDispatcher("/teacherLogin.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

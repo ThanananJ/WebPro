@@ -22,9 +22,9 @@ import quinn.model.Student;
  * @author Mark
  */
 public class AnnouncementConntroller {
-    
-    public static List<Announcement> findAll(){
-        
+
+    public static List<Announcement> findAll() {
+
         List<Announcement> al = null;
         Announcement a = null;
         Connection conn = BuildConnection.getConnection();
@@ -32,8 +32,8 @@ public class AnnouncementConntroller {
             PreparedStatement pstm = conn.prepareStatement("select * from announcements ORDER BY announce_id DESC");
             ResultSet rs = null;
             rs = pstm.executeQuery();
-            while(rs.next()){
-                if(al == null){ 
+            while (rs.next()) {
+                if (al == null) {
                     al = new ArrayList(100);
                 }
                 a = new Announcement(rs.getInt(1), rs.getString(2));
@@ -46,9 +46,9 @@ public class AnnouncementConntroller {
         }
         return al;
     }
-    
-    public static int findID(int an_id){
-        
+
+    public static int findID(int an_id) {
+
         int result = 0;
         Announcement a = null;
         Connection conn = BuildConnection.getConnection();
@@ -56,7 +56,7 @@ public class AnnouncementConntroller {
             PreparedStatement pstm = conn.prepareStatement("select announce_id from announcements Where announce_id = ? ORDER BY announce_id DESC");
             pstm.setInt(1, an_id);
             ResultSet rs = pstm.executeQuery();
-            if(rs.next()){
+            if (rs.next()) {
                 result = rs.getInt(1);
             }
             conn.close();
@@ -65,11 +65,11 @@ public class AnnouncementConntroller {
         }
         return result;
     }
-    
-    public static boolean addAnnounce(Announcement a){
+
+    public static boolean addAnnounce(Announcement a) {
         Connection conn = BuildConnection.getConnection();
         boolean fin = false;
-        
+
         try {
             PreparedStatement pstm = conn.prepareStatement("INSERT INTO announcements(content) VALUES ?");
             pstm.setString(1, a.getContent());
@@ -79,13 +79,5 @@ public class AnnouncementConntroller {
         }
         return fin;
     }
-    
-    public static void main(String[] args) {
-        AnnouncementConntroller ac = new AnnouncementConntroller();
-//        Announcement a1 = new Announcement("Final Exam 13 Dec 2019 !!!!");
-//        ac.addAnnounce(a1);
-        List<Announcement> al = ac.findAll();
-        System.out.println(ac.findID(2));
-        System.out.println(al);
-    }
+
 }

@@ -47,7 +47,7 @@
                 height: 100%;
                 width: auto
             }
-            
+
             .bgimg {
                 /* The image used */
                 background-image: url(./images/bg.png);
@@ -66,28 +66,28 @@
     <body class="bgimg">
         <div class="bg">
             <center><h1>Create</h1></center>
-        <form action="AddItemsCh" method="post">
-            <table>
-                <c:forEach begin="1" end="${Integer.valueOf(runLoop)}" varStatus="vs" >
-                    <tr>
-                        <td style="text-align: right">${vs.count}.</td>
-                        <td><input type="text" name="itemdescription${vs.count}" class="input-field" required="true"></td>
-                    </tr>
-                    <c:forEach begin="1" end="4" varStatus="vsch">
-                    <tr>
-                        <td style="text-align: right">Choice${vsch.count} : </td>
-                        <td><input type="text" name="choicedescription${vs.count}/${vsch.count}" class="input-field" required="true"></td>
-                    </tr>
+            <form action="AddItemsCh" method="post">
+                <table>
+                    <c:forEach begin="1" end="${Integer.valueOf(runLoop)}" varStatus="vs" >
+                        <tr>
+                            <td style="text-align: right">${vs.count}.</td>
+                            <td><input type="text" name="itemdescription${vs.count}" class="input-field" required="true"></td>
+                        </tr>
+                        <c:forEach begin="1" end="4" varStatus="vsch">
+                            <tr>
+                                <td style="text-align: right">Choice${vsch.count} : </td>
+                                <td><input type="text" name="choicedescription${vs.count}/${vsch.count}" class="input-field" required="true"></td>
+                            </tr>
+                        </c:forEach>
+                        <tr>
+                            <td style="text-align: right">Answers Correct : </td>
+                            <td><input type="text" name="choicesboolean${vs.count}" class="input-field" required="true"></td>
+                        </tr>
                     </c:forEach>
-                    <tr>
-                        <td style="text-align: right">Answers Correct : </td>
-                        <td><input type="text" name="choicesboolean${vs.count}" class="input-field" required="true"></td>
-                    </tr>
-                </c:forEach>
-            </table> 
-            <input name="finish" hidden="true" >
-            <center><button type="submit" style="background-color: transparent; border: none"><img src="./images/Next.png" width="200px" height="auto"></button></center>
-        </form>
+                </table> 
+                <input name="finish" hidden="true" >
+                <center><button type="submit" style="background-color: transparent; border: none"><img src="./images/Next.png" width="200px" height="auto"></button></center>
+            </form>
         </div>
     </body>
 </html>

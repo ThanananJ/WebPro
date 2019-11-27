@@ -6,7 +6,6 @@
 package quinn.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -39,7 +38,7 @@ public class EnterQuizServlet extends HttpServlet {
         QuizController qc = new QuizController();
         String quiz_id = request.getParameter("id");
         int id = Integer.valueOf(quiz_id);
-        
+
         Quiz q = qc.findByQuizID(id);
         List<Item> i = qc.findItem(q.getQuiz_id());
         List<Answer> a = qc.findAnswer(i.get(0).getItem_id());
@@ -48,7 +47,7 @@ public class EnterQuizServlet extends HttpServlet {
         session.setAttribute("li", i);
         session.setAttribute("q", q);
         request.getServletContext().getRequestDispatcher("/WEB-INF/view/examData.jsp").forward(request, response);
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

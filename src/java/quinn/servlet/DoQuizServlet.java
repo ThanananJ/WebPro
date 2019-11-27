@@ -6,7 +6,6 @@
 package quinn.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -35,7 +34,7 @@ public class DoQuizServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -52,19 +51,18 @@ public class DoQuizServlet extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession(false);
         QuizController qc = new QuizController();
-        
+
         Quiz q = (Quiz) session.getAttribute("q");
-       
+
         List<Item> li = (List<Item>) session.getAttribute("li");
         List<Answer> al = (List<Answer>) session.getAttribute("al");
         Item i = li.get(0);
         request.setAttribute("i", i);
         session.setAttribute("score", 0);
-        
-        if(q.getType().equals("1")){
+
+        if (q.getType().equals("1")) {
             request.getRequestDispatcher("/WEB-INF/view/doQuizFillword.jsp").forward(request, response);
-        }
-        else {
+        } else {
             request.setAttribute("answers", al);
             request.getRequestDispatcher("/WEB-INF/view/doQuizChoice.jsp").forward(request, response);
         }

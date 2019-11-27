@@ -20,7 +20,8 @@ import quinn.model.Teacher;
  * @author nattawanee.sks
  */
 public class TeacherController {
-    public static Teacher findByTeacherId(int teacherId){
+
+    public static Teacher findByTeacherId(int teacherId) {
         Teacher t = null;
         Connection conn = BuildConnection.getConnection();
         try {
@@ -28,8 +29,8 @@ public class TeacherController {
             pstm.setInt(1, teacherId);
             ResultSet rs = null;
             rs = pstm.executeQuery();
-            if(rs.next()){
-                t = new Teacher(rs.getInt("t_id"),rs.getString("f_name"),rs.getString("l_name"),rs.getString("password"),rs.getString("class_id"));
+            if (rs.next()) {
+                t = new Teacher(rs.getInt("t_id"), rs.getString("f_name"), rs.getString("l_name"), rs.getString("password"), rs.getString("class_id"));
             }
             rs.close();
             conn.close();
@@ -38,8 +39,8 @@ public class TeacherController {
         }
         return t;
     }
-    
-     public static Teacher findByTeacherFullName(String teacherFristName,String teacherLastName){
+
+    public static Teacher findByTeacherFullName(String teacherFristName, String teacherLastName) {
         Teacher t = null;
         Connection conn = BuildConnection.getConnection();
         try {
@@ -48,8 +49,8 @@ public class TeacherController {
             pstm.setString(2, teacherLastName);
             ResultSet rs = null;
             rs = pstm.executeQuery();
-            if(rs.next()){
-                t = new Teacher(rs.getInt("t_id"),rs.getString("f_name"),rs.getString("l_name"),rs.getString("password"),rs.getString("class_id"));
+            if (rs.next()) {
+                t = new Teacher(rs.getInt("t_id"), rs.getString("f_name"), rs.getString("l_name"), rs.getString("password"), rs.getString("class_id"));
             }
             rs.close();
             conn.close();
@@ -58,10 +59,5 @@ public class TeacherController {
         }
         return t;
     }
-    
-    public static void main(String[] args) {
-        TeacherController tc = new TeacherController();
-        Teacher t = tc.findByTeacherId(2);
-        System.out.println(t.getUserName()); 
-    }
+
 }

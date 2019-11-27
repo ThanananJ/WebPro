@@ -25,7 +25,7 @@
                 height: 100%;
                 width: auto
             }
-            
+
             .bgimg {
                 /* The image used */
                 background-image: url(./images/bg.png);
@@ -66,24 +66,24 @@
     <body class="bgimg">
         <div class="bg">
             <center><h1>Create</h1></center>
-        <form action="AddItemsFill" method="post">
-            <table>
-                <c:forEach begin="1" end="${Integer.valueOf(runLoop)}" varStatus="vs" >
-                    <tr>
-                        <td style="text-align: right;">${vs.count}.</td>
-                        <td><input type="text" name="itemdescription${vs.count}" class="input-field" required="true"></td>
-                    </tr>
-                    <tr>
-                        <td>Answers : </td>
-                        <td><input type="text" name="answersdescription${vs.count}" class="input-field" required="true"></td>
-                    </tr>
-                </c:forEach>
-            </table> 
-            <input name="finish" hidden="true" >
-            <center><button type="submit" style="background-color: transparent; border: none"><img src="./images/Next.png" width="200px" height="auto"></button></center>
-        </form>
+            <form action="AddItemsFill" method="post">
+                <table>
+                    <c:forEach begin="1" end="${Integer.valueOf(runLoop)}" varStatus="vs" >
+                        <tr>
+                            <td style="text-align: right;">${vs.count}.</td>
+                            <td><input type="text" name="itemdescription${vs.count}" class="input-field" required="true"></td>
+                        </tr>
+                        <tr>
+                            <td>Answers : </td>
+                            <td><input type="text" name="answersdescription${vs.count}" class="input-field" required="true"></td>
+                        </tr>
+                    </c:forEach>
+                </table> 
+                <input name="finish" hidden="true" >
+                <center><button type="submit" style="background-color: transparent; border: none"><img src="./images/Next.png" width="200px" height="auto"></button></center>
+            </form>
 
-            
+
         </div>
     </body>
 </html>

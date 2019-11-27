@@ -38,23 +38,23 @@
             color: white
         }
         body {
-                height: 100%;
-                width: auto
-            }
-            
-            .bgimg {
-                /* The image used */
-                background-image: url(./images/bg.png);
+            height: 100%;
+            width: auto
+        }
 
-                /* Full height */
-                height: 100%;
-                width: 100%;
+        .bgimg {
+            /* The image used */
+            background-image: url(./images/bg.png);
 
-                /* Center and scale the image nicely */
-                /*background-position: center;*/
-                background-repeat: no-repeat;
-                background-size: cover;
-            }
+            /* Full height */
+            height: 100%;
+            width: 100%;
+
+            /* Center and scale the image nicely */
+            /*background-position: center;*/
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
     </style>
     <body class="bgimg">
     <center><div class="bg">

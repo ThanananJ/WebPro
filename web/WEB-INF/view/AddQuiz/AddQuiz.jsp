@@ -21,7 +21,7 @@
                 height: 100%;
                 width: auto
             }
-            
+
             .bgimg {
                 /* The image used */
                 background-image: url(./images/bg.png);
@@ -134,23 +134,23 @@
                         <td style="height: 10px"></td>
                     </tr>
                     <tr>
-                    <td>
-                        For Class
-                    </td>
-                    <td> : </td>
-                    <td>
-                        <select name ="quizforclasss" class="inputSelect">
-                            <option value ="401">Grade 10 class 1</option>
-                            <option value ="402">Grade 10 class 2</option>
-                            <option value ="403">Grade 10 class 3</option>
-                            <option value ="501">Grade 11 class 1</option>
-                            <option value ="502">Grade 11 class 2</option>
-                            <option value ="503">Grade 11 class 3</option>
-                            <option value ="601">Grade 12 class 1</option>
-                            <option value ="602">Grade 12 class 2</option>
-                            <option value ="603">Grade 12 class 3</option>
-                        </select>
-                    </td>
+                        <td>
+                            For Class
+                        </td>
+                        <td> : </td>
+                        <td>
+                            <select name ="quizforclasss" class="inputSelect">
+                                <option value ="401">Grade 10 class 1</option>
+                                <option value ="402">Grade 10 class 2</option>
+                                <option value ="403">Grade 10 class 3</option>
+                                <option value ="501">Grade 11 class 1</option>
+                                <option value ="502">Grade 11 class 2</option>
+                                <option value ="503">Grade 11 class 3</option>
+                                <option value ="601">Grade 12 class 1</option>
+                                <option value ="602">Grade 12 class 2</option>
+                                <option value ="603">Grade 12 class 3</option>
+                            </select>
+                        </td>
                     </tr>
                     <tr>
                         <td style="height: 10px"></td>

@@ -6,7 +6,6 @@
 package quinn.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -15,11 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import quinn.controller.QuizController;
 import quinn.controller.ScoreController;
-import quinn.controller.StudentController;
 import quinn.model.Quiz;
 import quinn.model.Score;
-import quinn.model.Student;
-import quinn.model.Teacher;
 
 /**
  *
@@ -39,9 +35,6 @@ public class SeeTotalScoreServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        //String studentId = request.getParameter("userName");
-        //String studentName = request.getParameter("firstName");
-        //String studentLname = request.getParameter("lastName");
 
         HttpSession session = request.getSession(false);
         QuizController qc = new QuizController();
@@ -56,10 +49,6 @@ public class SeeTotalScoreServlet extends HttpServlet {
             request.getServletContext().getRequestDispatcher("/TotalScore.jsp").forward(request, response);
         }
 
-//        Student student = (Student) session.getAttribute("student");
-        //Teacher teacher = (Teacher) session.getAttribute("teacher");
-        //StudentController st = new StudentController();
-        //request.setAttribute("Score", Score);
         request.getServletContext().getRequestDispatcher("/TotalScore.jsp").forward(request, response);
     }
 

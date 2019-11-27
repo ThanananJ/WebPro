@@ -38,7 +38,7 @@
                 height: 100%;
                 width: auto
             }
-            
+
             .bgimg {
                 /* The image used */
                 background-image: url(./images/bg.png);
@@ -58,12 +58,12 @@
     <body class="bgimg">
         <div class="bg">
             <center>
-            <h1 style="text-align: center; font-size: 72px;">${q.getDescription()}</h1>
-            <img src="./images/Line 2.png" width="1000px" height="8px"><br>
+                <h1 style="text-align: center; font-size: 72px;">${q.getDescription()}</h1>
+                <img src="./images/Line 2.png" width="1000px" height="8px"><br>
                 <p id="score">${score} / ${q.getMaxScore()}</p>
-            <form action="Index">
-                <button style="background-color: transparent; border: none; margin: 400px 0px 0px 0px"><img src="./images/back.png"></button>
-            </form>
+                <form action="Index">
+                    <button style="background-color: transparent; border: none; margin: 400px 0px 0px 0px"><img src="./images/back.png"></button>
+                </form>
             </center>
         </div>
     </body>

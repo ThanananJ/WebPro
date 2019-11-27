@@ -31,7 +31,7 @@
                 height: 100%;
                 width: auto
             }
-            
+
             .bgimg {
                 /* The image used */
                 background-image: url(./images/bg.png);
@@ -49,9 +49,9 @@
     </head>
     <body class="bgimg">
         <div class="bg">
-        <h1>Finish!</h1>
-        <img src="./images/Line 2.png" width="500px" height="8px"><br>
-        <a href="./Index" style="font-size: 30px"><img src="./images/back.png" style=" margin-top: 400px"></a><br>
+            <h1>Finish!</h1>
+            <img src="./images/Line 2.png" width="500px" height="8px"><br>
+            <a href="./Index" style="font-size: 30px"><img src="./images/back.png" style=" margin-top: 400px"></a><br>
         </div>
     </body>
 </html>

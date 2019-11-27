@@ -6,7 +6,6 @@
 package quinn.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -46,7 +45,7 @@ public class ChoiceServlet extends HttpServlet {
         String userAnswer = request.getParameter("userAnswer");
 
         List<Item> il = (List<Item>) session.getAttribute("li");
-        
+
         if (il.size() == countno) {
             session.setAttribute("lastAnswer", userAnswer);
             request.getRequestDispatcher("/WEB-INF/view/endQuiz.jsp").forward(request, response);
@@ -54,22 +53,22 @@ public class ChoiceServlet extends HttpServlet {
         }
         QuizController qc = new QuizController();
         Quiz q = (Quiz) session.getAttribute("q");
-        
+
         List<Answer> al = qc.findAnswer(il.get(countno).getItem_id());
-        List<Answer> alcheck = qc.findAnswer(il.get(countno-1).getItem_id());
+        List<Answer> alcheck = qc.findAnswer(il.get(countno - 1).getItem_id());
         Answer correct = null;
-        
+
         //find correct answer
-        for(int i = 0; i < al.size(); i++){
-            if(alcheck.get(i).isIsCorrect() == true){
+        for (int i = 0; i < al.size(); i++) {
+            if (alcheck.get(i).isIsCorrect() == true) {
                 correct = alcheck.get(i);
             }
         }
-        
-        if(userAnswer.equals(correct.getDescription())){
-            score +=1;
+
+        if (userAnswer.equals(correct.getDescription())) {
+            score += 1;
         }
-        
+
         session.setAttribute("score", score);
         Item i = il.get(countno);
         request.setAttribute("i", i);

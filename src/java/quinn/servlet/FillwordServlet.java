@@ -6,7 +6,6 @@
 package quinn.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -52,7 +51,7 @@ public class FillwordServlet extends HttpServlet {
         if (al.get(0).getDescription().equals(userAnswer)) {
             score += 1;
         }
-        
+
         session.setAttribute("score", score);
 
         if (il.size() == countno) {

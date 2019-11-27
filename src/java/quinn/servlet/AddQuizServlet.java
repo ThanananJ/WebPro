@@ -6,8 +6,6 @@
 package quinn.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Enumeration;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import quinn.controller.QuizController;
 import quinn.controller.TeacherController;
-import quinn.model.Item;
 import quinn.model.Quiz;
 import quinn.model.Teacher;
 
@@ -58,8 +55,6 @@ public class AddQuizServlet extends HttpServlet {
         if (quizType.equals("1")) {
             getServletContext().getRequestDispatcher("/WEB-INF/view/AddQuiz/AddFillQuiz.jsp").forward(request, response);
         } else if (quizType.equals("2")) {
-            int choiceLoop = Integer.valueOf(numberItems) * 4;
-            session.setAttribute("runLoopChoice", choiceLoop);
             getServletContext().getRequestDispatcher("/WEB-INF/view/AddQuiz/AddChoiceQuiz.jsp").forward(request, response);
         }
     }

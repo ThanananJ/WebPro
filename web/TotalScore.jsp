@@ -19,7 +19,7 @@
             body {
                 height: 100%;
                 width: auto;
-                   
+
 
             }
             h1{
@@ -35,7 +35,7 @@
                 color: #997B5E;
                 text-align: left;
                 margin: 20px;
-                    
+
             }
             .scoretb{
                 margin-left: 50px;
@@ -47,24 +47,24 @@
     </head>
     <body style="background-image: url(./images/bg.png); width: 100%;height: 100%" >
         <div class="bg">
-        <h1>${q.getDescription()}</h1>
-        <h3> Student Score</h3>
-        <div class="scoretb">
-        <table style="width: 100%; height: 100%">
-            <tr style="background-color: white; font-style: inherit;">
-                <th>Student id</th>
-                <th>Student name</th>
-                <th>Score</th>
-            </tr>
-            <c:forEach items= "${Score}" var="sc">
-                <tr style="background-color: #EBE4D1;">
-                    <td>${sc.getSt_id()}</td>
-                    <td>${sc.getSt_fname()} ${sc.getSt_lname()}</td>
-                    <td>${sc.getScore()}</td>
-                </tr>
-            </c:forEach>
-        </table>
-        </div>
+            <h1>${q.getDescription()}</h1>
+            <h3> Student Score</h3>
+            <div class="scoretb">
+                <table style="width: 100%; height: 100%">
+                    <tr style="background-color: white; font-style: inherit;">
+                        <th>Student id</th>
+                        <th>Student name</th>
+                        <th>Score</th>
+                    </tr>
+                    <c:forEach items= "${Score}" var="sc">
+                        <tr style="background-color: #EBE4D1;">
+                            <td>${sc.getSt_id()}</td>
+                            <td>${sc.getSt_fname()} ${sc.getSt_lname()}</td>
+                            <td>${sc.getScore()}</td>
+                        </tr>
+                    </c:forEach>
+                </table>
+            </div>
         </div>
     </body>
 </html>

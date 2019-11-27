@@ -6,7 +6,6 @@
 package quinn.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -39,23 +38,20 @@ public class SummaryServlet extends HttpServlet {
 
         QuizController qc = new QuizController();
 
-//        String scoreA = (String) session.getAttribute("score");
-//        int score = Integer.valueOf(scoreA);
         int score = (int) session.getAttribute("score");
 
         Quiz q = (Quiz) session.getAttribute("q");
         List<Item> il = (List<Item>) session.getAttribute("li");
         List<Answer> al = qc.findAnswer(il.get(il.size() - 1).getItem_id());
-        //List<Answer> al = qc.findAnswer(il.get(0).getItem_id());
         String userAnswer = (String) session.getAttribute("lastAnswer");
         Answer correct = null;
-        
+
         request.setAttribute("lastAnswer", userAnswer);
         request.setAttribute("lastCorrect", correct);
         session.setAttribute("score", score);
-        
+
         request.getRequestDispatcher("/WEB-INF/view/ScoreSummary.jsp").forward(request, response);
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -84,7 +80,7 @@ public class SummaryServlet extends HttpServlet {
         //List<Answer> al = qc.findAnswer(il.get(0).getItem_id());
         String userAnswer = (String) session.getAttribute("lastAnswer");
         Answer correct = null;
-        
+
         if (q.getType().equals("1")) {
             if (al.get(0).getDescription().equals(userAnswer)) {
                 score += 1;
@@ -93,15 +89,15 @@ public class SummaryServlet extends HttpServlet {
 
         if (q.getType().equals("2")) {
             //find correct answer
-        for(int i = 0; i < al.size(); i++){
-            if(al.get(i).isIsCorrect() == true){
-                correct = al.get(i);
+            for (int i = 0; i < al.size(); i++) {
+                if (al.get(i).isIsCorrect() == true) {
+                    correct = al.get(i);
+                }
             }
-        }
-            if(correct != null){
-                if(userAnswer.equals(correct.getDescription())){
-                score += 1;
-            }
+            if (correct != null) {
+                if (userAnswer.equals(correct.getDescription())) {
+                    score += 1;
+                }
             }
         }
 

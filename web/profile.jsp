@@ -17,7 +17,7 @@
                 height: 100%;
                 width: auto
             }
-            
+
             .bgimg {
                 /* The image used */
                 background-image: url(./images/bg.png);
@@ -52,12 +52,12 @@
                                 <th>Max Score</th>
                             </tr>
                             <c:forEach items="${studentList}" var="sl">
-                            <tr>
-                                <td>${sl.quiz_id}</td>
-                                <td>${sl.quiz_name}</td>
-                                <td>${sl.score}</td>
-                                <td>${sl.maxscore}</td>
-                            </tr>
+                                <tr>
+                                    <td>${sl.quiz_id}</td>
+                                    <td>${sl.quiz_name}</td>
+                                    <td>${sl.score}</td>
+                                    <td>${sl.maxscore}</td>
+                                </tr>
                             </c:forEach>
                         </table></center>
                 </div>
@@ -72,12 +72,12 @@
                                 <th colspan="3">#</th>
                             </tr>
                             <c:forEach items="${teacherList}" var="tl">
-                            <tr>
-                                <td>${tl.quiz_id}</td>
-                                <td>${tl.description}</td>
-                                <td><a href="DeleteQuiz?id=${tl.quiz_id}">Delete</a></td>
-                                <td><a href="SeeTotalScore?id=${tl.quiz_id}">See score</a></td>
-                            </tr>
+                                <tr>
+                                    <td>${tl.quiz_id}</td>
+                                    <td>${tl.description}</td>
+                                    <td><a href="DeleteQuiz?id=${tl.quiz_id}">Delete</a></td>
+                                    <td><a href="SeeTotalScore?id=${tl.quiz_id}">See score</a></td>
+                                </tr>
                             </c:forEach>
                         </table></center>
                 </div>

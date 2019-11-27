@@ -9,8 +9,8 @@ package quinn.model;
  *
  * @author Mark
  */
-public class Teacher{
-    
+public class Teacher {
+
     private int userName;
     private String password;
     private String firstName;
@@ -64,5 +64,5 @@ public class Teacher{
     public void setClassId(String classId) {
         this.classId = classId;
     }
-    
+
 }

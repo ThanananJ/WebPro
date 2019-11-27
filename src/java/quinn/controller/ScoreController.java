@@ -21,20 +21,20 @@ import quinn.model.Score;
  * @author nattawanee.sks
  */
 public class ScoreController {
-    
-    public static List<Score> findScoreByStudent(int std_id){
-        List<Score> sl= null;
+
+    public static List<Score> findScoreByStudent(int std_id) {
+        List<Score> sl = null;
         Connection conn = BuildConnection.getConnection();
-        
+
         try {
             PreparedStatement pstm = conn.prepareStatement("SELECT * FROM score where st_id = ?");
             pstm.setInt(1, std_id);
             ResultSet rs = pstm.executeQuery();
-            while(rs.next()){
-                if(sl == null){
+            while (rs.next()) {
+                if (sl == null) {
                     sl = new ArrayList(100);
                 }
-                Score s = new Score(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getInt(4),rs.getString(5),rs.getInt(6),rs.getInt(7));
+                Score s = new Score(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5), rs.getInt(6), rs.getInt(7));
                 sl.add(s);
             }
         } catch (SQLException ex) {
@@ -42,20 +42,20 @@ public class ScoreController {
         }
         return sl;
     }
-    
-    public static List<Score> findScoreByQuiz(int quiz_id){
-        List<Score> sl= null;
+
+    public static List<Score> findScoreByQuiz(int quiz_id) {
+        List<Score> sl = null;
         Connection conn = BuildConnection.getConnection();
-        
+
         try {
             PreparedStatement pstm = conn.prepareStatement("SELECT * FROM score where quiz_id = ?");
             pstm.setInt(1, quiz_id);
             ResultSet rs = pstm.executeQuery();
-            while(rs.next()){
-                if(sl == null){
+            while (rs.next()) {
+                if (sl == null) {
                     sl = new ArrayList(100);
                 }
-                Score s = new Score(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getInt(4),rs.getString(5),rs.getInt(6),rs.getInt(7));
+                Score s = new Score(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5), rs.getInt(6), rs.getInt(7));
                 sl.add(s);
             }
         } catch (SQLException ex) {
@@ -63,8 +63,8 @@ public class ScoreController {
         }
         return sl;
     }
-    
-    public static boolean AddScore(Score s){
+
+    public static boolean AddScore(Score s) {
         boolean fin = false;
         Connection conn = BuildConnection.getConnection();
         try {
@@ -82,8 +82,8 @@ public class ScoreController {
         }
         return fin;
     }
-    
-    public static boolean DeleteScore(Score s){
+
+    public static boolean DeleteScore(Score s) {
         boolean fin = false;
         Connection conn = BuildConnection.getConnection();
         try {
@@ -96,10 +96,5 @@ public class ScoreController {
         }
         return fin;
     }
-    
-    public static void main(String[] args) {
-        ScoreController sc = new ScoreController();
-        List<Score> sl = sc.findScoreByQuiz(1);
-        System.out.println(sl);
-    }
+
 }

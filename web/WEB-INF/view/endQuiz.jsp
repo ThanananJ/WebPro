@@ -17,7 +17,7 @@
         <jsp:include page="/WEB-INF/view/PageHeader.jsp?title=Quiz End!"/>
         <title>Quiz end!</title>
         <style>
-        .bg{
+            .bg{
                 font-family: Advent Pro;
             }
             #box{
@@ -39,7 +39,7 @@
                 height: 100%;
                 width: auto
             }
-            
+
             .bgimg {
                 /* The image used */
                 background-image: url(./images/bg.png);
@@ -53,15 +53,15 @@
                 background-repeat: no-repeat;
                 background-size: cover;
             }
-            </style>
+        </style>
     </head>
     <body class="bgimg">
         <div class="bg">
-    <center>
-        <h1>Quiz is End!!</h1>
-        <img src="./images/Line 2.png" width="1000px" height="8px"><br>
-        <a href="./Summary" style="font-size: 30px">see score</a>
-    </center>
+            <center>
+                <h1>Quiz is End!!</h1>
+                <img src="./images/Line 2.png" width="1000px" height="8px"><br>
+                <a href="./Summary" style="font-size: 30px">see score</a>
+            </center>
         </div>
     </body>
 </html>

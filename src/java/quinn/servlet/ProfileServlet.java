@@ -6,7 +6,6 @@
 package quinn.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -15,8 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import quinn.controller.QuizController;
 import quinn.controller.ScoreController;
-import quinn.controller.StudentController;
-import quinn.controller.TeacherController;
 import quinn.model.Quiz;
 import quinn.model.Score;
 import quinn.model.Student;
@@ -55,7 +52,6 @@ public class ProfileServlet extends HttpServlet {
             List<Quiz> teacherList = qc.findByTeacherId(teacher.getUserName());
             request.setAttribute("teacherList", teacherList);
         }
-        
 
         request.getRequestDispatcher("/profile.jsp").forward(request, response);
     }

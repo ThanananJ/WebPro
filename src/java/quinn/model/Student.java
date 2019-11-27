@@ -11,8 +11,8 @@ import quinn.controller.StudentController;
  *
  * @author Mark
  */
-public class Student{
-    
+public class Student {
+
     private int userName;
     private String password;
     private String firstName;
@@ -66,11 +66,11 @@ public class Student{
     public void setClassId(String level) {
         this.classId = level;
     }
-  
-    public boolean equalPassword(String password){
+
+    public boolean equalPassword(String password) {
         return password.equals(this.password);
     }
-    
+
     public static void main(String[] args) {
         StudentController sc = new StudentController();
         String username = "00001";
@@ -78,5 +78,5 @@ public class Student{
         System.out.println(s.equalPassword("12345"));
         System.out.println(s instanceof Student);
     }
-    
+
 }

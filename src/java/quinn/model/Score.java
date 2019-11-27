@@ -10,6 +10,7 @@ package quinn.model;
  * @author nattawanee.sks
  */
 public class Score {
+
     private int st_id;
     private String st_fname;
     private String st_lname;
@@ -31,7 +32,7 @@ public class Score {
         this.st_id = st_id;
         this.quiz_id = quiz_id;
         this.score = score;
-    } 
+    }
 
     public Score(int st_id, int quiz_id, String quiz_name, int score, int maxscore) {
         this.st_id = st_id;
@@ -50,8 +51,6 @@ public class Score {
         this.score = score;
         this.maxscore = maxscore;
     }
-    
-    
 
     public int getSt_id() {
         return st_id;
@@ -113,5 +112,5 @@ public class Score {
     public String toString() {
         return "Score{" + "st_id=" + st_id + ", st_fname=" + st_fname + ", st_lname=" + st_lname + ", quiz_id=" + quiz_id + ", quiz_name=" + quiz_name + ", score=" + score + ", maxscore=" + maxscore + '}';
     }
-    
+
 }

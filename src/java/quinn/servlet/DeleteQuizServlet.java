@@ -6,7 +6,6 @@
 package quinn.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -64,9 +63,7 @@ public class DeleteQuizServlet extends HttpServlet {
         String quiz = request.getParameter("id");
         if (quiz != null) {
             int qid = Integer.valueOf(quiz);
-//            System.out.println(qid);
             Quiz q = qc.findByQuizID(qid);
-//            System.out.println(q);
             List<Item> itemL = qc.findItem(qid);
             if (itemL != null) {
                 for (int i = 0; i < itemL.size(); i++) {
@@ -86,7 +83,6 @@ public class DeleteQuizServlet extends HttpServlet {
 
         request.setAttribute("quizinput", quiz);
         response.sendRedirect("./Profile");
-        //request.getServletContext().getRequestDispatcher("/profile.jsp").forward(request, response);
 
     }
 

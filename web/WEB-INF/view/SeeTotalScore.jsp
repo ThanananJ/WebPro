@@ -26,7 +26,7 @@
                 height: 100%;
                 width: auto
             }
-            
+
             .bgimg {
                 /* The image used */
                 background-image: url(./images/bg.png);
@@ -56,22 +56,22 @@
     </head>
     <body class="bgimg">
         <div class="bg">
-        <h1>Total Score of</h1>
-        <h2>${q.getDescription()}</h2>
-        <table>
-            <tr>
-                <th>Student id</th>
-                <th>Student name</th>
-                <th>Score</th>
-            </tr>
-            <c:forEach items="score" var="s">
+            <h1>Total Score of</h1>
+            <h2>${q.getDescription()}</h2>
+            <table>
                 <tr>
-                    <td>3</td>
-                    <td>2</td>
-                    <td>1</td>
+                    <th>Student id</th>
+                    <th>Student name</th>
+                    <th>Score</th>
                 </tr>
-            </c:forEach>
-        </table>
+                <c:forEach items="score" var="s">
+                    <tr>
+                        <td>3</td>
+                        <td>2</td>
+                        <td>1</td>
+                    </tr>
+                </c:forEach>
+            </table>
         </div>
     </body>
 </html>

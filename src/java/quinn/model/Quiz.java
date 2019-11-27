@@ -12,6 +12,7 @@ import quinn.controller.TeacherController;
  * @author Mark
  */
 public class Quiz {
+
     private int quiz_id;
     private String description;
     private String subject;
@@ -70,7 +71,7 @@ public class Quiz {
     }
 
     public int getQuizOwner() {
-        return quizOwner;   
+        return quizOwner;
     }
 
     public void setQuizOwner(int quizOwner) {
@@ -99,9 +100,9 @@ public class Quiz {
     public String toString() {
         return "Quiz{" + "quiz_id=" + quiz_id + ", description=" + description + ", subject=" + subject + ", type=" + type + ", quizOwner=" + quizOwner + ", classAllowToDo=" + classAllowToDo + ", maxScore=" + maxScore + '}';
     }
-    
+
     public static void main(String[] args) {
-        Quiz q = new Quiz(1,"eng", "Thai", "1", 1, "401", 2);
+        Quiz q = new Quiz(1, "eng", "Thai", "1", 1, "401", 2);
         System.out.println(q.type);
     }
 }

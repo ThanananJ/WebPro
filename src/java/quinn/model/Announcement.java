@@ -10,6 +10,7 @@ package quinn.model;
  * @author Mark
  */
 public class Announcement {
+
     private int an_id;
     private String content;
 
@@ -20,7 +21,7 @@ public class Announcement {
     public Announcement(String content) {
         this.content = content;
     }
-    
+
     public int getAn_id() {
         return an_id;
     }
@@ -37,6 +38,5 @@ public class Announcement {
     public String toString() {
         return "Announcement{" + "an_id=" + an_id + ", content=" + content + '}';
     }
-    
-    
+
 }

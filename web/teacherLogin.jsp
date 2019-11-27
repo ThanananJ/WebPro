@@ -57,7 +57,7 @@
         </style>
     </head>
     <body>
-        <body class="bg">
+    <body class="bg">
         <div style="text-align: right;margin: 50px 50px 0px 0px"><img src="./images/logo.png" width="400px" height="auto"></div>
 
         <form action="TeacherLogin" method="post">
@@ -93,5 +93,5 @@
             </table>
         </form>
     </body>
-    </body>
+</body>
 </html>
