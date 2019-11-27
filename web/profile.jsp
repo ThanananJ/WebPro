@@ -75,7 +75,6 @@
                             <tr>
                                 <td>${tl.quiz_id}</td>
                                 <td>${tl.description}</td>
-                                <td><a href="EditQuiz">Edit</a></td>
                                 <td><a href="DeleteQuiz?id=${tl.quiz_id}">Delete</a></td>
                                 <td><a href="SeeTotalScore?id=${tl.quiz_id}">See score</a></td>
                             </tr>
